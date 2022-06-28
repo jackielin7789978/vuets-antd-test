@@ -1,20 +1,14 @@
 <script setup>
 import Header from './components/Header.vue'
-import { ref } from 'vue'
-const collapsed = ref(false)
+import Sider from './components/Sider.vue'
 </script>
 
 <template>
   <a-layout id="default-layout">
-    <a-layout-sider
-      v-model:collapsed="collapsed"
-      :trigger="null"
-      collapsible
-      style="background: #222"
-    ></a-layout-sider>
+    <Sider />
     <a-layout>
       <Header />
-      <a-layout-content>
+      <a-layout-content style="padding: 1rem">
         <router-view></router-view>
       </a-layout-content>
       <a-layout-footer>Footer</a-layout-footer>

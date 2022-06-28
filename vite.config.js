@@ -40,6 +40,8 @@ export default defineConfig({
           'text-color-secondary': '#464646',
           'disabled-color': '#909090',
           'border-radius-base': '4px',
+          'layout-header-background': '#141414',
+          'menu-dark-inline-submenu-bg': '#2F2F2F',
         },
         javascriptEnabled: true,
       },

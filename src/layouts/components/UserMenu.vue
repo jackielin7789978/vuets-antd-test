@@ -3,28 +3,21 @@ import { UserOutlined, DownOutlined } from '@ant-design/icons-vue'
 </script>
 
 <template>
-  <a-dropdown>
-    <button
-      class="ant-dropdown-link h-full px-2 hover:bg-light-400 flex items-center gap-x-2"
-    >
+  <a-dropdown placement="bottom">
+    <a-space class="cursor-pointer px-2 hover:bg-light-400">
       <a-avatar>
         <template #icon>
           <UserOutlined />
-        </template>
-      </a-avatar>
-      <span class="">使用者名稱</span>
-      <DownOutlined />
-    </button>
+        </template> </a-avatar
+      >Admin 1
+    </a-space>
     <template #overlay>
       <a-menu>
         <a-menu-item>
-          <nuxt-llnk @click.prevent>選項一</nuxt-llnk>
+          <li>設定</li>
         </a-menu-item>
         <a-menu-item>
-          <nuxt-llnk @click.prevent>選項二</nuxt-llnk>
-        </a-menu-item>
-        <a-menu-item>
-          <a @click.prevent>登出</a>
+          <li>登出</li>
         </a-menu-item>
       </a-menu>
     </template>

@@ -21,5 +21,6 @@ body,
 
 #app {
   color: #222;
+  box-sizing: border-box;
 }
 </style>
