@@ -13,7 +13,7 @@ const router = createRouter({
 })
 
 import Antd from 'ant-design-vue' // dev 使用全域註冊增加開發速度，build 時移除
-import 'ant-design-vue/dist/antd.css' // build 時移除
+import 'ant-design-vue/dist/antd.less' // build 時移除
 import 'virtual:windi.css'
 
 const app = createApp(App)

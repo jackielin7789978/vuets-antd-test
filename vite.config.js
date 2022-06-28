@@ -29,6 +29,18 @@ export default defineConfig({
   css: {
     preprocessorOptions: {
       less: {
+        modifyVars: {
+          'primary-color': '#0FC4CA',
+          'link-color': '#0FC4CA',
+          'success-color': '#00CDAD',
+          'warning-color': '#FF8737',
+          'error-color': '#FF5B52',
+          'heading-color': '#000',
+          'text-color': '#222',
+          'text-color-secondary': '#464646',
+          'disabled-color': '#909090',
+          'border-radius-base': '4px',
+        },
         javascriptEnabled: true,
       },
     },
