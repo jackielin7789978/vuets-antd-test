@@ -1,3 +1,9 @@
 <template>
-	<router-view></router-view>
+  <RouterView />
 </template>
+
+<style>
+.debug {
+  outline: 1px solid gold;
+}
+</style>
