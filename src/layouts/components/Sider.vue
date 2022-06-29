@@ -29,6 +29,7 @@ const toggleSider = () => (siderCollapsed.value = !siderCollapsed.value)
     :trigger="null"
     collapsible
     style="background: #141414"
+    width="240"
     class="relative"
   >
     <button class="collapseBtn" @click="toggleSider">
@@ -65,44 +66,56 @@ const toggleSider = () => (siderCollapsed.value = !siderCollapsed.value)
           <template #icon>
             <edit-outlined />
           </template>
-          Option 1
+          選單 1
         </a-menu-item>
         <a-menu-item key="4">
           <template #icon>
             <tool-outlined />
           </template>
-          Option 2
+          選單 2
         </a-menu-item>
         <a-menu-item key="5">
           <template #icon>
             <control-outlined />
           </template>
-          Option 3
+          選單 3
         </a-menu-item>
       </a-sub-menu>
       <a-sub-menu>
         <template #icon>
           <apartment-outlined />
         </template>
-        <template #title>自動化流程</template>
+        <template #title>結論分析</template>
         <a-menu-item key="6">
           <template #icon>
             <edit-outlined />
           </template>
-          Option 1
+          專案報表
         </a-menu-item>
         <a-menu-item key="7">
           <template #icon>
             <tool-outlined />
           </template>
-          Option 2
+          聯絡人報表
         </a-menu-item>
-        <a-menu-item key="8">
+        <a-sub-menu>
           <template #icon>
-            <control-outlined />
+            <apartment-outlined />
           </template>
-          Option 3
-        </a-menu-item>
+          <template #title>更多報表</template>
+          <a-menu-item key="8">
+            <template #icon>
+              <edit-outlined />
+            </template>
+            其他報表一
+          </a-menu-item>
+          <a-menu-item key="9">
+            <template #icon>
+              <tool-outlined />
+            </template>
+            其他報表二
+          </a-menu-item>
+        </a-sub-menu>
       </a-sub-menu>
     </a-menu>
   </a-layout-sider>

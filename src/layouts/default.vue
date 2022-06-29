@@ -11,7 +11,6 @@ import Sider from './components/Sider.vue'
       <a-layout-content style="padding: 1rem">
         <router-view></router-view>
       </a-layout-content>
-      <a-layout-footer>Footer</a-layout-footer>
     </a-layout>
   </a-layout>
 </template>
