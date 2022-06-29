@@ -40,25 +40,13 @@
         <a-card>
           <a-tabs>
             <a-tab-pane key="1" tab="使用者">
-              <a-empty class="empty">
-                <template #description>
-                  <span class="text-lg">目前無使用者</span>
-                </template>
-              </a-empty>
+              <Empty description="無使用者"></Empty>
             </a-tab-pane>
             <a-tab-pane key="2" tab="新使用者人數">
-              <a-empty class="empty">
-                <template #description>
-                  <span class="text-lg">無新使用者</span>
-                </template>
-              </a-empty>
+              <Empty description="無新使用者"></Empty>
             </a-tab-pane>
             <a-tab-pane key="3" tab="平均參與時間">
-              <a-empty class="empty">
-                <template #description>
-                  <span class="text-lg">無資料</span>
-                </template>
-              </a-empty>
+              <Empty description="無資料"></Empty>
             </a-tab-pane>
           </a-tabs>
         </a-card>
@@ -66,9 +54,3 @@
     </a-row>
   </a-space>
 </template>
-
-<style scoped>
-.empty {
-  padding: 2rem;
-}
-</style>

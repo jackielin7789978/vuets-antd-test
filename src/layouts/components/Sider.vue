@@ -1,6 +1,7 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
+import { useRoutesStore } from '@/stores/routes'
 import {
   HomeOutlined,
   DashboardOutlined,
@@ -12,6 +13,7 @@ import {
   MenuUnfoldOutlined,
 } from '@ant-design/icons-vue'
 
+const routes = useRoutesStore()
 const selectedKeys = ref(['1'])
 const siderCollapsed = ref(false)
 
@@ -43,81 +45,12 @@ const toggleSider = () => (siderCollapsed.value = !siderCollapsed.value)
     </div>
 
     <!-- menu -->
-    <a-menu theme="dark" mode="inline" v-model:selectedKeys="selectedKeys">
-      <a-menu-item key="/">
-        <template #icon>
-          <home-outlined />
-        </template>
-        <router-link to="/">首頁</router-link>
-      </a-menu-item>
-      <a-menu-item key="/dashboard">
-        <template #icon>
-          <dashboard-outlined />
-        </template>
-        <router-link to="/dashboard">主控台</router-link>
-      </a-menu-item>
-
-      <a-sub-menu>
-        <template #icon>
-          <apartment-outlined />
-        </template>
-        <template #title>自動化流程</template>
-        <a-menu-item key="3">
-          <template #icon>
-            <edit-outlined />
-          </template>
-          選單 1
-        </a-menu-item>
-        <a-menu-item key="4">
-          <template #icon>
-            <tool-outlined />
-          </template>
-          選單 2
-        </a-menu-item>
-        <a-menu-item key="5">
-          <template #icon>
-            <control-outlined />
-          </template>
-          選單 3
-        </a-menu-item>
-      </a-sub-menu>
-      <a-sub-menu>
-        <template #icon>
-          <apartment-outlined />
-        </template>
-        <template #title>結論分析</template>
-        <a-menu-item key="6">
-          <template #icon>
-            <edit-outlined />
-          </template>
-          專案報表
-        </a-menu-item>
-        <a-menu-item key="7">
-          <template #icon>
-            <tool-outlined />
-          </template>
-          聯絡人報表
-        </a-menu-item>
-        <a-sub-menu>
-          <template #icon>
-            <apartment-outlined />
-          </template>
-          <template #title>更多報表</template>
-          <a-menu-item key="8">
-            <template #icon>
-              <edit-outlined />
-            </template>
-            其他報表一
-          </a-menu-item>
-          <a-menu-item key="9">
-            <template #icon>
-              <tool-outlined />
-            </template>
-            其他報表二
-          </a-menu-item>
-        </a-sub-menu>
-      </a-sub-menu>
-    </a-menu>
+    <Menu
+      :menuTree="routes.menuTree"
+      v-model:selectedKeys="selectedKeys"
+      mode="inline"
+      theme="dark"
+    />
   </a-layout-sider>
 </template>
 

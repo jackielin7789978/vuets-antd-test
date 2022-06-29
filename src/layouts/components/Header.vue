@@ -7,7 +7,9 @@ import { BellOutlined, SearchOutlined } from '@ant-design/icons-vue'
   <a-layout-header class="header">
     <a-breadcrumb>
       <a-breadcrumb-item>首頁</a-breadcrumb-item>
-      <a-breadcrumb-item><a href="">主控台</a></a-breadcrumb-item>
+      <a-breadcrumb-item
+        ><router-link to="/dashboard">主控台</router-link></a-breadcrumb-item
+      >
       <a-breadcrumb-item>設定</a-breadcrumb-item>
     </a-breadcrumb>
     <a-space size="middle">
