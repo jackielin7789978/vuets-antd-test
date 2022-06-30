@@ -1,7 +1,7 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
-import { useRoutesStore } from '@/stores/routes'
+import { useMenuStore } from '@/stores/menu'
 import {
   HomeOutlined,
   DashboardOutlined,
@@ -13,7 +13,7 @@ import {
   MenuUnfoldOutlined,
 } from '@ant-design/icons-vue'
 
-const routes = useRoutesStore()
+const menu = useMenuStore()
 const selectedKeys = ref(['1'])
 const siderCollapsed = ref(false)
 
@@ -46,7 +46,7 @@ const toggleSider = () => (siderCollapsed.value = !siderCollapsed.value)
 
     <!-- menu -->
     <Menu
-      :menuTree="routes.menuTree"
+      :menuTree="menu.menuTree"
       v-model:selectedKeys="selectedKeys"
       mode="inline"
       theme="dark"

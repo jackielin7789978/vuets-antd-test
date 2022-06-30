@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 
-export const useRoutesStore = defineStore('routes', {
+export const useMenuStore = defineStore('menu', {
   state: () => {
     return {
       menuTree: [
