@@ -25,8 +25,8 @@ const toggleSider = () => (siderCollapsed.value = !siderCollapsed.value);
     class="relative"
   >
     <button class="collapseBtn" @click="toggleSider">
-      <MenuUnfoldOutlined v-if="siderCollapsed" />
-      <MenuFoldOutlined v-else />
+      <MenuUnfoldOutlined v-show="siderCollapsed" />
+      <MenuFoldOutlined v-show="!siderCollapsed" />
     </button>
 
     <!-- logo -->
@@ -54,6 +54,6 @@ const toggleSider = () => (siderCollapsed.value = !siderCollapsed.value);
 }
 
 .collapseBtn {
-  @apply absolute left-full top-4 rounded-none hover:bg-light-600 w-8 h-8;
+  @apply absolute left-full top-4 rounded-none hover:bg-light-600 w-8 h-8 flex items-center justify-center;
 }
 </style>
