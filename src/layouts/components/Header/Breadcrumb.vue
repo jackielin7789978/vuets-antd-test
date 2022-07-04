@@ -1,29 +1,28 @@
 <script setup>
-import { useMenuStore } from '@/stores/menu.js'
-import { toRaw, watch, ref } from 'vue'
-import { useRoute } from 'vue-router'
+import { useMenuStore } from '@/stores/menu.js';
+import { watch, ref } from 'vue';
+import { useRoute } from 'vue-router';
 
-const menu = useMenuStore()
-const menuTree = toRaw(menu.menuTree)
-const route = useRoute()
+const menu = useMenuStore();
+const route = useRoute();
 
 watch(route, () => {
-  getBreadcrumbList()
-})
+  getBreadcrumbList();
+});
 
-const breadcrumbList = ref([])
-getBreadcrumbList()
+const breadcrumbList = ref([]);
+getBreadcrumbList();
 
 function getBreadcrumbList() {
-  let result = []
-  menuTree.forEach((node) => {
-    if (node.path === route.path) return (result = node)
+  let result = [];
+  menu.menuTree.forEach((node) => {
+    if (node.path === route.path) return (result = node);
     node.children.forEach((node) => {
-      if (node.path === route.path) return (result = node)
-    })
-  })
+      if (node.path === route.path) return (result = node);
+    });
+  });
 
-  breadcrumbList.value = result.breadcrumbs
+  breadcrumbList.value = result.breadcrumbs;
 }
 </script>
 
