@@ -9,11 +9,8 @@ const props = defineProps({
 </script>
 
 <template>
-  <BaseMenuItem v-if="!item.children || !item.children.length" :item="item" />
-  <a-sub-menu
-    v-if="item.children && item.children.length"
-    :key="`sub-${item.id}`"
-  >
+  <BaseMenuItem v-if="!item.children.length" :item="item" />
+  <a-sub-menu v-if="item.children.length" :key="`sub-${item.id}`">
     <template #title>
       {{ item.name }}
     </template>
@@ -21,7 +18,7 @@ const props = defineProps({
       <BaseMenuIcon :iconComponent="item.icon" />
     </template>
 
-    <template v-for="childItem in item.children || []" :key="childItem.path">
+    <template v-for="childItem in item.children" :key="childItem.path">
       <BaseSubMenuItem :item="childItem" />
     </template>
   </a-sub-menu>

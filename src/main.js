@@ -7,6 +7,11 @@ import { createRouter, createWebHistory } from 'vue-router'
 import { setupLayouts } from 'virtual:generated-layouts'
 import generatedRoutes from 'virtual:generated-pages'
 const routes = setupLayouts(generatedRoutes)
+
+// 預設首頁路徑為 '/dashboard'，將造訪 '/' 的使用者重新導向至 '/dashboard'
+const homeRedirect = { path: '/', redirect: '/dashboard' }
+routes.push(homeRedirect)
+
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes,

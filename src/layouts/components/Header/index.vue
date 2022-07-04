@@ -1,17 +1,12 @@
 <script setup>
 import UserMenu from './UserMenu.vue'
+import Breadcrumb from './Breadcrumb.vue'
 import { BellOutlined, SearchOutlined } from '@ant-design/icons-vue'
 </script>
 
 <template>
   <a-layout-header class="header">
-    <a-breadcrumb>
-      <a-breadcrumb-item>首頁</a-breadcrumb-item>
-      <a-breadcrumb-item
-        ><router-link to="/dashboard">主控台</router-link></a-breadcrumb-item
-      >
-      <a-breadcrumb-item>設定</a-breadcrumb-item>
-    </a-breadcrumb>
+    <Breadcrumb />
     <a-space size="middle">
       <SearchOutlined class="nav-controls" />
       <BellOutlined class="nav-controls" />
@@ -22,9 +17,9 @@ import { BellOutlined, SearchOutlined } from '@ant-design/icons-vue'
 
 <style lang="scss" scoped>
 .header {
-  @apply bg-white flex items-center justify-between pr-4 pl-14;
+  @apply bg-white flex items-center justify-between pr-4 pl-14 shadow shadow-light-900;
 }
 .nav-controls {
-  @apply text-1.25rem relative top-2px cursor-pointer hover:text-black;
+  @apply text-1.25rem  cursor-pointer hover:text-black;
 }
 </style>
