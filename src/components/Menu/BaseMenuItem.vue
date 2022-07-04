@@ -1,9 +1,9 @@
 <script setup>
-import BaseMenuIcon from './BaseMenuIcon.vue'
+import BaseMenuIcon from './BaseMenuIcon.vue';
 const props = defineProps({
   item: Object,
   default: () => {},
-})
+});
 </script>
 
 <template>

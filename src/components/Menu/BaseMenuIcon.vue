@@ -5,11 +5,11 @@ import {
   ApartmentOutlined,
   EditOutlined,
   AppstoreOutlined,
-} from '@ant-design/icons-vue'
+} from '@ant-design/icons-vue';
 
 const props = defineProps({
   iconComponent: String,
-})
+});
 
 const icons = {
   HomeOutlined,
@@ -17,7 +17,7 @@ const icons = {
   ApartmentOutlined,
   EditOutlined,
   AppstoreOutlined,
-}
+};
 </script>
 
 <template>

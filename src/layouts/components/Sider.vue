@@ -1,8 +1,5 @@
 <script setup>
-import { ref, watch, toRaw } from 'vue'
-import { useRoute } from 'vue-router'
-import { useMenuStore } from '@/stores/menu'
-import useCurrentMenuNode from '@/composables/useCurrentMenuNode'
+import { ref } from 'vue';
 import {
   HomeOutlined,
   DashboardOutlined,
@@ -12,24 +9,10 @@ import {
   ControlOutlined,
   MenuFoldOutlined,
   MenuUnfoldOutlined,
-} from '@ant-design/icons-vue'
+} from '@ant-design/icons-vue';
 
-const menu = useMenuStore()
-const menuTree = toRaw(menu.menuTree)
-const route = useRoute()
-const currentMenuNode = useCurrentMenuNode(route.path)
-const siderCollapsed = ref(false)
-const selectedKeys = ref([route.path])
-const openKeys = ref([`sub-${currentMenuNode.id[0]}`])
-
-// 問題 1: hot reload 慢到爆
-// 問題 2: 有時會噴 maximun recursive updates exceeded 錯誤
-// watch(route, () => {
-//   const currentMenuNode = useCurrentMenuNode(route.path)
-//   openKeys.value = [`sub-${currentMenuNode.id[0]}`]
-// })
-
-const toggleSider = () => (siderCollapsed.value = !siderCollapsed.value)
+const siderCollapsed = ref(false);
+const toggleSider = () => (siderCollapsed.value = !siderCollapsed.value);
 </script>
 
 <template>
@@ -52,13 +35,7 @@ const toggleSider = () => (siderCollapsed.value = !siderCollapsed.value)
     </div>
 
     <!-- menu -->
-    <Menu
-      :menuTree="menuTree"
-      v-model:selectedKeys="selectedKeys"
-      v-model:openKeys="openKeys"
-      mode="inline"
-      theme="dark"
-    />
+    <Menu mode="inline" theme="dark" />
   </a-layout-sider>
 </template>
 
