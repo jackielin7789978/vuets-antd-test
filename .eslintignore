@@ -1,0 +1,3 @@
+# disable eslint for layout & page components
+src/layouts
+src/pages

@@ -13,8 +13,8 @@ const homeRedirect = { path: '/', redirect: '/dashboard' }
 routes.push(homeRedirect)
 
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
-  routes,
+	history: createWebHistory(import.meta.env.BASE_URL),
+	routes,
 })
 
 import Antd from 'ant-design-vue' // dev 使用全域註冊增加開發速度，build 時移除

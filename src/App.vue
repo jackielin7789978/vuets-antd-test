@@ -1,26 +1,26 @@
 <template>
-  <RouterView />
+	<RouterView />
 </template>
 
 <style lang="scss">
 @import 'normalize.css';
 
 .debug {
-  outline: 1px solid gold;
+	outline: 1px solid gold;
 }
 
 html,
 body,
 #app {
-  width: 100%;
-  height: 100%;
-  overflow: visible;
-  overflow-x: hidden;
-  text-size-adjust: 100%;
+	width: 100%;
+	height: 100%;
+	overflow: visible;
+	overflow-x: hidden;
+	text-size-adjust: 100%;
 }
 
 #app {
-  color: #222;
-  box-sizing: border-box;
+	color: #222;
+	box-sizing: border-box;
 }
 </style>

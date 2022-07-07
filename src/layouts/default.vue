@@ -1,23 +1,18 @@
-<script setup>
-import Header from './components/Header/index.vue'
-import Sider from './components/Sider.vue'
-</script>
-
 <template>
-  <a-layout id="default-layout">
-    <Sider />
-    <a-layout>
-      <Header />
-      <a-layout-content style="padding: 1rem">
-        <router-view></router-view>
-      </a-layout-content>
-    </a-layout>
-  </a-layout>
+	<a-layout id="default-layout">
+		<Sider />
+		<a-layout>
+			<Header />
+			<a-layout-content style="padding: 1rem">
+				<router-view></router-view>
+			</a-layout-content>
+		</a-layout>
+	</a-layout>
 </template>
 
 <style lang="scss" scoped>
 #default-layout {
-  height: 100%;
-  width: 100%;
+	height: 100%;
+	width: 100%;
 }
 </style>
