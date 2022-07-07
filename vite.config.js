@@ -20,7 +20,9 @@ export default defineConfig({
 		}),
 		Pages(),
 		Layouts(),
-		WindiCSS(),
+		WindiCSS({
+			preflight: false,
+		}),
 	],
 	resolve: {
 		alias: {

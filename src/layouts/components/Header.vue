@@ -18,6 +18,6 @@ import { BellOutlined, SearchOutlined } from '@ant-design/icons-vue'
 	@apply bg-white flex items-center justify-between pr-4 pl-14 shadow shadow-light-900;
 }
 .nav-controls {
-	@apply text-1.25rem  cursor-pointer hover:text-black;
+	@apply text-lg relative top-2px cursor-pointer hover:text-black;
 }
 </style>
