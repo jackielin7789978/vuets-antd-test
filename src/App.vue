@@ -8,9 +8,10 @@
 }
 
 #app {
-	height: 100%;
+	height: 100vh;
+	display: flex;
+	flex-flow: column;
 	color: #222;
-	box-sizing: border-box;
 }
 
 button {
