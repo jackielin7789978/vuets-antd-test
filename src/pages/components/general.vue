@@ -1,8 +1,10 @@
 <template>
 	<h1 class="text-2xl">Buttons</h1>
-	<h3 class="mt-7">按照 Ant-Design-Vue 打造的按鈕，包含預設樣式及自訂顏色。</h3>
+	<h3 class="mt-6 mb-3">
+		按照 Ant-Design-Vue 打造的按鈕，包含預設樣式及自訂顏色。
+	</h3>
 	<a-row :gutter="{ sm: 12, md: 16, lg: 16, xl: 24 }">
-		<a-col :span="14">
+		<a-col :span="13">
 			<a-card title="預設樣式">
 				<div class="flex flex-col gap-y-8">
 					<p class="text-[16px] leading-6">
@@ -61,8 +63,27 @@
 				</div>
 			</a-card>
 		</a-col>
-		<a-col :span="10">
-			<a-card title="自訂顏色"></a-card>
+		<a-col :span="11">
+			<a-card title="自訂顏色">
+				<p class="text-[16px] leading-6 mb-10">
+					根據內部 Design System 的語意顏色，另外補上 Success 及 Warning
+					顏色的按鈕。
+				</p>
+				<a-space direction="vertical" size="large">
+					<a-space>
+						<BasicButton color="success">Success 按鈕</BasicButton>
+						<BasicButton color="success" disabled>Success 按鈕</BasicButton>
+						<BasicButton color="success" loading>Success 按鈕</BasicButton>
+						<BasicButton type="text" color="success">Success 按鈕</BasicButton>
+					</a-space>
+					<a-space>
+						<BasicButton color="warning">Warning 按鈕</BasicButton>
+						<BasicButton color="warning" disabled>Warning 按鈕</BasicButton>
+						<BasicButton color="warning" loading>Warning 按鈕</BasicButton
+						><BasicButton type="text" color="warning">Warning 按鈕</BasicButton>
+					</a-space>
+				</a-space>
+			</a-card>
 		</a-col>
 	</a-row>
 </template>
