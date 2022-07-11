@@ -8,6 +8,8 @@
 		"lint": "eslint ./src --ext .js --ext .vue"
 	},
 	"dependencies": {
+		"@vueuse/components": "^8.9.1",
+		"@vueuse/core": "^8.9.1",
 		"ant-design-vue": "^3.2.9",
 		"pinia": "^2.0.14",
 		"vue": "^3.2.37",

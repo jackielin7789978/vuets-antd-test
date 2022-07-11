@@ -1,3 +1,5 @@
+<script setup></script>
+
 <template>
 	<BasicAlert />
 	<a-layout id="default-layout" :style="{ minHeight: '100%' }">
