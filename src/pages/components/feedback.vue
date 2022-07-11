@@ -240,7 +240,7 @@ const triggerLoading = () => {
 		<a-col :span="12">
 			<h1 class="text-2xl">Progress</h1>
 			<a-card>
-				<div class="flex flex-col gap-y-8">
+				<div class="flex flex-col gap-y-13">
 					<div class="flex flex-col gap-y-2">
 						<ProgressBar percent="30" />
 						<ProgressBar percent="90" :showInfo="false" />
