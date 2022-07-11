@@ -2,7 +2,11 @@
 import { message, Modal } from 'ant-design-vue'
 import { ref, h } from 'vue'
 import { useAlertStore } from '@/stores/alert'
-import { InfoCircleOutlined, SmileOutlined } from '@ant-design/icons-vue'
+import {
+	InfoCircleOutlined,
+	SmileOutlined,
+	FrownOutlined,
+} from '@ant-design/icons-vue'
 
 const showMsg = (type) => {
 	switch (type) {
@@ -102,6 +106,15 @@ const showWarningModal = () => {
 		okType: 'default',
 	})
 }
+
+const isCardLoading = ref(false)
+
+const triggerLoading = () => {
+	isCardLoading.value = true
+	setTimeout(() => {
+		isCardLoading.value = false
+	}, 2500)
+}
 </script>
 
 <template>
@@ -199,9 +212,9 @@ const showWarningModal = () => {
 		</a-col>
 	</a-row>
 
-	<h1 class="text-2xl mt-8">Result</h1>
-	<a-row :gutter="{ sm: 12, md: 16, lg: 16, xl: 24 }">
+	<a-row class="mt-8" :gutter="{ sm: 12, md: 16, lg: 16, xl: 24 }">
 		<a-col :span="12">
+			<h1 class="text-2xl">Result</h1>
 			<a-card>
 				<a-result title="您已完成所有步驟！">
 					<template #icon>
@@ -211,6 +224,107 @@ const showWarningModal = () => {
 						<a-button type="primary">回首頁</a-button>
 					</template>
 				</a-result>
+			</a-card>
+			<a-card>
+				<a-result title="抱歉，有東西出錯了...">
+					<template #icon>
+						<FrownOutlined :style="{ color: '#FF5B52' }" />
+					</template>
+					<template #extra>
+						<a-button key="console" type="primary">回首頁</a-button>
+						<a-button key="console">回報錯誤</a-button>
+					</template>
+				</a-result>
+			</a-card>
+		</a-col>
+		<a-col :span="12">
+			<h1 class="text-2xl">Progress</h1>
+			<a-card>
+				<div class="flex flex-col gap-y-8">
+					<div class="flex flex-col gap-y-2">
+						<ProgressBar percent="30" />
+						<ProgressBar percent="90" :showInfo="false" />
+					</div>
+					<div class="flex gap-x-4">
+						<ProgressBar percent="66" type="circle" strokeWidth="4" />
+						<ProgressBar percent="100" type="circle" strokeWidth="5" />
+						<ProgressBar percent="88" type="dashboard" strokeWidth="6" />
+					</div>
+					<div>
+						<ProgressBar :percent="30" :steps="3" />
+						<ProgressBar :percent="50" :steps="5" />
+						<ProgressBar
+							:percent="80"
+							:steps="7"
+							stroke-color="#FF5B52"
+							status="exception"
+						/>
+						<ProgressBar :percent="100" :steps="7" stroke-color="#00CDAD" />
+					</div>
+					<div class="w-1/2">
+						<ProgressBar
+							percent="40"
+							status="exception"
+							size="small"
+							stroke-color="#FF5B52"
+						/>
+						<ProgressBar percent="100" status="success" size="small" />
+					</div>
+					<div class="flex gap-x-4">
+						<ProgressBar
+							percent="66"
+							type="circle"
+							status="exception"
+							stroke-color="#FF5B52"
+						/>
+						<ProgressBar percent="100" type="circle" status="normal" />
+						<ProgressBar percent="100" type="circle" />
+					</div>
+				</div>
+			</a-card>
+		</a-col>
+	</a-row>
+	<h1 class="text-2xl mt-8">Spin & Card Skeleton</h1>
+	<a-button @click="triggerLoading" type="primary" class="mt-4 mb-2"
+		>開始載入</a-button
+	>
+	<a-row :gutter="{ sm: 12, md: 16, lg: 16, xl: 24 }">
+		<a-col :span="6">
+			<a-card
+				:loading="isCardLoading"
+				title="活躍使用者"
+				:bodyStyle="{ position: 'relative', height: '9rem' }"
+			>
+				<template #extra>
+					<a-tag color="#00CDAD">週</a-tag>
+				</template>
+				<a-statistic
+					:value="52893"
+					:valueStyle="{ margin: '1.5rem 0', fontSize: '2rem' }"
+					suffix="人"
+				/>
+			</a-card>
+		</a-col>
+		<a-col :span="6">
+			<a-spin
+				v-if="isCardLoading"
+				size="large"
+				tip="載入中..."
+				class="absolute left-[40%] top-[40%]"
+			></a-spin>
+			<a-card
+				v-else
+				title="活躍使用者"
+				:bodyStyle="{ position: 'relative', height: '9rem' }"
+			>
+				<template #extra>
+					<a-tag color="#00CDAD">週</a-tag>
+				</template>
+				<a-statistic
+					:value="52893"
+					:valueStyle="{ margin: '1.5rem 0', fontSize: '2rem' }"
+					suffix="人"
+				/>
 			</a-card>
 		</a-col>
 	</a-row>
