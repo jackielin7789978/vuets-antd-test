@@ -1,6 +1,6 @@
 <template>
 	<BasicAlert />
-	<a-layout id="default-layout">
+	<a-layout id="default-layout" :style="{ minHeight: '100%' }">
 		<Sider />
 		<a-layout>
 			<Header />
@@ -13,10 +13,3 @@
 		</a-layout>
 	</a-layout>
 </template>
-
-<style lang="scss" scoped>
-#default-layout {
-	height: 100%;
-	width: 100%;
-}
-</style>

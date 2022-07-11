@@ -8,9 +8,10 @@
 }
 
 #app {
-	height: 100vh;
-	display: flex;
-	flex-flow: column;
+	width: 100%;
+	height: 100%;
+	// display: flex;
+	// flex-flow: column;
 	color: #222;
 }
 
@@ -18,6 +19,20 @@ button {
 	border: none;
 	cursor: pointer;
 	background-color: transparent;
+}
+
+::-webkit-scrollbar {
+	width: 10px;
+	height: 8px;
+}
+::-webkit-scrollbar-track {
+	background-color: rgb(0 0 0 / 20%);
+	background-color: #e5e5e5;
+}
+::-webkit-scrollbar-thumb {
+	background-color: rgba(178, 180, 185, 0.6);
+	border-radius: 8px;
+	box-shadow: inset 0 0 6px rgb(0 0 0 / 20%);
 }
 
 // https://www.joshwcomeau.com/css/custom-css-reset/
@@ -39,12 +54,16 @@ button {
 /*
   3. Allow percentage-based heights in the application
 */
+html {
+	overflow: hidden;
+	text-size-adjust: 100%;
+}
 html,
 body {
+	width: 100%;
 	height: 100%;
 	overflow: visible;
 	overflow-x: hidden;
-	text-size-adjust: 100%;
 }
 /*
   Typographic tweaks!
