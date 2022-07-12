@@ -61,8 +61,8 @@ const customClass = computed(() => {
 	color: white;
 
 	&:hover {
-		background-color: #00cdadcc;
-		border-color: #00cdadcc;
+		background-color: rgba(5, 177, 151, 0.873);
+		border-color: rgba(5, 177, 151, 0.873);
 	}
 }
 .ant-btn.ant-btn-warning {

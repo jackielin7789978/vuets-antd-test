@@ -1,8 +1,8 @@
 <template>
 	<a-progress
 		:stroke-color="{
-			from: '#0FC4CA',
-			to: '#00CDAD',
+			'0%': '#0FC4CA',
+			'100%': '#00CDAD',
 		}"
 	/>
 </template>

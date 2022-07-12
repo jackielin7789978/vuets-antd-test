@@ -1,5 +1,16 @@
 <script setup>
-import { BellOutlined, SearchOutlined } from '@ant-design/icons-vue'
+import {
+	BellOutlined,
+	SearchOutlined,
+	FullscreenOutlined,
+	FullscreenExitOutlined,
+} from '@ant-design/icons-vue'
+
+defineProps({
+	isFullscreen: {
+		type: Boolean,
+	},
+})
 </script>
 
 <template>
@@ -8,6 +19,17 @@ import { BellOutlined, SearchOutlined } from '@ant-design/icons-vue'
 		<a-space size="middle">
 			<SearchOutlined class="nav-controls" />
 			<BellOutlined class="nav-controls" />
+			<FullscreenOutlined
+				v-if="!isFullscreen"
+				class="nav-controls"
+				@click="$emit('toggle-fullscreen')"
+			/>
+			<FullscreenExitOutlined
+				v-else
+				class="nav-controls"
+				@click="$emit('toggle-fullscreen')"
+			/>
+
 			<HeaderUserMenu />
 		</a-space>
 	</a-layout-header>

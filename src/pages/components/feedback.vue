@@ -242,13 +242,13 @@ const triggerLoading = () => {
 			<a-card>
 				<div class="flex flex-col gap-y-13">
 					<div class="flex flex-col gap-y-2">
-						<ProgressBar percent="30" />
-						<ProgressBar percent="90" :showInfo="false" />
+						<ProgressBar :percent="30" />
+						<ProgressBar :percent="90" :showInfo="false" />
 					</div>
 					<div class="flex gap-x-4">
-						<ProgressBar percent="66" type="circle" strokeWidth="4" />
-						<ProgressBar percent="100" type="circle" strokeWidth="5" />
-						<ProgressBar percent="88" type="dashboard" strokeWidth="6" />
+						<ProgressBar :percent="66" type="circle" :strokeWidth="4" />
+						<ProgressBar :percent="100" type="circle" :strokeWidth="5" />
+						<ProgressBar :percent="88" type="dashboard" :strokeWidth="6" />
 					</div>
 					<div>
 						<ProgressBar :percent="30" :steps="3" />
@@ -263,22 +263,22 @@ const triggerLoading = () => {
 					</div>
 					<div class="w-1/2">
 						<ProgressBar
-							percent="40"
+							:percent="40"
 							status="exception"
 							size="small"
 							stroke-color="#FF5B52"
 						/>
-						<ProgressBar percent="100" status="success" size="small" />
+						<ProgressBar :percent="100" status="success" size="small" />
 					</div>
 					<div class="flex gap-x-4">
 						<ProgressBar
-							percent="66"
+							:percent="66"
 							type="circle"
 							status="exception"
 							stroke-color="#FF5B52"
 						/>
-						<ProgressBar percent="100" type="circle" status="normal" />
-						<ProgressBar percent="100" type="circle" />
+						<ProgressBar :percent="100" type="circle" status="normal" />
+						<ProgressBar :percent="100" type="circle" />
 					</div>
 				</div>
 			</a-card>

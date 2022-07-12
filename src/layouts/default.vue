@@ -1,11 +1,17 @@
-<script setup></script>
+<script setup>
+import { ref } from 'vue'
+import { useFullscreen } from '@vueuse/core'
+
+const fullEl = ref(null)
+const { isFullscreen, enter, exit, toggle } = useFullscreen(fullEl)
+</script>
 
 <template>
-	<BasicAlert />
-	<a-layout id="default-layout" :style="{ minHeight: '100%' }">
+	<a-layout id="default-layout" :style="{ minHeight: '100%' }" ref="fullEl">
 		<Sider />
 		<a-layout>
-			<Header />
+			<BasicAlert />
+			<Header @toggle-fullscreen="toggle" :isFullscreen="isFullscreen" />
 			<a-layout-content class="p-4 md:px-6 md:py-4 lg:px-8 lg:py-6">
 				<router-view></router-view>
 			</a-layout-content>

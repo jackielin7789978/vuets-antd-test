@@ -6,7 +6,7 @@
 	<a-row :gutter="{ sm: 12, md: 16, lg: 16, xl: 24 }">
 		<a-col :span="13">
 			<a-card title="預設樣式">
-				<div class="flex flex-col gap-y-8">
+				<a-space direction="vertical" size="large">
 					<p class="text-[16px] leading-6">
 						Ant Design Vue 提供五種 button type 和四種 button attribute。<br />
 						Types: primary, default, dashed, text, link <br />
@@ -60,7 +60,7 @@
 							</a-space>
 						</div>
 					</a-space>
-				</div>
+				</a-space>
 			</a-card>
 		</a-col>
 		<a-col :span="11">
