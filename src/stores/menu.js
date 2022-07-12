@@ -203,15 +203,27 @@ export const useMenuStore = defineStore('menu', {
 							id: '53',
 							name: 'Data Entry',
 							path: '/components/data-entry',
-							children: [],
-							breadcrumbs: [
+							children: [
 								{
-									name: '元件',
-									redirect: true,
-									redirectPath: '/components/general',
-								},
-								{
-									name: 'Data Entry',
+									id: '531',
+									name: 'Form',
+									path: '/components/data-entry/form',
+									children: [],
+									breadcrumbs: [
+										{
+											name: '元件',
+											redirect: true,
+											redirectPath: '/components/general',
+										},
+										{
+											name: 'Data Entry',
+											redirect: true,
+											redirectPath: '/components/data-entry/form',
+										},
+										{
+											name: 'Form',
+										},
+									],
 								},
 							],
 						},

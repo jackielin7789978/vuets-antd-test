@@ -1,29 +1,18 @@
 <script setup>
-import { useMenuStore } from '@/stores/menu.js'
 import { watch, ref } from 'vue'
 import { useRoute } from 'vue-router'
+import { useMenuStore } from '@/stores/menu'
+import useCurrentMenuNode from '@/composables/useCurrentMenuNode'
 
 const menu = useMenuStore()
 const route = useRoute()
+const currentMenuNode = useCurrentMenuNode(route.path)
+const breadcrumbList = ref([])
 
 watch(route, () => {
-	getBreadcrumbList()
+	const currentMenuNode = useCurrentMenuNode(route.path)
+	breadcrumbList.value = currentMenuNode.breadcrumbs
 })
-
-const breadcrumbList = ref([])
-getBreadcrumbList()
-
-function getBreadcrumbList() {
-	let result = []
-	menu.menuTree.forEach((node) => {
-		if (node.path === route.path) return (result = node)
-		node.children.forEach((node) => {
-			if (node.path === route.path) return (result = node)
-		})
-	})
-
-	breadcrumbList.value = result.breadcrumbs
-}
 </script>
 
 <template>
