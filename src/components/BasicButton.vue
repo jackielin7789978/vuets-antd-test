@@ -54,32 +54,149 @@ const customClass = computed(() => {
 	</a-button>
 </template>
 
-<style lang="scss" scoped>
-.ant-btn.ant-btn-success {
-	background-color: #00cdad;
-	border-color: #00cdad;
+<style lang="scss">
+$primary-color: #0fc4ca;
+$success-color: #00cdad;
+$warning-color: #ff8737;
+$danger-color: #ff5b52;
+
+// globally overrides antdv button styles
+// primary 按鈕 hover 背景色加深
+.ant-btn.ant-btn-primary {
+	background-color: $primary-color;
+	border-color: $primary-color;
 	color: white;
 
 	&:hover {
-		background-color: rgba(5, 177, 151, 0.873);
-		border-color: rgba(5, 177, 151, 0.873);
+		background-color: desaturate(darken($primary-color, 6%), 8%);
+		border-color: desaturate(darken($primary-color, 6%), 8%);
+	}
+	&:active {
+		background-color: lighten($primary-color, 4%);
+		border-color: lighten($primary-color, 4%);
 	}
 }
-.ant-btn.ant-btn-warning {
-	background-color: #ff8737;
-	border-color: #ff8737;
+.ant-btn.ant-btn-primary.ant-btn-background-ghost {
+	background-color: transparent;
+	color: $primary-color;
+
+	&:hover {
+		color: lighten($primary-color, 8%);
+		border-color: lighten($primary-color, 8%);
+	}
+	&:active {
+		color: darken($primary-color, 4%) !important;
+		border-color: darken($primary-color, 4%) !important;
+	}
+}
+.ant-btn.ant-btn-primary.ant-btn-dangerous {
+	background-color: $danger-color;
+	border-color: $danger-color;
 	color: white;
 
 	&:hover {
-		background-color: #ff8737cc;
-		border-color: #ff8737cc;
+		background-color: desaturate(darken($danger-color, 6%), 8%);
+		border-color: desaturate(darken($danger-color, 6%), 8%);
+	}
+	&:active {
+		background-color: lighten($danger-color, 4%);
+		border-color: lighten($danger-color, 4%);
+	}
+}
+.ant-btn.ant-btn-primary.ant-btn-dangerous.ant-btn-background-ghost {
+	background-color: transparent;
+	color: $danger-color;
+
+	&:hover {
+		color: lighten($danger-color, 8%);
+		border-color: lighten($danger-color, 8%);
+	}
+	&:active {
+		color: darken($danger-color, 4%) !important;
+		border-color: darken($danger-color, 4%) !important;
 	}
 }
 
+// 自訂色 success & warning
+// type="default"
+.ant-btn.ant-btn-success,
+.ant-btn.ant-btn-success.ant-btn-background-ghost {
+	background-color: transparent;
+	color: $success-color;
+	border-color: $success-color;
+	&:hover {
+		color: lighten($success-color, 8%);
+		border-color: lighten($success-color, 8%);
+	}
+	&:active {
+		color: darken($success-color, 4%) !important;
+		border-color: darken($success-color, 4%) !important;
+	}
+}
+// type="primary"
+.ant-btn.ant-btn-success.ant-btn-primary {
+	background-color: $success-color;
+	border-color: $success-color;
+	color: white;
+
+	&:hover {
+		background-color: desaturate(darken($success-color, 6%), 8%);
+		border-color: desaturate(darken($success-color, 6%), 8%);
+	}
+	&:active {
+		background-color: lighten($success-color, 4%);
+		border-color: lighten($success-color, 4%);
+	}
+}
+
+.ant-btn.ant-btn-success.ant-btn-dashed {
+	background-color: transparent;
+	color: $success-color;
+	border-color: $success-color;
+	border-style: dashed;
+}
+.ant-btn.ant-btn-warning,
+.ant-btn.ant-btn-warning.ant-btn-background-ghost {
+	background: transparent;
+	color: $warning-color;
+	border-color: $warning-color;
+
+	&:hover {
+		color: lighten($warning-color, 8%);
+		border-color: lighten($warning-color, 8%);
+	}
+	&:active {
+		color: darken($warning-color, 4%) !important;
+		border-color: darken($warning-color, 4%) !important;
+	}
+}
+.ant-btn.ant-btn-warning.ant-btn-primary {
+	background-color: $warning-color;
+	border-color: $warning-color;
+	color: white;
+
+	&:hover {
+		background-color: desaturate(darken($warning-color, 6%), 8%);
+		border-color: desaturate(darken($warning-color, 6%), 8%);
+	}
+	&:active {
+		background-color: lighten($warning-color, 4%);
+		border-color: lighten($warning-color, 4%);
+	}
+}
+
+.ant-btn.ant-btn-warning.ant-btn-dashed {
+	background-color: transparent;
+	color: $warning-color;
+	border-color: $warning-color;
+	border-style: dashed;
+}
+
+// 為自訂義的 success 和 warning 文字按鈕加上 hover 淺灰背景
 .ant-btn.ant-btn-success-text {
 	background-color: transparent;
 	border-color: transparent;
-	color: #00cdad;
+	color: $success-color;
 
 	&:hover {
 		background-color: #fafafa;
@@ -88,10 +205,27 @@ const customClass = computed(() => {
 .ant-btn.ant-btn-warning-text {
 	background-color: transparent;
 	border-color: transparent;
-	color: #ff8737;
+	color: $warning-color;
 
 	&:hover {
 		background-color: #fafafa;
+	}
+}
+
+.ant-btn[disabled],
+.ant-btn[disabled]:hover,
+.ant-btn[disabled]:active,
+.ant-btn[disabled]:focus {
+	color: #909090;
+	border-color: #d9d9d9;
+	background: #f5f5f5;
+	text-shadow: none;
+	box-shadow: none;
+
+	&.ant-btn-background-ghost {
+		color: #777;
+		border-color: #c7c7c7;
+		background: transparent;
 	}
 }
 </style>

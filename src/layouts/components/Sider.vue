@@ -7,6 +7,7 @@ const toggleSider = () => (siderCollapsed.value = !siderCollapsed.value)
 
 <template>
 	<a-layout-sider
+		breakpoint="lg"
 		v-model:collapsed="siderCollapsed"
 		:trigger="null"
 		collapsible

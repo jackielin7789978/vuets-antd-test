@@ -126,11 +126,23 @@ const triggerLoading = () => {
 					<div class="font-semibold text-lg">基本用法</div>
 				</template>
 				<div class="flex gap-x-4 gap-y-2 flex-wrap">
-					<a-button type="primary" @click="showMsg">顯示普通訊息</a-button>
-					<a-button @click="showMsg('success')">顯示成功訊息</a-button>
-					<a-button @click="showMsg('warning')">顯示警示訊息</a-button>
-					<a-button type="danger" @click="showMsg('error')"
-						>顯示錯誤訊息</a-button
+					<BasicButton type="primary" @click="showMsg"
+						>顯示普通訊息</BasicButton
+					>
+					<BasicButton
+						type="primary"
+						color="success"
+						@click="showMsg('success')"
+						>顯示成功訊息</BasicButton
+					>
+					<BasicButton
+						type="primary"
+						color="warning"
+						@click="showMsg('warning')"
+						>顯示警示訊息</BasicButton
+					>
+					<BasicButton type="primary" danger @click="showMsg('error')"
+						>顯示錯誤訊息</BasicButton
 					>
 				</div>
 			</a-card>
@@ -141,8 +153,8 @@ const triggerLoading = () => {
 					<div class="font-semibold text-lg">改變狀態</div>
 				</template>
 				<div class="flex gap-x-4 gap-y-2 flex-wrap">
-					<a-button @click="showSequenceMsg">顯示連續訊息</a-button>
-					<a-button @click="showStatefulMsg">改變訊息</a-button>
+					<BasicButton @click="showSequenceMsg">顯示連續訊息</BasicButton>
+					<BasicButton @click="showStatefulMsg">改變訊息</BasicButton>
 				</div>
 			</a-card>
 		</a-col>
@@ -156,10 +168,18 @@ const triggerLoading = () => {
 					<div class="font-semibold text-lg">基本用法</div>
 				</template>
 				<div class="flex gap-x-4 gap-y-2 flex-wrap">
-					<a-button @click="showAlert('success')">顯示 Success Alert</a-button>
-					<a-button @click="showAlert('info')">顯示 Info Alert</a-button>
-					<a-button @click="showAlert('warning')">顯示 Warning Alert</a-button>
-					<a-button @click="showAlert('error')">顯示 Error Alert</a-button>
+					<BasicButton color="success" @click="showAlert('success')"
+						>顯示 Success Alert</BasicButton
+					>
+					<BasicButton @click="showAlert('info')" type="primary" ghost
+						>顯示 Info Alert</BasicButton
+					>
+					<BasicButton color="warning" @click="showAlert('warning')"
+						>顯示 Warning Alert</BasicButton
+					>
+					<BasicButton @click="showAlert('error')" danger
+						>顯示 Error Alert</BasicButton
+					>
 				</div>
 			</a-card>
 		</a-col>
@@ -170,7 +190,7 @@ const triggerLoading = () => {
 					<div class="font-semibold text-lg">基本用法</div>
 				</template>
 				<div class="flex gap-x-4 gap-y-2 flex-wrap">
-					<a-button @click="showModal">一般 Modal</a-button>
+					<BasicButton @click="showModal">一般 Modal</BasicButton>
 					<a-modal
 						v-model:visible="isModalOpen"
 						@ok="handleOk"
@@ -186,7 +206,7 @@ const triggerLoading = () => {
 						<p>最基本的 Modal</p>
 						<p>標題可加 icon、按鈕加大</p>
 					</a-modal>
-					<a-button @click="showCenteredModal">垂直置中 Modal</a-button>
+					<BasicButton @click="showCenteredModal">垂直置中 Modal</BasicButton>
 					<a-modal
 						v-model:visible="isCenteredModalOpen"
 						@ok="handleCenteredOk"
@@ -202,11 +222,19 @@ const triggerLoading = () => {
 						<p>垂直置中的 Modal</p>
 						<p>位子可再調整</p>
 					</a-modal>
-					<a-button @click="showConfirmModal" type="danger">刪除</a-button>
-					<a-button @click="showInfoModal" type="dashed">資訊</a-button>
-					<a-button @click="showErrorModal" type="dashed">錯誤</a-button>
-					<a-button @click="showSuccessModal" type="dashed">成功</a-button>
-					<a-button @click="showWarningModal" type="dashed">警示</a-button>
+					<BasicButton @click="showConfirmModal" type="primary" danger
+						>刪除</BasicButton
+					>
+					<BasicButton @click="showInfoModal" type="primary">資訊</BasicButton>
+					<BasicButton @click="showErrorModal" type="dashed" danger
+						>錯誤</BasicButton
+					>
+					<BasicButton @click="showSuccessModal" type="dashed" color="success"
+						>成功</BasicButton
+					>
+					<BasicButton @click="showWarningModal" type="dashed" color="warning"
+						>警示</BasicButton
+					>
 				</div>
 			</a-card>
 		</a-col>
@@ -221,7 +249,7 @@ const triggerLoading = () => {
 						<SmileOutlined />
 					</template>
 					<template #extra>
-						<a-button type="primary">回首頁</a-button>
+						<BasicButton type="primary">回首頁</BasicButton>
 					</template>
 				</a-result>
 			</a-card>
@@ -231,8 +259,8 @@ const triggerLoading = () => {
 						<FrownOutlined :style="{ color: '#FF5B52' }" />
 					</template>
 					<template #extra>
-						<a-button key="console" type="primary">回首頁</a-button>
-						<a-button key="console">回報錯誤</a-button>
+						<BasicButton key="console" type="primary">回首頁</BasicButton>
+						<BasicButton key="console">回報錯誤</BasicButton>
 					</template>
 				</a-result>
 			</a-card>
@@ -245,7 +273,7 @@ const triggerLoading = () => {
 						<ProgressBar :percent="30" />
 						<ProgressBar :percent="90" :showInfo="false" />
 					</div>
-					<div class="flex gap-x-4">
+					<div class="flex flex-wrap gap-4">
 						<ProgressBar :percent="66" type="circle" :strokeWidth="4" />
 						<ProgressBar :percent="100" type="circle" :strokeWidth="5" />
 						<ProgressBar :percent="88" type="dashboard" :strokeWidth="6" />
@@ -270,7 +298,7 @@ const triggerLoading = () => {
 						/>
 						<ProgressBar :percent="100" status="success" size="small" />
 					</div>
-					<div class="flex gap-x-4">
+					<div class="flex flex-wrap gap-4">
 						<ProgressBar
 							:percent="66"
 							type="circle"
@@ -285,11 +313,11 @@ const triggerLoading = () => {
 		</a-col>
 	</a-row>
 	<h1 class="text-2xl mt-8">Spin & Card Skeleton</h1>
-	<a-button @click="triggerLoading" type="primary" class="mt-4 mb-2"
-		>開始載入</a-button
+	<BasicButton @click="triggerLoading" type="primary" class="mt-4 mb-2"
+		>開始載入</BasicButton
 	>
 	<a-row :gutter="{ sm: 12, md: 16, lg: 16, xl: 24 }">
-		<a-col :span="6">
+		<a-col :span="12">
 			<a-card
 				:loading="isCardLoading"
 				title="活躍使用者"
@@ -305,7 +333,7 @@ const triggerLoading = () => {
 				/>
 			</a-card>
 		</a-col>
-		<a-col :span="6">
+		<a-col :span="12">
 			<a-spin
 				v-if="isCardLoading"
 				size="large"
