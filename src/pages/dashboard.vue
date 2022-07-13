@@ -1,4 +1,18 @@
+<script setup>
+import { ref } from 'vue'
+
+const showGreetModal = ref(false)
+</script>
+
 <template>
+	<div class="text-right">
+		<BasicButton @click="showGreetModal = true" color="success" type="primary"
+			>Greet Me</BasicButton
+		>
+		<Teleport to="body">
+			<GreetModal v-if="showGreetModal" @close-modal="showGreetModal = false" />
+		</Teleport>
+	</div>
 	<a-space direction="vertical" class="w-full" size="large">
 		<a-row :gutter="16">
 			<a-col :span="6">
