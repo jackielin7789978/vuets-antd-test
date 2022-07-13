@@ -1,7 +1,23 @@
 <script setup>
 import { ref } from 'vue'
+import { UserOutlined } from '@ant-design/icons-vue'
+import yapi from '@/api/yapi'
 
 const showGreetModal = ref(false)
+const isLoadingDashboardData = ref(true)
+const dashboardData = ref({})
+
+yapi
+	.get('/dashboard')
+	.then((res) => {
+		if (res.status === 200) {
+			return res.data
+		}
+	})
+	.then((data) => {
+		dashboardData.value = data
+		isLoadingDashboardData.value = false
+	})
 </script>
 
 <template>
@@ -16,35 +32,51 @@ const showGreetModal = ref(false)
 	<a-space direction="vertical" class="w-full" size="large">
 		<a-row :gutter="16">
 			<a-col :span="6">
-				<a-card :bordered="false" title="活躍使用者">
+				<a-card
+					:loading="isLoadingDashboardData"
+					:bordered="false"
+					title="總會員數"
+				>
 					<template #extra>
-						<a-tag color="#00CDAD">週</a-tag>
+						<UserOutlined :style="{ fontSize: '18px' }" />
 					</template>
-					<a-statistic :value="52893" />
+					<a-statistic :value="dashboardData.totalMember" suffix="人" />
 				</a-card>
 			</a-col>
 			<a-col :span="6">
-				<a-card :bordered="false" title="活躍使用者">
+				<a-card
+					:loading="isLoadingDashboardData"
+					:bordered="false"
+					title="新增會員"
+				>
 					<template #extra>
 						<a-tag color="#FF8737">月</a-tag>
 					</template>
-					<a-statistic :value="82893" />
+					<a-statistic :value="dashboardData.monthlyNewMember" suffix="人" />
 				</a-card>
 			</a-col>
 			<a-col :span="6">
-				<a-card :bordered="false" title="活躍使用者">
+				<a-card
+					:loading="isLoadingDashboardData"
+					:bordered="false"
+					title="訂單數量"
+				>
 					<template #extra>
-						<a-tag color="#FF5B52">季</a-tag>
+						<a-tag color="#FF5B52">月</a-tag>
 					</template>
-					<a-statistic :value="102893" />
+					<a-statistic :value="dashboardData.monthlyOrders" suffix="筆" />
 				</a-card>
 			</a-col>
 			<a-col :span="6">
-				<a-card :bordered="false" title="活躍使用者">
+				<a-card
+					:loading="isLoadingDashboardData"
+					:bordered="false"
+					title="營業額"
+				>
 					<template #extra>
-						<a-tag color="#0FC4CA">年</a-tag>
+						<a-tag color="#0FC4CA">月</a-tag>
 					</template>
-					<a-statistic :value="112893" />
+					<a-statistic :value="dashboardData.monthlyRevenue" suffix="元" />
 				</a-card>
 			</a-col>
 		</a-row>
