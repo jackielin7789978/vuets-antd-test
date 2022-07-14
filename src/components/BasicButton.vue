@@ -129,8 +129,8 @@ $danger-color: #ff5b52;
 		border-color: lighten($success-color, 8%);
 	}
 	&:active {
-		color: darken($success-color, 4%) !important;
-		border-color: darken($success-color, 4%) !important;
+		color: darken($success-color, 5%) !important;
+		border-color: darken($success-color, 5%) !important;
 	}
 }
 // type="primary"
@@ -145,7 +145,8 @@ $danger-color: #ff5b52;
 	}
 	&:active {
 		background-color: lighten($success-color, 4%);
-		border-color: lighten($success-color, 4%);
+		border-color: lighten($success-color, 4%) !important;
+		color: white !important;
 	}
 }
 
@@ -166,8 +167,8 @@ $danger-color: #ff5b52;
 		border-color: lighten($warning-color, 8%);
 	}
 	&:active {
-		color: darken($warning-color, 4%) !important;
-		border-color: darken($warning-color, 4%) !important;
+		color: darken($warning-color, 5%) !important;
+		border-color: darken($warning-color, 5%) !important;
 	}
 }
 .ant-btn.ant-btn-warning.ant-btn-primary {
@@ -181,7 +182,8 @@ $danger-color: #ff5b52;
 	}
 	&:active {
 		background-color: lighten($warning-color, 4%);
-		border-color: lighten($warning-color, 4%);
+		border-color: lighten($warning-color, 4%) !important;
+		color: white !important;
 	}
 }
 
