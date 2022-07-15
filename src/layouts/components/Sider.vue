@@ -11,9 +11,8 @@ const toggleSider = () => (siderCollapsed.value = !siderCollapsed.value)
 		v-model:collapsed="siderCollapsed"
 		:trigger="null"
 		collapsible
-		style="background: #141414"
 		width="240"
-		class="relative"
+		class="relative bg-[#141414] h-full"
 	>
 		<button class="collapseBtn" @click="toggleSider">
 			<MenuUnfoldOutlined v-show="siderCollapsed" />
@@ -26,11 +25,29 @@ const toggleSider = () => (siderCollapsed.value = !siderCollapsed.value)
 		</div>
 
 		<!-- menu -->
-		<SiderMenu mode="inline" theme="dark" />
+		<SiderMenu mode="inline" theme="dark" class="customSiderMenu" />
 	</a-layout-sider>
 </template>
 
 <style lang="scss" scoped>
+::-webkit-scrollbar {
+	width: 6px;
+	height: 8px;
+}
+::-webkit-scrollbar-track {
+	background-color: rgb(0 0 0 / 20%);
+}
+::-webkit-scrollbar-thumb {
+	background-color: rgba(178, 180, 185, 0.5);
+	border-radius: 8px;
+	box-shadow: inset 0 0 6px rgb(0 0 0 / 20%);
+	transition: all 0.2s ease;
+
+	&:hover {
+		background-color: rgba(178, 180, 185, 0.678);
+	}
+}
+
 #logo {
 	height: 4rem;
 	width: 100%;
@@ -42,6 +59,10 @@ const toggleSider = () => (siderCollapsed.value = !siderCollapsed.value)
 		height: 2.5rem;
 		background-color: #77777766;
 	}
+}
+.customSiderMenu {
+	max-height: calc(100vh - 64px);
+	overflow-y: auto;
 }
 
 .collapseBtn {
