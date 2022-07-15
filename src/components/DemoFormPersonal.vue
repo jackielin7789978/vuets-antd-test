@@ -1,18 +1,23 @@
 <script setup>
-import { reactive, toRaw } from 'vue'
+import { reactive } from 'vue'
 import { Form } from 'ant-design-vue'
+import BasicInputNumber from './BasicInputNumber.vue'
 
 const useForm = Form.useForm
-const formData = reactive({
+const initialFormData = {
 	name: '',
 	email: '',
 	phone: '',
+	age: '',
 	interests: [],
 	catDog: '',
-})
+}
+const formData = reactive({ ...initialFormData })
 const formRules = reactive({
 	name: [{ required: true, message: '請輸入姓名' }],
 	email: [{ required: true, message: '請輸入電子郵件' }],
+	phone: [{ required: true, message: '請輸入電話號碼' }],
+	age: [{ required: true, message: '請輸入年齡' }],
 })
 
 const { resetFields, validate, validateInfos } = useForm(formData, formRules)
@@ -20,7 +25,10 @@ const { resetFields, validate, validateInfos } = useForm(formData, formRules)
 const onSubmit = () => {
 	validate()
 		.then(() => {
-			console.log(toRaw(formData))
+			alert(JSON.stringify(formData))
+			// reset form value & validation
+			Object.assign(formData, initialFormData)
+			resetFields()
 		})
 		.catch((err) => console.log(err))
 }
@@ -30,7 +38,7 @@ const onSubmit = () => {
 	<a-form
 		@submit.prevent="onSubmit"
 		:model="formData"
-		:label-col="{ span: 6 }"
+		:label-col="{ span: 8 }"
 		:wrapper-col="{ sm: 24, md: 16, xl: 12 }"
 	>
 		<a-form-item label="姓名" v-bind="validateInfos.name">
@@ -39,9 +47,13 @@ const onSubmit = () => {
 		<a-form-item label="電子郵件" v-bind="validateInfos.email">
 			<a-input v-model:value="formData.email" />
 		</a-form-item>
-		<a-form-item label="連絡電話" v-bind="validateInfos.phone">
+		<a-form-item label="連絡電話(ant design)" v-bind="validateInfos.phone">
 			<a-input-number class="w-1/2" v-model:value="formData.phone" />
 		</a-form-item>
+		<a-form-item label="年齡(custom)" v-bind="validateInfos.age">
+			<BasicInputNumber class="w-1/2" v-model="formData.age" />
+		</a-form-item>
+
 		<a-form-item label="興趣" v-bind="validateInfos.interests">
 			<a-checkbox-group v-model:value="formData.interests">
 				<a-checkbox value="音樂" v-bind="validateInfos.interests"
@@ -70,7 +82,7 @@ const onSubmit = () => {
 		</a-form-item>
 		<a-form-item :wrapper-col="{ sm: { offset: 6 } }" class="mb-0">
 			<BasicButton @click="resetFields" class="mr-4" danger>清除</BasicButton>
-			<BasicButton type="primary" html-type="submit">儲存變更</BasicButton>
+			<BasicButton type="primary" html-type="submit">儲存</BasicButton>
 		</a-form-item>
 	</a-form>
 </template>

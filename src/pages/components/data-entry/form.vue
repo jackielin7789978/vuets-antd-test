@@ -1,14 +1,14 @@
 <template>
 	<h1 class="text-2xl font-semibold mb-8">表單</h1>
-	<a-row class="mb-6" :gutter="12">
+	<a-row class="mb-6" :gutter="{ sm: 12, xl: 16, xxl: 24 }">
 		<a-col :sm="{ span: 24 }" :lg="{ span: 11 }">
 			<h1 class="text-lg font-semibold">登入</h1>
 			<a-card>
 				<DemoFormLogin />
 			</a-card>
 		</a-col>
-		<a-col :sm="{ span: 24 }" :lg="{ span: 13 }" class="mt-4 lg:mt-0">
-			<h1 class="text-lg font-semibold">編輯個人資料</h1>
+		<a-col :sm="{ span: 24 }" :lg="{ span: 13 }" class="mt-4 md:mt-0">
+			<h1 class="text-lg font-semibold">填寫個人資料</h1>
 			<a-card>
 				<DemoFormPersonal />
 			</a-card>

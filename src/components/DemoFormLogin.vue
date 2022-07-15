@@ -1,5 +1,5 @@
 <script setup>
-import { reactive, toRaw } from 'vue'
+import { reactive } from 'vue'
 import { Form } from 'ant-design-vue'
 
 const useForm = Form.useForm
@@ -18,7 +18,7 @@ const { resetFields, validate, validateInfos } = useForm(formData, formRules)
 const onSubmit = () => {
 	validate()
 		.then(() => {
-			console.log(toRaw(formData))
+			alert(JSON.stringify(formData))
 		})
 		.catch((err) => console.log(err))
 }
