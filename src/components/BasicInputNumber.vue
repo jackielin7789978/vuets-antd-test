@@ -60,7 +60,7 @@ const onModifyValue = (increase) => {
 
 <style lang="scss" scoped>
 .custom-input-number-focused {
-	border-color: #31d6d6 !important;
+	border-color: $primary-focus !important;
 	box-shadow: 0 0 0 2px rgba(15, 196, 202, 20%) !important;
 }
 .custom-input-number-handler {

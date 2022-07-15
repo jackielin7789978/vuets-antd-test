@@ -55,11 +55,6 @@ const customClass = computed(() => {
 </template>
 
 <style lang="scss">
-$primary-color: #0fc4ca;
-$success-color: #00cdad;
-$warning-color: #ff8737;
-$danger-color: #ff5b52;
-
 // globally overrides antdv button styles
 // primary 按鈕 hover 背景色加深
 .ant-btn.ant-btn-primary {

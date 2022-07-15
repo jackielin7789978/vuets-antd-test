@@ -42,7 +42,7 @@
 }
 
 .ant-form-item-explain-error {
-	color: #ff5b52;
+	color: $error-color;
 	// font-size: 13px;
 }
 </style>

@@ -48,6 +48,9 @@ export default defineConfig({
 				},
 				javascriptEnabled: true,
 			},
+			scss: {
+				additionalData: `@import "@/style/globalVars.scss";`,
+			},
 		},
 	},
 })
