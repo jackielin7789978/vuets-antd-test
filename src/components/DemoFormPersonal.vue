@@ -1,7 +1,6 @@
 <script setup>
 import { reactive } from 'vue'
 import { Form } from 'ant-design-vue'
-import BasicInputNumber from './BasicInputNumber.vue'
 
 const useForm = Form.useForm
 const initialFormData = {
@@ -55,7 +54,10 @@ const onSubmit = () => {
 		</a-form-item>
 
 		<a-form-item label="興趣" v-bind="validateInfos.interests">
-			<a-checkbox-group v-model:value="formData.interests">
+			<a-checkbox-group
+				v-model:value="formData.interests"
+				class="custom-checkbox-group"
+			>
 				<a-checkbox value="音樂" v-bind="validateInfos.interests"
 					>音樂</a-checkbox
 				>
@@ -86,3 +88,13 @@ const onSubmit = () => {
 		</a-form-item>
 	</a-form>
 </template>
+
+<style lang="scss" scoped>
+.custom-checkbox-group {
+	@apply flex flex-wrap gap-2;
+
+	:deep(label) {
+		margin: 0;
+	}
+}
+</style>

@@ -5,6 +5,7 @@ import {
 	ApartmentOutlined,
 	EditOutlined,
 	AppstoreOutlined,
+	TeamOutlined,
 } from '@ant-design/icons-vue'
 
 defineProps({
@@ -17,6 +18,7 @@ const icons = {
 	ApartmentOutlined,
 	EditOutlined,
 	AppstoreOutlined,
+	TeamOutlined,
 }
 </script>
 
