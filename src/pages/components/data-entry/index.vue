@@ -2,7 +2,7 @@
 import { useRouter } from 'vue-router'
 
 const router = useRouter()
-router.push('/components/data-entry/form')
+router.push('/components/data-entry/basic-form')
 </script>
 
 <template>

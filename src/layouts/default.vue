@@ -21,7 +21,7 @@ const { isFullscreen, toggle } = useFullscreen(fullEl)
 			>
 				<router-view></router-view>
 				<footer class="text-center mt-12">
-					© COPYRIGHT ALL RIGHTS PRESERVED
+					© COPYRIGHT ALL RIGHTS RESERVED
 				</footer>
 			</a-layout-content>
 		</a-layout>

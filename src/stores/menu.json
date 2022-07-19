@@ -171,7 +171,7 @@
 		"children": [
 			{
 				"id": "51",
-				"name": "General",
+				"name": "通用元件",
 				"path": "/components/general",
 				"children": [],
 				"breadcrumbs": [
@@ -181,13 +181,13 @@
 						"redirectPath": "/components/general"
 					},
 					{
-						"name": "General"
+						"name": "通用元件"
 					}
 				]
 			},
 			{
 				"id": "52",
-				"name": "Navigation",
+				"name": "導覽元件",
 				"path": "/components/navigation",
 				"children": [],
 				"breadcrumbs": [
@@ -197,19 +197,19 @@
 						"redirectPath": "/components/general"
 					},
 					{
-						"name": "Navigation"
+						"name": "導覽元件"
 					}
 				]
 			},
 			{
 				"id": "53",
-				"name": "Data Entry",
+				"name": "資料輸入",
 				"path": "/components/data-entry",
 				"children": [
 					{
 						"id": "531",
-						"name": "Form",
-						"path": "/components/data-entry/form",
+						"name": "基本表單",
+						"path": "/components/data-entry/basic-form",
 						"children": [],
 						"breadcrumbs": [
 							{
@@ -218,12 +218,33 @@
 								"redirectPath": "/components/general"
 							},
 							{
-								"name": "Data Entry",
+								"name": "資料輸入",
 								"redirect": true,
-								"redirectPath": "/components/data-entry/form"
+								"redirectPath": "/components/data-entry/basic-form"
 							},
 							{
-								"name": "Form"
+								"name": "基本表單"
+							}
+						]
+					},
+					{
+						"id": "532",
+						"name": "多步驟表單",
+						"path": "/components/data-entry/multistep-form",
+						"children": [],
+						"breadcrumbs": [
+							{
+								"name": "元件",
+								"redirect": true,
+								"redirectPath": "/components/general"
+							},
+							{
+								"name": "資料輸入",
+								"redirect": true,
+								"redirectPath": "/components/data-entry/basic-form"
+							},
+							{
+								"name": "多步驟表單"
 							}
 						]
 					}
@@ -231,7 +252,7 @@
 			},
 			{
 				"id": "54",
-				"name": "Data Display",
+				"name": "資料呈現",
 				"path": "/components/data-display",
 				"children": [],
 				"breadcrumbs": [
@@ -241,13 +262,13 @@
 						"redirectPath": "/components/general"
 					},
 					{
-						"name": "Data Display"
+						"name": "資料呈現"
 					}
 				]
 			},
 			{
 				"id": "55",
-				"name": "Feedback",
+				"name": "回饋元件",
 				"path": "/components/feedback",
 				"children": [],
 				"breadcrumbs": [
@@ -257,7 +278,7 @@
 						"redirectPath": "/components/general"
 					},
 					{
-						"name": "Feedback"
+						"name": "回饋元件"
 					}
 				]
 			}

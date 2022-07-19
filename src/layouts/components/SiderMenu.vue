@@ -1,5 +1,5 @@
 <script setup>
-import { ref, watch, toRaw } from 'vue'
+import { ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import { useMenuStore } from '@/stores/menu'
 import useCurrentMenuNode from '@/composables/useCurrentMenuNode'
@@ -11,6 +11,11 @@ const currentMenuNode = useCurrentMenuNode(route.path)
 const selectedKeys = ref([route.path])
 const openKeys = ref([])
 getOpenKeys()
+
+watch(route, () => {
+	getOpenKeys()
+	selectedKeys.value = [route.path]
+})
 
 function getOpenKeys() {
 	for (let i = 1; i < currentMenuNode.id.length; i++) {
