@@ -3,14 +3,25 @@ import { reactive } from 'vue'
 import { Form } from 'ant-design-vue'
 
 const useForm = Form.useForm
-const formData = reactive({
+const initialValues = {
 	username: '',
 	password: '',
 	rememberUser: false,
+}
+const formData = reactive({
+	...initialValues,
 })
 const formRules = reactive({
 	username: [{ required: true, message: '請輸入使用者名稱' }],
-	password: [{ required: true, message: '請輸入密碼' }],
+	password: [
+		{ required: true, message: '請輸入密碼' },
+		{
+			min: 8,
+			max: 20,
+			message: '密碼必須介於 8 ~ 20 個字元之間',
+			trigger: 'blur',
+		},
+	],
 })
 
 const { resetFields, validate, validateInfos } = useForm(formData, formRules)
@@ -19,6 +30,8 @@ const onSubmit = () => {
 	validate()
 		.then(() => {
 			alert(JSON.stringify(formData))
+			Object.assign(formData, initialValues)
+			resetFields()
 		})
 		.catch((err) => console.log(err))
 }

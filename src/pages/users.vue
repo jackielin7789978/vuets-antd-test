@@ -1,5 +1,5 @@
 <script setup>
-import { ref, reactive, toRaw } from 'vue'
+import { ref, reactive } from 'vue'
 import { Form, message } from 'ant-design-vue'
 import {
 	DeleteOutlined,
@@ -88,6 +88,10 @@ const formRules = reactive({
 	name: [{ required: true, message: '此為必填欄位' }],
 	role: [{ required: true, message: '此為必填欄位' }],
 	department: [{ required: true, message: '此為必填欄位' }],
+	email: [
+		{ required: true, message: '此為必填欄位' },
+		{ type: 'email', message: '電子郵件格式有誤', trigger: 'blur' },
+	],
 })
 
 const { resetFields, validate, validateInfos } = Form.useForm(
@@ -116,7 +120,7 @@ const deleteUser = (id) => {
 	const remainUsers = dataSource.value.filter((user) => user.id !== id)
 	dataSource.value = remainUsers
 	setTimeout(() => {
-		message.error('刪除成功！', 1.5)
+		message.success('刪除成功', 1.5)
 	}, 100)
 }
 

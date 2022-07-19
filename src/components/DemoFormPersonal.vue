@@ -14,9 +14,24 @@ const initialFormData = {
 const formData = reactive({ ...initialFormData })
 const formRules = reactive({
 	name: [{ required: true, message: '請輸入姓名' }],
-	email: [{ required: true, message: '請輸入電子郵件' }],
-	phone: [{ required: true, message: '請輸入電話號碼' }],
-	age: [{ required: true, message: '請輸入年齡' }],
+	email: [
+		{ required: true, message: '請輸入電子郵件' },
+		{ type: 'email', message: '電子郵件格式不正確', trigger: 'blur' },
+	],
+	phone: [
+		{ required: true, message: '請輸入電話號碼' },
+		{ min: 10, message: '電話號碼長度有誤', trigger: 'blur' },
+	],
+	age: [
+		{ required: true, message: '請輸入年齡' },
+		{
+			type: 'number',
+			min: 0,
+			max: 120,
+			message: '年齡必須介於 0 ~ 120 之間',
+			trigger: 'blur',
+		},
+	],
 })
 
 const { resetFields, validate, validateInfos } = useForm(formData, formRules)
@@ -46,10 +61,10 @@ const onSubmit = () => {
 		<a-form-item label="電子郵件" v-bind="validateInfos.email">
 			<a-input v-model:value="formData.email" />
 		</a-form-item>
-		<a-form-item label="連絡電話(ant design)" v-bind="validateInfos.phone">
-			<a-input-number class="w-1/2" v-model:value="formData.phone" />
+		<a-form-item label="連絡電話" v-bind="validateInfos.phone">
+			<a-input class="w-1/2" v-model:value="formData.phone" />
 		</a-form-item>
-		<a-form-item label="年齡(custom)" v-bind="validateInfos.age">
+		<a-form-item label="年齡" v-bind="validateInfos.age">
 			<BasicInputNumber class="w-1/2" v-model="formData.age" />
 		</a-form-item>
 

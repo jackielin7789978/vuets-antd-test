@@ -49,6 +49,7 @@ const onModifyValue = (increase) => {
 		</div>
 		<div class="ant-input-number-input-wrap">
 			<input
+				type="number"
 				class="ant-input-number-input"
 				v-model="localVal"
 				@input="$emit('update:modelValue', localVal)"
