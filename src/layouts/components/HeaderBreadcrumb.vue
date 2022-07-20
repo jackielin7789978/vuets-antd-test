@@ -10,8 +10,11 @@ const currentMenuNode = useCurrentMenuNode(route.path)
 const breadcrumbList = ref([])
 
 watch(route, () => {
+	if (route.path === '/login') return
 	const currentMenuNode = useCurrentMenuNode(route.path)
-	breadcrumbList.value = currentMenuNode.breadcrumbs
+	if (currentMenuNode) {
+		breadcrumbList.value = currentMenuNode.breadcrumbs
+	}
 })
 </script>
 

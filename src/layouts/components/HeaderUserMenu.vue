@@ -1,5 +1,21 @@
 <script setup>
+import { Modal } from 'ant-design-vue'
+import { useRouter } from 'vue-router'
 import { UserOutlined } from '@ant-design/icons-vue'
+
+const router = useRouter()
+const handleLogin = () => {
+	Modal.confirm({
+		title: '溫馨提醒',
+		content: '確定要登出嗎？',
+		okText: '登出',
+		cancelText: '取消',
+		onOk() {
+			router.push('/login')
+			localStorage.removeItem('user')
+		},
+	})
+}
 </script>
 
 <template>
@@ -8,8 +24,9 @@ import { UserOutlined } from '@ant-design/icons-vue'
 			<a-avatar>
 				<template #icon>
 					<UserOutlined />
-				</template> </a-avatar
-			>Admin 1
+				</template>
+			</a-avatar>
+			Admin 1
 		</a-space>
 		<template #overlay>
 			<a-menu>
@@ -17,7 +34,7 @@ import { UserOutlined } from '@ant-design/icons-vue'
 					<li>設定</li>
 				</a-menu-item>
 				<a-menu-item>
-					<li>登出</li>
+					<li @click="handleLogin">登出</li>
 				</a-menu-item>
 			</a-menu>
 		</template>

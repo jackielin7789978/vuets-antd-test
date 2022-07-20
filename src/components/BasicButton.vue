@@ -26,6 +26,10 @@ const props = defineProps({
 		type: String,
 		default: 'default',
 	},
+	submit: {
+		type: Boolean,
+		default: false,
+	},
 })
 
 const customClass = computed(() => {
@@ -49,6 +53,7 @@ const customClass = computed(() => {
 		:disabled="disabled"
 		:loading="loading"
 		:ghost="ghost"
+		:htmlType="submit ? 'submit' : 'button'"
 	>
 		<slot></slot>
 	</a-button>
