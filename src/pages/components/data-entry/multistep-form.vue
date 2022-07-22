@@ -85,3 +85,11 @@ const goToStep3 = (payload) => {
 		</a-row>
 	</a-card>
 </template>
+
+<route lang="json">
+{
+	"meta": {
+		"requiresLogin": true
+	}
+}
+</route>

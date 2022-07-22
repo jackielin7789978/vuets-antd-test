@@ -100,3 +100,11 @@ yapi
 		</a-row>
 	</a-space>
 </template>
+
+<route lang="json">
+{
+	"meta": {
+		"requiresLogin": true
+	}
+}
+</route>

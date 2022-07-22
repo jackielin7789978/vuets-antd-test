@@ -46,3 +46,11 @@
 	// font-size: 13px;
 }
 </style>
+
+<route lang="json">
+{
+	"meta": {
+		"requiresLogin": true
+	}
+}
+</route>

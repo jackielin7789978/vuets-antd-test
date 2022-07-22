@@ -2,7 +2,9 @@
 import { Modal } from 'ant-design-vue'
 import { useRouter } from 'vue-router'
 import { UserOutlined } from '@ant-design/icons-vue'
+import { useUserStore } from '@/stores/user'
 
+const userStore = useUserStore()
 const router = useRouter()
 const handleLogin = () => {
 	Modal.confirm({
@@ -12,6 +14,8 @@ const handleLogin = () => {
 		cancelText: '取消',
 		onOk() {
 			router.push('/login')
+			// 清空 Pinia 和 localStorage 中儲存的使用者資料
+			userStore.userInfo = ''
 			localStorage.removeItem('user')
 		},
 	})

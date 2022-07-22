@@ -276,3 +276,11 @@ const editUser = (id) => {
 		</template>
 	</a-table>
 </template>
+
+<route lang="json">
+{
+	"meta": {
+		"requiresLogin": true
+	}
+}
+</route>

@@ -149,3 +149,11 @@
 	@apply flex flex-wrap gap-x-2 gap-y-4;
 }
 </style>
+
+<route lang="json">
+{
+	"meta": {
+		"requiresLogin": true
+	}
+}
+</route>

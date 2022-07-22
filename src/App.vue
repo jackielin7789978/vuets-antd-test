@@ -1,11 +1,9 @@
 <script setup>
-import { useRouter } from 'vue-router'
-const user = JSON.parse(localStorage.getItem('user'))
-const router = useRouter()
-// 若使用者還沒登入，導向登入頁面
-if (!user) {
-	router.push('/login')
-}
+import { useUserStore } from './stores/user'
+// 保持登入功能
+const user = localStorage.getItem('user')
+const userStore = useUserStore()
+if (user) userStore.userInfo = user
 </script>
 
 <template>

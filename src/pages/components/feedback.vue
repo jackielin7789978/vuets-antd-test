@@ -357,3 +357,11 @@ const triggerLoading = () => {
 		</a-col>
 	</a-row>
 </template>
+
+<route lang="json">
+{
+	"meta": {
+		"requiresLogin": true
+	}
+}
+</route>

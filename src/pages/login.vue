@@ -3,12 +3,10 @@ import { reactive } from 'vue'
 import { useRouter } from 'vue-router'
 import { Form } from 'ant-design-vue'
 import yapi from '@/api/yapi'
+import { useUserStore } from '@/stores/user'
 
 const router = useRouter()
-
-// 若使用者已登入，直接導向 dashboard
-const user = localStorage.getItem('user')
-if (user) router.push('/dashboard')
+const userStore = useUserStore()
 const formData = reactive({
 	username: '',
 	password: '',
@@ -30,6 +28,9 @@ const validateUser = () => {
 		.then((data) => {
 			if (!data.ok) return alert('帳號密碼錯誤')
 			alert('登入成功')
+
+			// 把使用者資訊同步存入 Pinia 和 localStorage
+			userStore.userInfo = data
 			localStorage.setItem(
 				'user',
 				JSON.stringify({
@@ -81,8 +82,11 @@ const handleLogin = () => {
 		</a-form>
 	</a-card>
 </template>
-
-<route lang="yaml">
-meta:
-  layout: loginLayout
+<route lang="json">
+{
+	"meta": {
+		"requiresLogin": false,
+		"layout": "loginLayout"
+	}
+}
 </route>
