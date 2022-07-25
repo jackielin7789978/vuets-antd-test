@@ -9,7 +9,7 @@ defineProps({
 
 <template>
 	<SiderMenuItem v-if="!item.children.length" :item="item" />
-	<a-sub-menu v-if="item.children.length" :key="`sub-${item.id}`">
+	<a-sub-menu v-if="item.children.length" :key="`sub-${item.name}`">
 		<template #title>
 			{{ item.name }}
 		</template>

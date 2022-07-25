@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 // import yapi from '@/api/yapi'
-import * as menu from './menu.json'
+import * as menu from '../json/menu.json'
 
 // get routes from mock API
 // let routes

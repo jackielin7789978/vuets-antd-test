@@ -8,7 +8,7 @@ import {
 	QuestionCircleOutlined,
 } from '@ant-design/icons-vue'
 import { COLORS } from '@/style/colors'
-import yapi from '../api/yapi'
+import yapi from '../../api/yapi'
 
 const columns = [
 	{
@@ -20,8 +20,8 @@ const columns = [
 		dataIndex: 'role',
 	},
 	{
-		title: '部門',
-		dataIndex: 'department',
+		title: '團隊',
+		dataIndex: 'teams',
 	},
 	{
 		title: '電子郵件',
@@ -78,7 +78,7 @@ const isAddUserModalOpen = ref(false)
 const initialValues = {
 	name: '',
 	role: '一般使用者',
-	department: '',
+	teams: [],
 	email: '',
 	phone: 'ext. ',
 	status: 'active',
@@ -87,7 +87,7 @@ const formData = reactive({ ...initialValues })
 const formRules = reactive({
 	name: [{ required: true, message: '此為必填欄位' }],
 	role: [{ required: true, message: '此為必填欄位' }],
-	department: [{ required: true, message: '此為必填欄位' }],
+	teams: [{ required: true, message: '此為必填欄位' }],
 	email: [
 		{ required: true, message: '此為必填欄位' },
 		{ type: 'email', message: '電子郵件格式有誤', trigger: 'blur' },
@@ -179,12 +179,29 @@ const editUser = (id) => {
 						<a-select-option value="超級管理員">超級管理員</a-select-option>
 					</a-select>
 				</a-form-item>
-				<a-form-item label="部門" v-bind="validateInfos.department">
-					<a-select v-model:value="formData.department">
-						<a-select-option value="研發部">研發部</a-select-option>
-						<a-select-option value="專案部">專案部</a-select-option>
-						<a-select-option value="業務客服部">業務客服部</a-select-option>
-					</a-select>
+				<a-form-item label="團隊" v-bind="validateInfos.teams">
+					<a-checkbox-group
+						v-model:value="formData.teams"
+						class="custom-checkbox-group"
+					>
+						<a-checkbox value="繹宇數位" v-bind="validateInfos.teams"
+							>繹宇數位</a-checkbox
+						>
+						<a-checkbox value="專案部" v-bind="validateInfos.teams"
+							>專案部</a-checkbox
+						>
+						<a-checkbox value="研發部" v-bind="validateInfos.teams"
+							>研發部</a-checkbox
+						>
+						<a-checkbox value="客服業務部" v-bind="validateInfos.teams"
+							>客服業務部</a-checkbox
+						>
+						<a-checkbox value="夯特數據科技" v-bind="validateInfos.teams"
+							>夯特數據科技</a-checkbox
+						><a-checkbox value="夯特行銷部" v-bind="validateInfos.teams"
+							>夯特行銷部</a-checkbox
+						>
+					</a-checkbox-group>
 				</a-form-item>
 				<a-form-item label="電子郵件" v-bind="validateInfos.email">
 					<a-input v-model:value="formData.email" />
@@ -220,12 +237,29 @@ const editUser = (id) => {
 						<a-select-option value="超級管理員">超級管理員</a-select-option>
 					</a-select>
 				</a-form-item>
-				<a-form-item label="部門" v-bind="validateEditFormInfos.department">
-					<a-select v-model:value="editFormData.department">
-						<a-select-option value="研發部">研發部</a-select-option>
-						<a-select-option value="專案部">專案部</a-select-option>
-						<a-select-option value="業務客服部">業務客服部</a-select-option>
-					</a-select>
+				<a-form-item label="團隊" v-bind="validateEditFormInfos.teams">
+					<a-checkbox-group
+						v-model:value="editFormData.teams"
+						class="custom-checkbox-group"
+					>
+						<a-checkbox value="繹宇數位" v-bind="validateInfos.teams"
+							>繹宇數位</a-checkbox
+						>
+						<a-checkbox value="專案部" v-bind="validateInfos.teams"
+							>專案部</a-checkbox
+						>
+						<a-checkbox value="研發部" v-bind="validateInfos.teams"
+							>研發部</a-checkbox
+						>
+						<a-checkbox value="客服業務部" v-bind="validateInfos.teams"
+							>客服業務部</a-checkbox
+						>
+						<a-checkbox value="夯特數據科技" v-bind="validateInfos.teams"
+							>夯特數據科技</a-checkbox
+						><a-checkbox value="夯特行銷部" v-bind="validateInfos.teams"
+							>夯特行銷部</a-checkbox
+						>
+					</a-checkbox-group>
 				</a-form-item>
 				<a-form-item label="電子郵件" v-bind="validateEditFormInfos.email">
 					<a-input v-model:value="editFormData.email" />
@@ -244,8 +278,11 @@ const editUser = (id) => {
 	</div>
 	<a-table :data-source="dataSource" :columns="columns" size="medium">
 		<template #bodyCell="{ column, text, record }">
-			<template v-if="column.dataIndex === 'name'">
-				{{ text }}
+			<template v-if="column.dataIndex === 'teams'">
+				<span v-for="(team, index) in text">
+					{{ team }}
+					<span v-if="text.length > 1 && index !== text.length - 1">、</span>
+				</span>
 			</template>
 			<template v-else-if="column.dataIndex === 'status'">
 				<BasicTag :color="calTagColor(text)">{{ statusText(text) }}</BasicTag>
@@ -273,6 +310,9 @@ const editUser = (id) => {
 					</a-popconfirm>
 				</div>
 			</template>
+			<template v-else>
+				{{ text }}
+			</template>
 		</template>
 	</a-table>
 </template>
@@ -284,3 +324,13 @@ const editUser = (id) => {
 	}
 }
 </route>
+
+<style lang="scss" scoped>
+.custom-checkbox-group {
+	@apply flex flex-wrap gap-2;
+
+	:deep(label) {
+		margin: 0;
+	}
+}
+</style>
