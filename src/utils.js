@@ -9,3 +9,13 @@ export function findNode(array, key, value) {
 	})
 	return o
 }
+
+export function findAndModifyNode(array, key, value, cb) {
+	array.some(function iter(a) {
+		if (a[key] === value) {
+			cb(a)
+			return
+		}
+		return Array.isArray(a.children) && a.children.some(iter)
+	})
+}

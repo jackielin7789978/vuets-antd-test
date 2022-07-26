@@ -1,8 +1,7 @@
 <script setup>
 import { getAllTeams } from '@/api/teams'
 import { ref, onBeforeMount } from 'vue'
-import { findNode } from '@/utils'
-import { PlusOutlined, EditOutlined } from '@ant-design/icons-vue'
+import { findNode, findAndModifyNode } from '@/utils'
 
 const allTeamsData = ref([])
 const teamDetail = ref({})
@@ -16,7 +15,8 @@ onBeforeMount(async () => {
 })
 
 const onSelected = (teamName) => {
-	teamDetail.value = findNode(allTeamsData.value, 'name', teamName)
+	const result = findNode(allTeamsData.value, 'name', teamName)
+	teamDetail.value = result
 }
 </script>
 
@@ -34,23 +34,7 @@ const onSelected = (teamName) => {
 			<span v-else>Loading...</span>
 		</a-col>
 		<a-col :xs="24" :md="18" class="mt-4 md:mt-0">
-			<div class="flex gap-x-2">
-				<BasicButton type="primary" @click="isAddUserModalOpen = true">
-					<PlusOutlined />新增子群組
-				</BasicButton>
-				<BasicButton
-					color="warning"
-					type="primary"
-					@click="isAddUserModalOpen = true"
-				>
-					<EditOutlined />編輯群組
-				</BasicButton>
-				<BasicButton danger type="primary" @click="isAddUserModalOpen = true">
-					<EditOutlined />刪除群組
-				</BasicButton>
-			</div>
-
-			<TeamsDetail :detail="teamDetail" class="mt-4" />
+			<TeamsDetail :detail="teamDetail" />
 		</a-col>
 	</a-row>
 </template>
