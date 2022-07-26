@@ -154,11 +154,11 @@ const editUser = (id) => {
 </script>
 
 <template>
-	<h2 class="text-xl font-semibold mb-8">帳號管理</h2>
+	<h2 class="text-2xl font-semibold mb-8">帳號管理</h2>
 	<div class="mb-4">
 		<BasicButton type="primary" @click="isAddUserModalOpen = true">
-			<PlusOutlined />新增</BasicButton
-		>
+			<PlusOutlined />新增
+		</BasicButton>
 		<a-modal
 			v-model:visible="isAddUserModalOpen"
 			ok-text="新增"
