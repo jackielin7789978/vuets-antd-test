@@ -22,10 +22,21 @@ export const addNewTeam = async (body) => {
 	}
 }
 
-export const editTeam = async (teamName, body) => {
+export const editTeam = async (teamId, body) => {
 	let result
 	try {
-		result = await yapi.patch(`/teams/${teamName}`, body)
+		result = await yapi.patch(`/teams/${teamId}`, body)
+		if (!result) throw 'something went wrong'
+		return result.data
+	} catch (err) {
+		console.log(err)
+	}
+}
+
+export const deleteTeam = async (teamId) => {
+	let result
+	try {
+		result = await yapi.delete(`/teams/${teamId}`)
 		if (!result) throw 'something went wrong'
 		return result.data
 	} catch (err) {

@@ -32,11 +32,17 @@ const onSubmit = async () => {
 	try {
 		await validate()
 		try {
+			// 如未變更名稱，直接關閉 Modal 不 call API
+			if (formData.name === props.detail.name) {
+				return emit('close-modal')
+			}
 			let res = await editTeam(props.detail.name, formData)
-			if (!res.ok) throw 'something went wrong'
-
+			if (!res.ok) {
+				message.error(res.message)
+				throw 'something went wrong'
+			}
 			message.success('編輯成功！')
-			emit('close-modal')
+			emit('close-modal', res.updatedTeam)
 			resetFields()
 		} catch (err) {
 			console.log(err)

@@ -37,7 +37,7 @@ const addTeam = async () => {
 			let res = await addNewTeam(formData)
 			if (!res.ok) throw 'something went wrong'
 			message.success('新增成功！')
-			emit('close-modal')
+			emit('close-modal', res.newTeam)
 			resetFields()
 		} catch (err) {
 			console.log(err)
@@ -64,10 +64,17 @@ const addTeam = async () => {
 			class="w-4/5 md:w-2/3 mx-auto py-4"
 		>
 			<a-form-item label="團隊名稱" v-bind="validateInfos.name">
-				<a-input v-model:value="formData.name" />
+				<a-input
+					v-model:value="formData.name"
+					placeholder="隨意輸入，會返回固定名稱"
+				/>
 			</a-form-item>
 			<a-form-item label="成員" v-bind="validateInfos.members">
-				<a-select v-model:value="formData.members" mode="multiple">
+				<a-select
+					v-model:value="formData.members"
+					mode="multiple"
+					placeholder="會返回 mock 資料"
+				>
 					<a-select-option
 						v-for="member in memberOptions"
 						:key="member.id"
