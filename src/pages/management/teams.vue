@@ -2,7 +2,11 @@
 import { getAllTeams } from '@/api/teams'
 import { ref, computed, watch, onBeforeMount, toRaw } from 'vue'
 import { findNode, findAndModifyNode } from '@/utils'
-import { PlusOutlined, EditOutlined } from '@ant-design/icons-vue'
+import {
+	PlusCircleOutlined,
+	EditOutlined,
+	DeleteOutlined,
+} from '@ant-design/icons-vue'
 import { Modal, message } from 'ant-design-vue'
 import { deleteTeam } from '@/api/teams'
 
@@ -144,8 +148,9 @@ const handleDeleteTeam = () => {
 			<!-- CRUD 按鈕 -->
 			<div class="flex gap-x-2 mb-4">
 				<BasicButton type="primary" @click="isAddTeamModalOpen = true">
-					<PlusOutlined />新增子團隊
-				</BasicButton>
+					<PlusCircleOutlined />新增子團隊</BasicButton
+				>
+
 				<!-- 多加一個 v-if 判斷，讓 Modal 開啟時才 mount 元件 -->
 				<TeamsAddModal
 					v-if="isAddTeamModalOpen"
@@ -167,7 +172,7 @@ const handleDeleteTeam = () => {
 					:detail="teamDetail"
 				/>
 				<BasicButton danger type="primary" @click="handleDeleteTeam">
-					<EditOutlined />刪除團隊
+					<DeleteOutlined />刪除團隊
 				</BasicButton>
 			</div>
 
