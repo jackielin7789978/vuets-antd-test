@@ -276,7 +276,7 @@ const editUser = (id) => {
 			</a-form>
 		</a-modal>
 	</div>
-	<a-table :data-source="dataSource" :columns="columns" size="medium">
+	<a-table :data-source="dataSource" :columns="columns">
 		<template #bodyCell="{ column, text, record }">
 			<template v-if="column.dataIndex === 'teams'">
 				<span v-for="(team, index) in text">

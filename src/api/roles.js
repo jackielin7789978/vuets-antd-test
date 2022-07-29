@@ -21,3 +21,14 @@ export const getRole = async (id) => {
 		console.log(err)
 	}
 }
+
+export const editRole = async (id) => {
+	let result
+	try {
+		result = await yapi.get(`/roles/${id}`)
+		if (!result) throw 'something went wrong'
+		return result.data
+	} catch (err) {
+		console.log(err)
+	}
+}

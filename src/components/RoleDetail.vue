@@ -39,7 +39,7 @@ onBeforeMount(async () => {
 		<OnClickOutside @trigger="this.$emit('close')">
 			<a-card class="detailModal">
 				<template #title>
-					<div class="text-xl font-semibold text-center">檢視角色權限</div>
+					<div class="text-xl font-semibold text-center">檢視角色</div>
 				</template>
 				<a-skeleton
 					v-if="isLoading"
@@ -69,7 +69,10 @@ onBeforeMount(async () => {
 									<th>{{ child.moduleName }}</th>
 									<td v-for="item in child.permissionItem" :key="item">
 										<span>
-											<a-checkbox :checked="item.checked" disabled></a-checkbox>
+											<a-checkbox
+												v-model:checked="item.checked"
+												disabled
+											></a-checkbox>
 											{{ item.permissionName }}
 										</span>
 									</td>
@@ -80,7 +83,10 @@ onBeforeMount(async () => {
 									<th>{{ auth.moduleName }}</th>
 									<td v-for="item in auth.permissionItem" :key="item">
 										<span>
-											<a-checkbox :checked="item.checked" disabled></a-checkbox>
+											<a-checkbox
+												v-model:checked="item.checked"
+												disabled
+											></a-checkbox>
 											{{ item.permissionName }}
 										</span>
 									</td>
@@ -94,7 +100,7 @@ onBeforeMount(async () => {
 	</div>
 </template>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .mask {
 	position: fixed;
 	inset: 0;
@@ -123,7 +129,7 @@ onBeforeMount(async () => {
 .authTitle {
 	font-size: 1.1rem;
 	font-weight: 600;
-	background-color: #8e8e8e;
+	background-color: #888b92;
 	padding: 0.3rem 1rem;
 	color: white;
 	text-align: center;
@@ -137,7 +143,7 @@ td {
 	text-align: left;
 }
 th {
-	background-color: #e7e7e7;
+	background-color: #e4e5e6;
 	min-width: 120px;
 	width: 25%;
 }

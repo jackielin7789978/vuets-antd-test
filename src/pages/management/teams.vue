@@ -1,6 +1,6 @@
 <script setup>
 import { getAllTeams } from '@/api/teams'
-import { ref, computed, watch, onBeforeMount, toRaw } from 'vue'
+import { ref, computed, watch, onBeforeMount, toRaw, onUpdated } from 'vue'
 import { findNode, findAndModifyNode } from '@/utils'
 import {
 	PlusCircleOutlined,
