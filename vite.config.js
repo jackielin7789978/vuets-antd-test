@@ -12,25 +12,46 @@ import WindiCSS from 'vite-plugin-windicss'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [
-    vue(),
-    Components({
-      // resolvers: [AntDesignVueResolver()],
-    }),
-    Pages(),
-    Layouts(),
-    WindiCSS(),
-  ],
-  resolve: {
-    alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url)),
-    },
-  },
-  css: {
-    preprocessorOptions: {
-      less: {
-        javascriptEnabled: true,
-      },
-    },
-  },
+	plugins: [
+		vue(),
+		Components({
+			// resolvers: [AntDesignVueResolver()],
+			dirs: ['src/components', 'src/layouts'],
+		}),
+		Pages(),
+		Layouts(),
+		WindiCSS({
+			preflight: false,
+		}),
+	],
+	resolve: {
+		alias: {
+			'@': fileURLToPath(new URL('./src', import.meta.url)),
+		},
+	},
+	css: {
+		preprocessorOptions: {
+			less: {
+				modifyVars: {
+					'primary-color': '#0FC4CA',
+					'link-color': '#0FC4CA',
+					'success-color': '#00CDAD',
+					'warning-color': '#FF8737',
+					'error-color': '#FF5B52',
+					'heading-color': '#000',
+					'text-color': '#222',
+					'text-color-secondary': '#464646',
+					'disabled-color': '#909090',
+					'border-radius-base': '4px',
+					'layout-header-background': '#141414',
+					'menu-dark-inline-submenu-bg': '#2F2F2F',
+					'font-size-base': '15px',
+				},
+				javascriptEnabled: true,
+			},
+			scss: {
+				additionalData: `@import "@/style/globalVars.scss";`,
+			},
+		},
+	},
 })
