@@ -1,12 +1,18 @@
-<script setup>
+<script setup lang="ts">
 import yapi from '@/api/yapi'
-import { ref } from 'vue'
+import { ref, reactive } from 'vue'
 import { OnClickOutside } from '@vueuse/components'
+
+interface colorProps {
+	backgroundColor: string
+	borderColor: string
+}
 
 const name = ref('')
 const currentTime = ref('')
 const color = ref('')
-const colorStyles = ref([])
+const colorStyles: colorProps | {} = reactive({})
+
 yapi
 	.get('/greet')
 	.then((res) => {
@@ -16,14 +22,14 @@ yapi
 	})
 	.then((data) => {
 		name.value = data.name
-		currentTime.value = data.currentTime
+		currentTime.value = data.currentTim
 		color.value = data.color
 	})
 
-colorStyles.value = {
+Object.assign(colorStyles, {
 	backgroundColor: color,
 	borderColor: color,
-}
+})
 </script>
 
 <template>

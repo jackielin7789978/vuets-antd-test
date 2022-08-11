@@ -4,7 +4,8 @@ import vue from '@vitejs/plugin-vue'
 
 import Components from 'unplugin-vue-components/vite'
 // build 時取消 antdv 全域註冊，改用這個 resolver
-// import { AntDesignVueResolver } from 'unplugin-vue-components/resolvers'
+import { AntDesignVueResolver } from 'unplugin-vue-components/resolvers'
+
 import Pages from 'vite-plugin-pages'
 import Layouts from 'vite-plugin-vue-layouts'
 
@@ -15,7 +16,11 @@ export default defineConfig({
 	plugins: [
 		vue(),
 		Components({
-			// resolvers: [AntDesignVueResolver()],
+			resolvers: [
+				AntDesignVueResolver({
+					importStyle: 'less',
+				}),
+			],
 			dirs: ['src/components', 'src/layouts'],
 		}),
 		Pages(),

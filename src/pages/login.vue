@@ -64,13 +64,19 @@ const handleLogin = () => {
 				<template #label>
 					<span class="lg:text-16px">使用者名稱</span>
 				</template>
-				<a-input v-model:value="formData.username"></a-input>
+				<a-input
+					v-model:value="formData.username"
+					placeholder="superadmin"
+				></a-input>
 			</a-form-item>
 			<a-form-item v-bind="validateInfos.password" class="lg:pt-4">
 				<template #label>
 					<span class="lg:text-16px">密碼</span>
 				</template>
-				<a-input-password v-model:value="formData.password"></a-input-password>
+				<a-input-password
+					v-model:value="formData.password"
+					placeholder="superadmin"
+				></a-input-password>
 			</a-form-item>
 			<BasicButton
 				submit

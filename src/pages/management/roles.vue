@@ -1,6 +1,7 @@
-<script setup>
+<script setup lang="ts">
 import { ref, onBeforeMount } from 'vue'
-import { getAllRoles } from '@/api/roles'
+import type { Ref } from 'vue'
+import { getAllRoles, RoleData } from '@/api/roles'
 import {
 	EditOutlined,
 	DeleteOutlined,
@@ -28,7 +29,7 @@ const columns = [
 	},
 ]
 
-const allRoles = ref([])
+const allRoles: Ref<undefined | RoleData[]> = ref([])
 onBeforeMount(async () => {
 	let res
 	try {
@@ -43,7 +44,7 @@ const openRole = ref()
 const isDetailModalOpen = ref(false)
 const isEditModalOpen = ref(false)
 const isAddModalOpen = ref(false)
-const handleOpenModal = (target, record) => {
+const handleOpenModal = (target: string, record: { id: number }): void => {
 	openRole.value = record.id
 	switch (target) {
 		case 'view':
