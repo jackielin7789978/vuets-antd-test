@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, onBeforeMount } from 'vue'
 import type { Ref } from 'vue'
-import { getAllRoles, RoleData } from '@/api/roles'
+import { getAllRoles } from '@/api/roles'
 import {
 	EditOutlined,
 	DeleteOutlined,
@@ -29,7 +29,7 @@ const columns = [
 	},
 ]
 
-const allRoles: Ref<undefined | RoleData[]> = ref([])
+const allRoles: any = ref([])
 onBeforeMount(async () => {
 	let res
 	try {
@@ -76,18 +76,18 @@ const handleDeleteRole = () => {
 
 <template>
 	<h1 class="text-2xl font-semibold mb-8">角色管理</h1>
-	<BasicButton @click="isAddModalOpen = true" type="primary">
-		<PlusOutlined />新增</BasicButton
+	<MButton @click="isAddModalOpen = true" type="primary">
+		<PlusOutlined />新增</MButton
 	>
 	<a-table :dataSource="allRoles" :columns="columns" class="mt-4">
 		<template #bodyCell="{ column, text, record }">
 			<div v-if="column.dataIndex === 'actions'" class="flex gap-x-2">
-				<BasicButton @click="handleOpenModal('edit', record)" size="small">
+				<MButton @click="handleOpenModal('edit', record)" size="small">
 					<EditOutlined />
-				</BasicButton>
-				<BasicButton @click="handleDeleteRole" size="small" danger>
+				</MButton>
+				<MButton @click="handleDeleteRole" size="small" danger>
 					<DeleteOutlined />
-				</BasicButton>
+				</MButton>
 			</div>
 			<div
 				v-else

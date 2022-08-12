@@ -156,9 +156,9 @@ const editUser = (id) => {
 <template>
 	<h2 class="text-2xl font-semibold mb-8">帳號管理</h2>
 	<div class="mb-4">
-		<BasicButton type="primary" @click="isAddUserModalOpen = true">
+		<MButton type="primary" @click="isAddUserModalOpen = true">
 			<PlusOutlined />新增
-		</BasicButton>
+		</MButton>
 		<a-modal
 			v-model:visible="isAddUserModalOpen"
 			ok-text="新增"
@@ -285,13 +285,13 @@ const editUser = (id) => {
 				</span>
 			</template>
 			<template v-else-if="column.dataIndex === 'status'">
-				<BasicTag :color="calTagColor(text)">{{ statusText(text) }}</BasicTag>
+				<MTag :color="calTagColor(text)">{{ statusText(text) }}</MTag>
 			</template>
 			<template v-else-if="column.dataIndex === 'actions'">
 				<div class="flex gap-2">
-					<BasicButton @click="openEditModal(record.id)" size="small">
+					<MButton @click="openEditModal(record.id)" size="small">
 						<EditOutlined />
-					</BasicButton>
+					</MButton>
 					<a-popconfirm
 						@confirm="deleteUser(record.id)"
 						ok-text="刪除"
@@ -304,9 +304,9 @@ const editUser = (id) => {
 						<template #title>
 							<p>確定要刪除這個帳號？</p>
 						</template>
-						<BasicButton danger size="small">
+						<MButton danger size="small">
 							<DeleteOutlined />
-						</BasicButton>
+						</MButton>
 					</a-popconfirm>
 				</div>
 			</template>

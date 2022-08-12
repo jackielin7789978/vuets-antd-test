@@ -1,5 +1,6 @@
 <script setup>
 import { reactive, ref } from 'vue'
+import { Step as AStep, Steps as ASteps } from 'ant-design-vue'
 
 const currentStep = ref(0)
 const result = reactive({})
@@ -24,23 +25,23 @@ const goToStep3 = (payload) => {
 		<!-- Step 元件 -->
 		<a-row class="mt-4">
 			<a-col :xs="{ span: 24 }" :xl="{ span: 18, offset: 3 }">
-				<a-steps :current="currentStep">
-					<a-step>
+				<ASteps :current="currentStep">
+					<AStep>
 						<template #title>
 							<span class="select-none">填寫專案資料</span>
 						</template>
-					</a-step>
-					<a-step>
+					</AStep>
+					<AStep>
 						<template #title>
 							<span class="select-none">設定審核流程</span>
 						</template>
-					</a-step>
-					<a-step>
+					</AStep>
+					<AStep>
 						<template #title>
 							<span class="select-none">完成</span>
 						</template>
-					</a-step>
-				</a-steps>
+					</AStep>
+				</ASteps>
 			</a-col>
 		</a-row>
 		<!-- 表單及結果 -->

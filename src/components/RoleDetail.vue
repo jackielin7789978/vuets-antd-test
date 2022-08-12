@@ -3,12 +3,12 @@ import { onBeforeMount, ref, withDefaults } from 'vue'
 import { OnClickOutside } from '@vueuse/components'
 import { getRole } from '@/api/roles'
 
-defineEmits(['close'])
+const emit = defineEmits(['close'])
 const props = withDefaults(defineProps<{ roleId: number }>(), {
 	roleId: 0,
 })
 
-const roleData = ref({})
+const roleData: any = ref({})
 const errMessage = ref('')
 const isLoading = ref(false)
 onBeforeMount(async () => {
@@ -22,7 +22,7 @@ onBeforeMount(async () => {
 		}
 		roleData.value = res
 		console.log(res)
-	} catch (err) {
+	} catch (err: any) {
 		console.log(err)
 		errMessage.value = err
 	} finally {
@@ -33,7 +33,7 @@ onBeforeMount(async () => {
 
 <template>
 	<div class="mask">
-		<OnClickOutside @trigger="this.$emit('close')">
+		<OnClickOutside @trigger="emit('close')">
 			<a-card class="detailModal">
 				<template #title>
 					<div class="text-xl font-semibold text-center">檢視角色</div>

@@ -1,5 +1,9 @@
-<script setup>
+<script setup lang="ts">
 import { SmileFilled } from '@ant-design/icons-vue'
+import MResult from './MResult.vue'
+import { Descriptions as ADescriptions } from 'ant-design-vue'
+const ADescriptionsItem = ADescriptions.Item
+
 defineProps({
 	result: {
 		type: Object,
@@ -7,36 +11,36 @@ defineProps({
 })
 </script>
 <template>
-	<a-result title="成功建立專案">
+	<MResult title="成功建立專案">
 		<template #icon>
 			<SmileFilled />
 		</template>
-	</a-result>
-	<a-descriptions title="專案詳細資訊" bordered>
-		<a-descriptions-item label="專案名稱">
+	</MResult>
+	<ADescriptions title="專案詳細資訊" bordered>
+		<ADescriptionsItem label="專案名稱">
 			{{ result.name }}
-		</a-descriptions-item>
-		<a-descriptions-item label="專案說明">
+		</ADescriptionsItem>
+		<ADescriptionsItem label="專案說明">
 			{{ result.description }}
-		</a-descriptions-item>
-		<a-descriptions-item label="專案目標">
+		</ADescriptionsItem>
+		<ADescriptionsItem label="專案目標">
 			{{ result.objective }}
-		</a-descriptions-item>
-		<a-descriptions-item label="負責部門">
+		</ADescriptionsItem>
+		<ADescriptionsItem label="負責部門">
 			{{ result.department }}
-		</a-descriptions-item>
-		<a-descriptions-item label="執行期間">
+		</ADescriptionsItem>
+		<ADescriptionsItem label="執行期間">
 			起：{{ result.duration && result.duration[0] }} <br />
 			訖：{{ result.duration && result.duration[1] }}
-		</a-descriptions-item>
-		<a-descriptions-item label="建立人">
+		</ADescriptionsItem>
+		<ADescriptionsItem label="建立人">
 			{{ result.creator }}
-		</a-descriptions-item>
-		<a-descriptions-item label="審核者">
+		</ADescriptionsItem>
+		<ADescriptionsItem label="審核者">
 			{{ result.auditor }}
-		</a-descriptions-item>
-		<a-descriptions-item label="審核期限">
+		</ADescriptionsItem>
+		<ADescriptionsItem label="審核期限">
 			{{ result.dueDate }}
-		</a-descriptions-item>
-	</a-descriptions>
+		</ADescriptionsItem>
+	</ADescriptions>
 </template>

@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import { ref, reactive } from 'vue'
 import { UserOutlined } from '@ant-design/icons-vue'
+import { Statistic as AStatistic, Tabs as ATabs } from 'ant-design-vue'
 import yapi from '@/api/yapi'
+const ATabPane = ATabs.TabPane
 
 interface DashboardData {
 	totalMember: number
@@ -34,8 +36,8 @@ yapi
 
 <template>
 	<div class="text-right">
-		<BasicButton @click="showGreetModal = true" color="success" type="primary"
-			>Greet Me</BasicButton
+		<MButton @click="showGreetModal = true" color="success" type="primary"
+			>Greet Me</MButton
 		>
 		<Teleport to="body">
 			<GreetModal v-if="showGreetModal" @close-modal="showGreetModal = false" />
@@ -52,7 +54,7 @@ yapi
 					<template #extra>
 						<UserOutlined :style="{ fontSize: '18px' }" />
 					</template>
-					<a-statistic :value="dashboardData.totalMember" suffix="人" />
+					<AStatistic :value="dashboardData.totalMember" suffix="人" />
 				</a-card>
 			</a-col>
 			<a-col :span="6">
@@ -62,9 +64,9 @@ yapi
 					title="新增會員"
 				>
 					<template #extra>
-						<a-tag color="#FF8737">月</a-tag>
+						<MTag color="#FF8737">月</MTag>
 					</template>
-					<a-statistic :value="dashboardData.monthlyNewMember" suffix="人" />
+					<AStatistic :value="dashboardData.monthlyNewMember" suffix="人" />
 				</a-card>
 			</a-col>
 			<a-col :span="6">
@@ -74,9 +76,9 @@ yapi
 					title="訂單數量"
 				>
 					<template #extra>
-						<a-tag color="#FF5B52">月</a-tag>
+						<MTag color="#FF5B52">月</MTag>
 					</template>
-					<a-statistic :value="dashboardData.monthlyOrders" suffix="筆" />
+					<AStatistic :value="dashboardData.monthlyOrders" suffix="筆" />
 				</a-card>
 			</a-col>
 			<a-col :span="6">
@@ -86,9 +88,9 @@ yapi
 					title="營業額"
 				>
 					<template #extra>
-						<a-tag color="#0FC4CA">月</a-tag>
+						<MTag color="#0FC4CA">月</MTag>
 					</template>
-					<a-statistic :value="dashboardData.monthlyRevenue" suffix="元" />
+					<AStatistic :value="dashboardData.monthlyRevenue" suffix="元" />
 				</a-card>
 			</a-col>
 		</a-row>
@@ -96,17 +98,17 @@ yapi
 		<a-row>
 			<a-col :span="24">
 				<a-card>
-					<a-tabs>
-						<a-tab-pane key="1" tab="使用者">
-							<EmptyData description="無使用者"></EmptyData>
-						</a-tab-pane>
-						<a-tab-pane key="2" tab="新使用者人數">
-							<EmptyData description="無新使用者"></EmptyData>
-						</a-tab-pane>
-						<a-tab-pane key="3" tab="平均參與時間">
-							<EmptyData description="無資料"></EmptyData>
-						</a-tab-pane>
-					</a-tabs>
+					<ATabs>
+						<ATabPane key="1" tab="使用者">
+							<MEmpty description="無使用者"></MEmpty>
+						</ATabPane>
+						<ATabPane key="2" tab="新使用者人數">
+							<MEmpty description="無新使用者"></MEmpty>
+						</ATabPane>
+						<ATabPane key="3" tab="平均參與時間">
+							<MEmpty description="無資料"></MEmpty>
+						</ATabPane>
+					</ATabs>
 				</a-card>
 			</a-col>
 		</a-row>

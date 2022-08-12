@@ -221,10 +221,8 @@ const submitForm = async () => {}
 								</table>
 							</template>
 							<div class="mt-4 flex justify-center gap-x-2">
-								<BasicButton @click="this.$emit('close')">取消</BasicButton>
-								<BasicButton @click="submitForm" type="primary"
-									>新增</BasicButton
-								>
+								<MButton @click="this.$emit('close')">取消</MButton>
+								<MButton @click="submitForm" type="primary">新增</MButton>
 							</div>
 						</a-form>
 					</div>

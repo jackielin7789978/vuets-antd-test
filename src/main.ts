@@ -2,6 +2,19 @@ import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import App from './App.vue'
 
+// dev 使用全域註冊增加開發速度，build 時移除
+import 'virtual:windi.css'
+import 'ant-design-vue/dist/antd.less'
+import { Layout, Breadcrumb, Space, Row, Col, Card } from 'ant-design-vue'
+const GloballyRegisteredAntdComponents = [
+	Layout,
+	Breadcrumb,
+	Space,
+	Row,
+	Col,
+	Card,
+]
+
 // File Base Routing + Layout system
 import { createRouter, createWebHistory } from 'vue-router'
 import { setupLayouts } from 'virtual:generated-layouts'
@@ -27,15 +40,8 @@ router.beforeEach((to, from, next) => {
 	next()
 })
 
-// dev 使用全域註冊增加開發速度，build 時移除
-// import Antd from 'ant-design-vue'
-import 'ant-design-vue/dist/antd.less'
-import 'virtual:windi.css'
-
 const app = createApp(App)
-
 app.use(createPinia())
 app.use(router)
-// app.use(Antd)
-
+GloballyRegisteredAntdComponents.forEach((component) => app.use(component))
 app.mount('#app')

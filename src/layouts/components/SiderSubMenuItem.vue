@@ -1,4 +1,5 @@
-<script setup>
+<script setup lang="ts">
+import { SubMenu as ASubMenu } from 'ant-design-vue'
 defineProps({
 	item: {
 		type: Object,
@@ -9,7 +10,7 @@ defineProps({
 
 <template>
 	<SiderMenuItem v-if="!item.children.length" :item="item" />
-	<a-sub-menu v-if="item.children.length" :key="`sub-${item.name}`">
+	<ASubMenu v-if="item.children.length" :key="`sub-${item.name}`">
 		<template #title>
 			{{ item.name }}
 		</template>
@@ -20,5 +21,5 @@ defineProps({
 		<template v-for="childItem in item.children" :key="childItem.path">
 			<SiderSubMenuItem :item="childItem" />
 		</template>
-	</a-sub-menu>
+	</ASubMenu>
 </template>
