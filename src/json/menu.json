@@ -1,0 +1,246 @@
+[
+	{
+		"name": "主控台",
+		"path": "/dashboard",
+		"icon": "DashboardOutlined",
+		"children": []
+	},
+	{
+		"name": "權限管理",
+		"icon": "SettingOutlined",
+		"children": [
+			{
+				"name": "團隊管理",
+				"path": "/management/teams",
+				"icon": "TeamOutlined",
+				"children": [],
+				"breadcrumbs": [
+					{
+						"name": "權限管理",
+						"redirect": true,
+						"redirectPath": "/management/teams"
+					},
+					{
+						"name": "團隊管理"
+					}
+				]
+			},
+			{
+				"name": "角色管理",
+				"path": "/management/roles",
+				"icon": "TeamOutlined",
+				"children": [],
+				"breadcrumbs": [
+					{
+						"name": "權限管理",
+						"redirect": true,
+						"redirectPath": "/management/teams"
+					},
+					{
+						"name": "角色管理"
+					}
+				]
+			},
+			{
+				"name": "帳號管理",
+				"path": "/management/users",
+				"icon": "TeamOutlined",
+				"children": [],
+				"breadcrumbs": [
+					{
+						"name": "權限管理",
+						"redirect": true,
+						"redirectPath": "/management/teams"
+					},
+					{
+						"name": "帳號管理"
+					}
+				]
+			}
+		]
+	},
+	{
+		"name": "多級選單",
+		"icon": "ApartmentOutlined",
+		"children": [
+			{
+				"name": "二級選單 1",
+				"path": "#31",
+				"icon": "EditOutlined",
+				"children": [],
+				"breadcrumbs": [
+					{
+						"name": "多級選單",
+						"redirect": true,
+						"redirectPath": "#31"
+					},
+					{
+						"name": "二級選單 1"
+					}
+				]
+			},
+			{
+				"name": "二級選單 2",
+				"path": "#32",
+				"icon": "EditOutlined",
+				"children": [],
+				"breadcrumbs": [
+					{
+						"name": "多級選單",
+						"redirect": true,
+						"redirectPath": "#31"
+					},
+					{
+						"name": "二級選單 2"
+					}
+				]
+			},
+			{
+				"name": "二級子選單",
+				"path": "#33",
+				"icon": "EditOutlined",
+				"children": [
+					{
+						"name": "三級選單 1",
+						"path": "#331",
+						"icon": "EditOutlined",
+						"children": [],
+						"breadcrumbs": [
+							{
+								"name": "多級選單",
+								"redirect": true,
+								"redirectPath": "#31"
+							},
+							{
+								"name": "二級子選單",
+								"redirect": true,
+								"redirectPath": "#331"
+							},
+							{
+								"name": "三級選單 1"
+							}
+						]
+					},
+					{
+						"name": "三級選單 2",
+						"path": "#332",
+						"icon": "EditOutlined",
+						"children": [],
+						"breadcrumbs": [
+							{
+								"name": "多級選單",
+								"redirect": true,
+								"redirectPath": "#31"
+							},
+							{
+								"name": "二級子選單",
+								"redirect": true,
+								"redirectPath": "#331"
+							},
+							{
+								"name": "三級選單 2"
+							}
+						]
+					}
+				]
+			}
+		]
+	},
+	{
+		"name": "元件",
+		"icon": "AppstoreOutlined",
+		"children": [
+			{
+				"name": "通用元件",
+				"path": "/components/general",
+				"children": [],
+				"breadcrumbs": [
+					{
+						"name": "元件",
+						"redirect": true,
+						"redirectPath": "/components/general"
+					},
+					{
+						"name": "通用元件"
+					}
+				]
+			},
+			{
+				"name": "資料輸入",
+				"path": "/components/data-entry",
+				"children": [
+					{
+						"name": "基本表單",
+						"path": "/components/data-entry/basic-form",
+						"children": [],
+						"breadcrumbs": [
+							{
+								"name": "元件",
+								"redirect": true,
+								"redirectPath": "/components/general"
+							},
+							{
+								"name": "資料輸入",
+								"redirect": true,
+								"redirectPath": "/components/data-entry/basic-form"
+							},
+							{
+								"name": "基本表單"
+							}
+						]
+					},
+					{
+						"name": "多步驟表單",
+						"path": "/components/data-entry/multistep-form",
+						"children": [],
+						"breadcrumbs": [
+							{
+								"name": "元件",
+								"redirect": true,
+								"redirectPath": "/components/general"
+							},
+							{
+								"name": "資料輸入",
+								"redirect": true,
+								"redirectPath": "/components/data-entry/basic-form"
+							},
+							{
+								"name": "多步驟表單"
+							}
+						]
+					}
+				]
+			},
+			{
+				"name": "資料呈現",
+				"path": "/components/data-display",
+				"children": [],
+				"breadcrumbs": [
+					{
+						"name": "元件",
+						"redirect": true,
+						"redirectPath": "/components/general"
+					},
+					{
+						"name": "資料呈現"
+					}
+				]
+			},
+			{
+				"name": "回饋元件",
+				"path": "/components/feedback",
+				"children": [],
+				"breadcrumbs": [
+					{
+						"name": "元件",
+						"redirect": true,
+						"redirectPath": "/components/general"
+					},
+					{
+						"name": "回饋元件"
+					}
+				]
+			}
+		]
+	}
+]

@@ -1,0 +1,440 @@
+[
+	{
+		"id": 1,
+		"title": "超級管理員",
+		"createdAt": "@datetime",
+		"desc": "@csentence",
+		"auths": [
+			{
+				"moduleId": 1,
+				"moduleName": "權限管理",
+				"children": [
+					{
+						"moduleId": 2,
+						"moduleName": "團隊管理",
+						"children": [],
+						"permissionItem": [
+							{
+								"permissionName": "查看",
+								"permissionKey": "R",
+								"checked": true,
+								"disabled": false
+							},
+							{
+								"permissionName": "新增",
+								"permissionKey": "C",
+								"checked": true,
+								"disabled": false
+							},
+							{
+								"permissionName": "修改",
+								"permissionKey": "U",
+								"checked": true,
+								"disabled": false
+							},
+							{
+								"permissionName": "刪除",
+								"permissionKey": "D",
+								"checked": true,
+								"disabled": false
+							}
+						]
+					},
+					{
+						"moduleId": 3,
+						"moduleName": "角色管理",
+						"children": [],
+						"permissionItem": [
+							{
+								"permissionName": "查看",
+								"permissionKey": "R",
+								"checked": true,
+								"disabled": false
+							},
+							{
+								"permissionName": "新增",
+								"permissionKey": "C",
+								"checked": true,
+								"disabled": false
+							},
+							{
+								"permissionName": "修改",
+								"permissionKey": "U",
+								"checked": true,
+								"disabled": false
+							},
+							{
+								"permissionName": "刪除",
+								"permissionKey": "D",
+								"checked": true,
+								"disabled": false
+							}
+						]
+					},
+					{
+						"moduleId": 4,
+						"moduleName": "使用者管理",
+						"children": [],
+						"permissionItem": [
+							{
+								"permissionName": "查看",
+								"permissionKey": "R",
+								"checked": true,
+								"disabled": false
+							},
+							{
+								"permissionName": "新增",
+								"permissionKey": "C",
+								"checked": true,
+								"disabled": false
+							},
+							{
+								"permissionName": "修改",
+								"permissionKey": "U",
+								"checked": true,
+								"disabled": false
+							},
+							{
+								"permissionName": "刪除",
+								"permissionKey": "D",
+								"checked": true,
+								"disabled": false
+							}
+						]
+					}
+				],
+				"permissionItem": [
+					{
+						"permissionName": "查看",
+						"permissionKey": "R",
+						"checked": true,
+						"disabled": false
+					}
+				]
+			},
+			{
+				"moduleId": 2,
+				"moduleName": "待辦事項",
+				"children": [],
+				"permissionItem": [
+					{
+						"permissionName": "查看",
+						"permissionKey": "R",
+						"checked": true,
+						"disabled": false
+					},
+					{
+						"permissionName": "新增",
+						"permissionKey": "C",
+						"checked": true,
+						"disabled": false
+					},
+					{
+						"permissionName": "修改",
+						"permissionKey": "U",
+						"checked": true,
+						"disabled": false
+					},
+					{
+						"permissionName": "刪除",
+						"permissionKey": "D",
+						"checked": true,
+						"disabled": false
+					}
+				]
+			}
+		]
+	},
+	{
+		"id": 2,
+		"title": "管理員",
+		"createdAt": "@datetime",
+		"desc": "@csentence",
+		"auths": [
+			{
+				"moduleId": 1,
+				"moduleName": "權限管理",
+				"children": [
+					{
+						"moduleId": 2,
+						"moduleName": "團隊管理",
+						"children": [],
+						"permissionItem": [
+							{
+								"permissionName": "查看",
+								"permissionKey": "R",
+								"checked": true,
+								"disabled": false
+							},
+							{
+								"permissionName": "新增",
+								"permissionKey": "C",
+								"checked": false,
+								"disabled": false
+							},
+							{
+								"permissionName": "修改",
+								"permissionKey": "U",
+								"checked": false,
+								"disabled": false
+							},
+							{
+								"permissionName": "刪除",
+								"permissionKey": "D",
+								"checked": false,
+								"disabled": false
+							}
+						]
+					},
+					{
+						"moduleId": 3,
+						"moduleName": "角色管理",
+						"children": [],
+						"permissionItem": [
+							{
+								"permissionName": "查看",
+								"permissionKey": "R",
+								"checked": true,
+								"disabled": false
+							},
+							{
+								"permissionName": "新增",
+								"permissionKey": "C",
+								"checked": false,
+								"disabled": false
+							},
+							{
+								"permissionName": "修改",
+								"permissionKey": "U",
+								"checked": false,
+								"disabled": false
+							},
+							{
+								"permissionName": "刪除",
+								"permissionKey": "D",
+								"checked": false,
+								"disabled": false
+							}
+						]
+					},
+					{
+						"moduleId": 4,
+						"moduleName": "使用者管理",
+						"children": [],
+						"permissionItem": [
+							{
+								"permissionName": "查看",
+								"permissionKey": "R",
+								"checked": true,
+								"disabled": false
+							},
+							{
+								"permissionName": "新增",
+								"permissionKey": "C",
+								"checked": true,
+								"disabled": false
+							},
+							{
+								"permissionName": "修改",
+								"permissionKey": "U",
+								"checked": true,
+								"disabled": false
+							},
+							{
+								"permissionName": "刪除",
+								"permissionKey": "D",
+								"checked": true,
+								"disabled": false
+							}
+						]
+					}
+				],
+				"permissionItem": [
+					{
+						"permissionName": "查看",
+						"permissionKey": "R",
+						"checked": true,
+						"disabled": false
+					}
+				]
+			},
+			{
+				"moduleId": 2,
+				"moduleName": "待辦事項",
+				"children": [],
+				"permissionItem": [
+					{
+						"permissionName": "查看",
+						"permissionKey": "R",
+						"checked": true,
+						"disabled": false
+					},
+					{
+						"permissionName": "新增",
+						"permissionKey": "C",
+						"checked": true,
+						"disabled": false
+					},
+					{
+						"permissionName": "修改",
+						"permissionKey": "U",
+						"checked": true,
+						"disabled": false
+					},
+					{
+						"permissionName": "刪除",
+						"permissionKey": "D",
+						"checked": true,
+						"disabled": false
+					}
+				]
+			}
+		]
+	},
+	{
+		"id": 3,
+		"title": "一般使用者",
+		"createdAt": "@datetime",
+		"desc": "@csentence",
+		"auths": [
+			{
+				"moduleId": 1,
+				"moduleName": "權限管理",
+				"children": [
+					{
+						"moduleId": 2,
+						"moduleName": "團隊管理",
+						"children": [],
+						"permissionItem": [
+							{
+								"permissionName": "查看",
+								"permissionKey": "R",
+								"checked": false,
+								"disabled": false
+							},
+							{
+								"permissionName": "新增",
+								"permissionKey": "C",
+								"checked": false,
+								"disabled": false
+							},
+							{
+								"permissionName": "修改",
+								"permissionKey": "U",
+								"checked": false,
+								"disabled": false
+							},
+							{
+								"permissionName": "刪除",
+								"permissionKey": "D",
+								"checked": false,
+								"disabled": false
+							}
+						]
+					},
+					{
+						"moduleId": 3,
+						"moduleName": "角色管理",
+						"children": [],
+						"permissionItem": [
+							{
+								"permissionName": "查看",
+								"permissionKey": "R",
+								"checked": false,
+								"disabled": false
+							},
+							{
+								"permissionName": "新增",
+								"permissionKey": "C",
+								"checked": false,
+								"disabled": false
+							},
+							{
+								"permissionName": "修改",
+								"permissionKey": "U",
+								"checked": false,
+								"disabled": false
+							},
+							{
+								"permissionName": "刪除",
+								"permissionKey": "D",
+								"checked": false,
+								"disabled": false
+							}
+						]
+					},
+					{
+						"moduleId": 4,
+						"moduleName": "使用者管理",
+						"children": [],
+						"permissionItem": [
+							{
+								"permissionName": "查看",
+								"permissionKey": "R",
+								"checked": false,
+								"disabled": false
+							},
+							{
+								"permissionName": "新增",
+								"permissionKey": "C",
+								"checked": false,
+								"disabled": false
+							},
+							{
+								"permissionName": "修改",
+								"permissionKey": "U",
+								"checked": false,
+								"disabled": false
+							},
+							{
+								"permissionName": "刪除",
+								"permissionKey": "D",
+								"checked": false,
+								"disabled": false
+							}
+						]
+					}
+				],
+				"permissionItem": [
+					{
+						"permissionName": "查看",
+						"permissionKey": "R",
+						"checked": false,
+						"disabled": false
+					}
+				]
+			},
+			{
+				"moduleId": 2,
+				"moduleName": "待辦事項",
+				"children": [],
+				"permissionItem": [
+					{
+						"permissionName": "查看",
+						"permissionKey": "R",
+						"checked": true,
+						"disabled": false
+					},
+					{
+						"permissionName": "新增",
+						"permissionKey": "C",
+						"checked": true,
+						"disabled": false
+					},
+					{
+						"permissionName": "修改",
+						"permissionKey": "U",
+						"checked": true,
+						"disabled": false
+					},
+					{
+						"permissionName": "刪除",
+						"permissionKey": "D",
+						"checked": false,
+						"disabled": false
+					}
+				]
+			}
+		]
+	}
+]
