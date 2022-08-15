@@ -1,6 +1,14 @@
 <script setup>
 import { ref, reactive, onMounted } from 'vue'
-import { Form, message } from 'ant-design-vue'
+import {
+	message,
+	Modal,
+	Form,
+	FormItem,
+	Input,
+	Select,
+	SelectOption,
+} from 'ant-design-vue'
 import { getAllUsers } from '@/api/users'
 import { addNewTeam } from '@/api/teams'
 
@@ -48,7 +56,7 @@ const addTeam = async () => {
 }
 </script>
 <template>
-	<a-modal
+	<Modal
 		ok-text="新增"
 		cancel-text="取消"
 		@ok="addTeam"
@@ -58,31 +66,27 @@ const addTeam = async () => {
 		<template #title>
 			<h3 class="font-semibold">新增子團隊</h3>
 		</template>
-		<a-form
-			:model="formData"
-			:label-col="{ span: 6 }"
-			class="w-4/5 md:w-2/3 mx-auto py-4"
-		>
-			<a-form-item label="團隊名稱" v-bind="validateInfos.name">
-				<a-input
+		<Form :model="formData" :label-col="{ span: 6 }">
+			<FormItem label="團隊名稱" v-bind="validateInfos.name">
+				<Input
 					v-model:value="formData.name"
 					placeholder="隨意輸入，會返回固定名稱"
 				/>
-			</a-form-item>
-			<a-form-item label="成員" v-bind="validateInfos.members">
-				<a-select
+			</FormItem>
+			<FormItem label="成員" v-bind="validateInfos.members">
+				<Select
 					v-model:value="formData.members"
 					mode="multiple"
 					placeholder="會返回 mock 資料"
 				>
-					<a-select-option
+					<SelectOption
 						v-for="member in memberOptions"
 						:key="member.id"
 						:value="member.name"
-						>{{ member.name }}</a-select-option
+						>{{ member.name }}</SelectOption
 					>
-				</a-select>
-			</a-form-item>
-		</a-form>
-	</a-modal>
+				</Select>
+			</FormItem>
+		</Form>
+	</Modal>
 </template>

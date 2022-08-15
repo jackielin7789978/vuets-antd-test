@@ -1,7 +1,14 @@
 <script setup>
 import { ref, reactive } from 'vue'
-import { Form, RangePicker as ARangePicker } from 'ant-design-vue'
-import { FormEl } from '../ant/FormComponents'
+import {
+	Form,
+	FormItem,
+	Select,
+	SelectOption,
+	Input,
+	Textarea,
+	RangePicker,
+} from 'ant-design-vue'
 import yapi from '@/api/yapi'
 
 const emit = defineEmits(['go-to-step-2'])
@@ -47,59 +54,54 @@ const submit = () => {
 }
 </script>
 <template>
-	<FormEl.AForm
+	<Form
 		:model="formData"
 		:label-col="{ sm: { span: 4 }, xl: { span: 6 } }"
 		:colon="false"
 	>
-		<FormEl.AFormItem label="專案名稱" v-bind="validateInfos.name">
-			<FormEl.AInput v-model:value="formData.name"></FormEl.AInput>
-		</FormEl.AFormItem>
-		<FormEl.AFormItem label="說明" v-bind="validateInfos.description">
-			<FormEl.AInput v-model:value="formData.description"></FormEl.AInput>
-		</FormEl.AFormItem>
-		<FormEl.AFormItem label="專案目標" v-bind="validateInfos.objective">
-			<FormEl.ATextarea
-				v-model:value="formData.objective"
-				:rows="4"
-			></FormEl.ATextarea>
-		</FormEl.AFormItem>
-		<FormEl.AFormItem label="執行期間" v-bind="validateInfos.duration">
-			<ARangePicker
+		<FormItem label="專案名稱" v-bind="validateInfos.name">
+			<Input v-model:value="formData.name"></Input>
+		</FormItem>
+		<FormItem label="說明" v-bind="validateInfos.description">
+			<Input v-model:value="formData.description"></Input>
+		</FormItem>
+		<FormItem label="專案目標" v-bind="validateInfos.objective">
+			<Textarea v-model:value="formData.objective" :rows="4"></Textarea>
+		</FormItem>
+		<FormItem label="執行期間" v-bind="validateInfos.duration">
+			<RangePicker
 				v-model:value="formData.duration"
 				:style="{ width: '50%' }"
 			/>
-		</FormEl.AFormItem>
-		<FormEl.AFormItem label="負責部門" v-bind="validateInfos.department">
-			<FormEl.ASelect
+		</FormItem>
+		<FormItem label="負責部門" v-bind="validateInfos.department">
+			<Select
 				v-model:value="formData.department"
 				:style="{ width: '50%' }"
 				show-search
 			>
-				<FormEl.ASelectOption value="研發部">研發部</FormEl.ASelectOption>
-				<FormEl.ASelectOption value="專案部">專案部</FormEl.ASelectOption>
-				<FormEl.ASelectOption value="業務客服部"
-					>業務客服部</FormEl.ASelectOption
-				>
-			</FormEl.ASelect>
-		</FormEl.AFormItem>
-		<FormEl.AFormItem label="建立人" v-bind="validateInfos.creator">
-			<FormEl.ASelect
+				<SelectOption value="研發部">研發部</SelectOption>
+				<SelectOption value="專案部">專案部</SelectOption>
+				<SelectOption value="業務客服部">業務客服部</SelectOption>
+			</Select>
+		</FormItem>
+		<FormItem label="建立人" v-bind="validateInfos.creator">
+			<Select
 				v-model:value="formData.creator"
 				:style="{ width: '50%' }"
 				show-search
 			>
-				<FormEl.ASelectOption
+				<SelectOption
 					v-for="user in creatorOptions"
 					:key="user"
 					:value="user.name"
-					>{{ user.name }}</FormEl.ASelectOption
+					>{{ user.name }}</SelectOption
 				>
-			</FormEl.ASelect>
-		</FormEl.AFormItem>
+			</Select>
+		</FormItem>
 		<div class="flex gap-x-2 justify-end">
 			<MButton @click="resetFields" danger>清除</MButton>
 			<MButton @click="submit" type="primary">下一步</MButton>
 		</div>
-	</FormEl.AForm>
+	</Form>
 </template>

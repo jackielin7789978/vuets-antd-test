@@ -1,5 +1,6 @@
 <script setup>
 import { onBeforeMount, ref, reactive, toRaw } from 'vue'
+import { Skeleton, Form, FormItem, Input, Checkbox } from 'ant-design-vue'
 import { OnClickOutside } from '@vueuse/components'
 import { getRole, editRole } from '@/api/roles'
 import { message } from 'ant-design-vue'
@@ -59,7 +60,7 @@ const submitForm = async () => {
 				<template #title>
 					<div class="text-xl font-semibold text-center">編輯角色</div>
 				</template>
-				<a-skeleton
+				<Skeleton
 					v-if="isLoading"
 					active
 					size="large"
@@ -68,7 +69,7 @@ const submitForm = async () => {
 				<template v-else>
 					<h1 v-if="errMessage" class="errMsg">{{ errMessage }}</h1>
 					<div v-else>
-						<a-form :model="formData">
+						<Form :model="formData">
 							<table class="mb-8">
 								<tr>
 									<th :style="{ width: '10%' }">角色名稱</th>
@@ -76,14 +77,14 @@ const submitForm = async () => {
 								</tr>
 								<tr>
 									<td>
-										<a-form-item class="mb-0">
-											<a-input v-model:value="formData.title" />
-										</a-form-item>
+										<FormItem class="mb-0">
+											<Input v-model:value="formData.title" />
+										</FormItem>
 									</td>
 									<td>
-										<a-form-item class="mb-0">
-											<a-input v-model:value="formData.desc" />
-										</a-form-item>
+										<FormItem class="mb-0">
+											<Input v-model:value="formData.desc" />
+										</FormItem>
 									</td>
 								</tr>
 							</table>
@@ -95,11 +96,11 @@ const submitForm = async () => {
 									<tr v-for="child in auth.children" :key="child">
 										<th>{{ child.moduleName }}</th>
 										<td v-for="item in child.permissionItem" :key="item">
-											<a-form-item class="mb-0">
-												<a-checkbox v-model:checked="item.checked">
+											<FormItem class="mb-0">
+												<Checkbox v-model:checked="item.checked">
 													{{ item.permissionName }}
-												</a-checkbox>
-											</a-form-item>
+												</Checkbox>
+											</FormItem>
 										</td>
 									</tr>
 								</table>
@@ -107,11 +108,11 @@ const submitForm = async () => {
 									<tr>
 										<th>{{ auth.moduleName }}</th>
 										<td v-for="item in auth.permissionItem" :key="item">
-											<a-form-item class="mb-0">
-												<a-checkbox v-model:checked="item.checked">
+											<FormItem class="mb-0">
+												<Checkbox v-model:checked="item.checked">
 													{{ item.permissionName }}
-												</a-checkbox>
-											</a-form-item>
+												</Checkbox>
+											</FormItem>
 										</td>
 									</tr>
 								</table>
@@ -120,10 +121,59 @@ const submitForm = async () => {
 								<MButton @click="this.$emit('close')">取消</MButton>
 								<MButton @click="submitForm" type="primary">儲存變更</MButton>
 							</div>
-						</a-form>
+						</Form>
 					</div>
 				</template>
 			</a-card>
 		</OnClickOutside>
 	</div>
 </template>
+
+<style lang="scss" scoped>
+.mask {
+	position: fixed;
+	inset: 0;
+	background-color: rgba(0, 0, 0, 45%);
+}
+.detailModal {
+	min-width: 600px;
+	min-height: 450px;
+	width: 50%;
+	position: absolute;
+	top: 45%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.label {
+	background: #000;
+	color: white;
+	padding: 1rem;
+}
+
+.errMsg {
+	color: $error-color;
+}
+
+.authTitle {
+	font-size: 1.1rem;
+	font-weight: 600;
+	background-color: #888b92;
+	padding: 0.3rem 1rem;
+	color: white;
+	text-align: center;
+}
+table {
+	width: 100%;
+}
+th,
+td {
+	padding: 0.5rem 1rem;
+	text-align: left;
+}
+th {
+	background-color: #e4e5e6;
+	min-width: 120px;
+	width: 25%;
+}
+</style>

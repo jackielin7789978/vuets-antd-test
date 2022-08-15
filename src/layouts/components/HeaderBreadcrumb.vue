@@ -3,6 +3,7 @@ import { watch, ref } from 'vue'
 import { useRoute } from 'vue-router'
 import { useMenuStore } from '@/stores/menu'
 import useCurrentMenuNode from '@/composables/useCurrentMenuNode'
+import { Breadcrumb, BreadcrumbItem } from 'ant-design-vue'
 
 const menu = useMenuStore()
 const route = useRoute()
@@ -19,12 +20,12 @@ watch(route, () => {
 </script>
 
 <template>
-	<a-breadcrumb :class="breadcrumbList ? '' : 'opacity-0'">
-		<a-breadcrumb-item v-for="breadcrumb in breadcrumbList" :key="breadcrumb">
+	<Breadcrumb :class="breadcrumbList ? '' : 'opacity-0'">
+		<BreadcrumbItem v-for="breadcrumb in breadcrumbList" :key="breadcrumb">
 			<router-link v-if="breadcrumb.redirect" :to="breadcrumb.redirectPath">{{
 				breadcrumb.name
 			}}</router-link>
 			<span v-else>{{ breadcrumb.name }}</span>
-		</a-breadcrumb-item>
-	</a-breadcrumb>
+		</BreadcrumbItem>
+	</Breadcrumb>
 </template>

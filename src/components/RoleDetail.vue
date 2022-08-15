@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { onBeforeMount, ref, withDefaults } from 'vue'
+import { Skeleton, Checkbox } from 'ant-design-vue'
 import { OnClickOutside } from '@vueuse/components'
 import { getRole } from '@/api/roles'
 
@@ -38,7 +39,7 @@ onBeforeMount(async () => {
 				<template #title>
 					<div class="text-xl font-semibold text-center">檢視角色</div>
 				</template>
-				<a-skeleton
+				<Skeleton
 					v-if="isLoading"
 					active
 					size="large"
@@ -66,10 +67,10 @@ onBeforeMount(async () => {
 									<th>{{ child.moduleName }}</th>
 									<td v-for="item in child.permissionItem" :key="item">
 										<span>
-											<a-checkbox
+											<Checkbox
 												v-model:checked="item.checked"
 												disabled
-											></a-checkbox>
+											></Checkbox>
 											{{ item.permissionName }}
 										</span>
 									</td>
@@ -80,10 +81,10 @@ onBeforeMount(async () => {
 									<th>{{ auth.moduleName }}</th>
 									<td v-for="item in auth.permissionItem" :key="item">
 										<span>
-											<a-checkbox
+											<Checkbox
 												v-model:checked="item.checked"
 												disabled
-											></a-checkbox>
+											></Checkbox>
 											{{ item.permissionName }}
 										</span>
 									</td>
@@ -97,7 +98,7 @@ onBeforeMount(async () => {
 	</div>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .mask {
 	position: fixed;
 	inset: 0;

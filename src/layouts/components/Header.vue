@@ -5,6 +5,7 @@ import {
 	FullscreenOutlined,
 	FullscreenExitOutlined,
 } from '@ant-design/icons-vue'
+import { LayoutHeader } from 'ant-design-vue'
 
 defineProps({
 	isFullscreen: {
@@ -14,7 +15,7 @@ defineProps({
 </script>
 
 <template>
-	<a-layout-header class="header">
+	<LayoutHeader class="header">
 		<HeaderBreadcrumb />
 		<a-space size="middle">
 			<SearchOutlined class="nav-controls" />
@@ -32,7 +33,7 @@ defineProps({
 
 			<HeaderUserMenu />
 		</a-space>
-	</a-layout-header>
+	</LayoutHeader>
 </template>
 
 <style lang="scss" scoped>

@@ -1,6 +1,20 @@
 <script setup>
 import { ref, reactive } from 'vue'
-import { Form, message } from 'ant-design-vue'
+import {
+	Table,
+	Form,
+	FormItem,
+	CheckboxGroup,
+	Checkbox,
+	RadioGroup,
+	Radio,
+	Select,
+	SelectOption,
+	Input,
+	message,
+	Modal,
+	Popconfirm,
+} from 'ant-design-vue'
 import {
 	DeleteOutlined,
 	EditOutlined,
@@ -159,7 +173,7 @@ const editUser = (id) => {
 		<MButton type="primary" @click="isAddUserModalOpen = true">
 			<PlusOutlined />新增
 		</MButton>
-		<a-modal
+		<Modal
 			v-model:visible="isAddUserModalOpen"
 			ok-text="新增"
 			cancel-text="取消"
@@ -169,55 +183,55 @@ const editUser = (id) => {
 				<h3 class="font-semibold">新增使用者</h3>
 			</template>
 			<a-form :model="formData" :label-col="{ span: 6 }">
-				<a-form-item label="使用者名稱" v-bind="validateInfos.name">
-					<a-input v-model:value="formData.name" />
-				</a-form-item>
-				<a-form-item label="角色" v-bind="validateInfos.role">
-					<a-select v-model:value="formData.role">
-						<a-select-option value="一般使用者">一般使用者</a-select-option>
-						<a-select-option value="管理員">管理員</a-select-option>
-						<a-select-option value="超級管理員">超級管理員</a-select-option>
-					</a-select>
-				</a-form-item>
-				<a-form-item label="團隊" v-bind="validateInfos.teams">
-					<a-checkbox-group
+				<FormItem label="使用者名稱" v-bind="validateInfos.name">
+					<Input v-model:value="formData.name" />
+				</FormItem>
+				<FormItem label="角色" v-bind="validateInfos.role">
+					<Select v-model:value="formData.role">
+						<SelectOption value="一般使用者">一般使用者</SelectOption>
+						<SelectOption value="管理員">管理員</SelectOption>
+						<SelectOption value="超級管理員">超級管理員</SelectOption>
+					</Select>
+				</FormItem>
+				<FormItem label="團隊" v-bind="validateInfos.teams">
+					<CheckboxGroup
 						v-model:value="formData.teams"
 						class="custom-checkbox-group"
 					>
-						<a-checkbox value="繹宇數位" v-bind="validateInfos.teams"
-							>繹宇數位</a-checkbox
+						<Checkbox value="繹宇數位" v-bind="validateInfos.teams"
+							>繹宇數位</Checkbox
 						>
-						<a-checkbox value="專案部" v-bind="validateInfos.teams"
-							>專案部</a-checkbox
+						<Checkbox value="專案部" v-bind="validateInfos.teams"
+							>專案部</Checkbox
 						>
-						<a-checkbox value="研發部" v-bind="validateInfos.teams"
-							>研發部</a-checkbox
+						<Checkbox value="研發部" v-bind="validateInfos.teams"
+							>研發部</Checkbox
 						>
-						<a-checkbox value="客服業務部" v-bind="validateInfos.teams"
-							>客服業務部</a-checkbox
+						<Checkbox value="客服業務部" v-bind="validateInfos.teams"
+							>客服業務部</Checkbox
 						>
-						<a-checkbox value="夯特數據科技" v-bind="validateInfos.teams"
-							>夯特數據科技</a-checkbox
-						><a-checkbox value="夯特行銷部" v-bind="validateInfos.teams"
-							>夯特行銷部</a-checkbox
+						<Checkbox value="夯特數據科技" v-bind="validateInfos.teams"
+							>夯特數據科技</Checkbox
+						><Checkbox value="夯特行銷部" v-bind="validateInfos.teams"
+							>夯特行銷部</Checkbox
 						>
-					</a-checkbox-group>
-				</a-form-item>
-				<a-form-item label="電子郵件" v-bind="validateInfos.email">
-					<a-input v-model:value="formData.email" />
-				</a-form-item>
-				<a-form-item label="電話" v-bind="validateInfos.phone">
-					<a-input v-model:value="formData.phone" />
-				</a-form-item>
-				<a-form-item label="帳號狀態">
-					<a-radio-group v-model:value="formData.status">
-						<a-radio value="active">使用中</a-radio>
-						<a-radio value="suspended">停權</a-radio>
-					</a-radio-group>
-				</a-form-item>
+					</CheckboxGroup>
+				</FormItem>
+				<FormItem label="電子郵件" v-bind="validateInfos.email">
+					<Input v-model:value="formData.email" />
+				</FormItem>
+				<FormItem label="電話" v-bind="validateInfos.phone">
+					<Input v-model:value="formData.phone" />
+				</FormItem>
+				<FormItem label="帳號狀態">
+					<RadioGroup v-model:value="formData.status">
+						<Radio value="active">使用中</Radio>
+						<Radio value="suspended">停權</Radio>
+					</RadioGroup>
+				</FormItem>
 			</a-form>
-		</a-modal>
-		<a-modal
+		</Modal>
+		<Modal
 			v-model:visible="isEditUserModalOpen"
 			ok-text="儲存"
 			cancel-text="取消"
@@ -227,56 +241,56 @@ const editUser = (id) => {
 				<h3 class="font-semibold">編輯使用者</h3>
 			</template>
 			<a-form :model="editFormData" :label-col="{ span: 6 }">
-				<a-form-item label="使用者名稱" v-bind="validateEditFormInfos.name">
-					<a-input v-model:value="editFormData.name" />
-				</a-form-item>
-				<a-form-item label="角色" v-bind="validateEditFormInfos.role">
-					<a-select v-model:value="editFormData.role">
-						<a-select-option value="一般使用者">一般使用者</a-select-option>
-						<a-select-option value="管理員">管理員</a-select-option>
-						<a-select-option value="超級管理員">超級管理員</a-select-option>
-					</a-select>
-				</a-form-item>
-				<a-form-item label="團隊" v-bind="validateEditFormInfos.teams">
-					<a-checkbox-group
+				<FormItem label="使用者名稱" v-bind="validateEditFormInfos.name">
+					<Input v-model:value="editFormData.name" />
+				</FormItem>
+				<FormItem label="角色" v-bind="validateEditFormInfos.role">
+					<Select v-model:value="editFormData.role">
+						<SelectOption value="一般使用者">一般使用者</SelectOption>
+						<SelectOption value="管理員">管理員</SelectOption>
+						<SelectOption value="超級管理員">超級管理員</SelectOption>
+					</Select>
+				</FormItem>
+				<FormItem label="團隊" v-bind="validateEditFormInfos.teams">
+					<CheckboxGroup
 						v-model:value="editFormData.teams"
 						class="custom-checkbox-group"
 					>
-						<a-checkbox value="繹宇數位" v-bind="validateInfos.teams"
-							>繹宇數位</a-checkbox
+						<Checkbox value="繹宇數位" v-bind="validateInfos.teams"
+							>繹宇數位</Checkbox
 						>
-						<a-checkbox value="專案部" v-bind="validateInfos.teams"
-							>專案部</a-checkbox
+						<Checkbox value="專案部" v-bind="validateInfos.teams"
+							>專案部</Checkbox
 						>
-						<a-checkbox value="研發部" v-bind="validateInfos.teams"
-							>研發部</a-checkbox
+						<Checkbox value="研發部" v-bind="validateInfos.teams"
+							>研發部</Checkbox
 						>
-						<a-checkbox value="客服業務部" v-bind="validateInfos.teams"
-							>客服業務部</a-checkbox
+						<Checkbox value="客服業務部" v-bind="validateInfos.teams"
+							>客服業務部</Checkbox
 						>
-						<a-checkbox value="夯特數據科技" v-bind="validateInfos.teams"
-							>夯特數據科技</a-checkbox
-						><a-checkbox value="夯特行銷部" v-bind="validateInfos.teams"
-							>夯特行銷部</a-checkbox
+						<Checkbox value="夯特數據科技" v-bind="validateInfos.teams"
+							>夯特數據科技</Checkbox
+						><Checkbox value="夯特行銷部" v-bind="validateInfos.teams"
+							>夯特行銷部</Checkbox
 						>
-					</a-checkbox-group>
-				</a-form-item>
-				<a-form-item label="電子郵件" v-bind="validateEditFormInfos.email">
-					<a-input v-model:value="editFormData.email" />
-				</a-form-item>
-				<a-form-item label="電話" v-bind="validateEditFormInfos.phone">
-					<a-input v-model:value="editFormData.phone" />
-				</a-form-item>
-				<a-form-item label="帳號狀態">
-					<a-radio-group v-model:value="editFormData.status">
-						<a-radio value="active">使用中</a-radio>
-						<a-radio value="suspended">停權</a-radio>
-					</a-radio-group>
-				</a-form-item>
+					</CheckboxGroup>
+				</FormItem>
+				<FormItem label="電子郵件" v-bind="validateEditFormInfos.email">
+					<Input v-model:value="editFormData.email" />
+				</FormItem>
+				<FormItem label="電話" v-bind="validateEditFormInfos.phone">
+					<Input v-model:value="editFormData.phone" />
+				</FormItem>
+				<FormItem label="帳號狀態">
+					<RadioGroup v-model:value="editFormData.status">
+						<Radio value="active">使用中</Radio>
+						<Radio value="suspended">停權</Radio>
+					</RadioGroup>
+				</FormItem>
 			</a-form>
-		</a-modal>
+		</Modal>
 	</div>
-	<a-table :data-source="dataSource" :columns="columns">
+	<Table :data-source="dataSource" :columns="columns">
 		<template #bodyCell="{ column, text, record }">
 			<template v-if="column.dataIndex === 'teams'">
 				<span v-for="(team, index) in text">
@@ -292,7 +306,7 @@ const editUser = (id) => {
 					<MButton @click="openEditModal(record.id)" size="small">
 						<EditOutlined />
 					</MButton>
-					<a-popconfirm
+					<Popconfirm
 						@confirm="deleteUser(record.id)"
 						ok-text="刪除"
 						cancel-text="取消"
@@ -307,14 +321,14 @@ const editUser = (id) => {
 						<MButton danger size="small">
 							<DeleteOutlined />
 						</MButton>
-					</a-popconfirm>
+					</Popconfirm>
 				</div>
 			</template>
 			<template v-else>
 				{{ text }}
 			</template>
 		</template>
-	</a-table>
+	</Table>
 </template>
 
 <route lang="json">

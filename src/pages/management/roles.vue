@@ -1,6 +1,6 @@
-<script setup lang="ts">
+<script setup>
 import { ref, onBeforeMount } from 'vue'
-import type { Ref } from 'vue'
+import { Table } from 'ant-design-vue'
 import { getAllRoles } from '@/api/roles'
 import {
 	EditOutlined,
@@ -29,7 +29,7 @@ const columns = [
 	},
 ]
 
-const allRoles: any = ref([])
+const allRoles = ref([])
 onBeforeMount(async () => {
 	let res
 	try {
@@ -44,7 +44,7 @@ const openRole = ref()
 const isDetailModalOpen = ref(false)
 const isEditModalOpen = ref(false)
 const isAddModalOpen = ref(false)
-const handleOpenModal = (target: string, record: { id: number }): void => {
+const handleOpenModal = (target, record) => {
 	openRole.value = record.id
 	switch (target) {
 		case 'view':
@@ -79,7 +79,7 @@ const handleDeleteRole = () => {
 	<MButton @click="isAddModalOpen = true" type="primary">
 		<PlusOutlined />新增</MButton
 	>
-	<a-table :dataSource="allRoles" :columns="columns" class="mt-4">
+	<Table :dataSource="allRoles" :columns="columns" class="mt-4">
 		<template #bodyCell="{ column, text, record }">
 			<div v-if="column.dataIndex === 'actions'" class="flex gap-x-2">
 				<MButton @click="handleOpenModal('edit', record)" size="small">
@@ -97,7 +97,7 @@ const handleDeleteRole = () => {
 				{{ text }}
 			</div>
 		</template>
-	</a-table>
+	</Table>
 	<!-- 檢視角色權限 Modal -->
 	<Teleport to="body">
 		<RoleDetail

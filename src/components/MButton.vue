@@ -12,7 +12,7 @@ export enum ButtonTypes {
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { Button as AButton } from 'ant-design-vue'
+import { Button } from 'ant-design-vue'
 
 interface Props {
 	color?: string
@@ -47,7 +47,7 @@ const customClass = computed((): string => {
 </script>
 
 <template>
-	<AButton
+	<Button
 		:class="customClass"
 		:type="type"
 		:danger="danger"
@@ -57,7 +57,7 @@ const customClass = computed((): string => {
 		:htmlType="submit ? 'submit' : 'button'"
 	>
 		<slot></slot>
-	</AButton>
+	</Button>
 </template>
 
 <style lang="scss">
