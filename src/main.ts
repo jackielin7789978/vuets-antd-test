@@ -3,7 +3,6 @@ import { createPinia } from 'pinia'
 import App from './App.vue'
 
 import 'virtual:windi.css'
-import 'ant-design-vue/dist/antd.less'
 // 全域註冊部分元件，其餘元件仍須手動引入(勿更動)
 import { Space, Row, Col, Card } from 'ant-design-vue'
 const GloballyRegisteredAntdComponents = [Space, Row, Col, Card]
