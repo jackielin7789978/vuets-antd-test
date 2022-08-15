@@ -1,0 +1,128 @@
+[
+	{
+		"id": 1,
+		"name": "Jackie Lin",
+		"role": "管理員",
+		"teams": ["夯特數據科技"],
+		"email": "jj@easyuse.com.tw",
+		"phone": "ext. 583",
+		"status": "active"
+	},
+	{
+		"id": 2,
+		"name": "Winfred Chen",
+		"role": "超級管理員",
+		"teams": ["繹宇數位", "夯特數據科技"],
+		"email": "winfred@easyuse.com.tw",
+		"phone": "ext. 589",
+		"status": "active"
+	},
+	{
+		"id": 3,
+		"name": "Bao Tu",
+		"role": "一般使用者",
+		"teams": ["夯特數據科技"],
+		"email": "bao@easyuse.com.tw",
+		"phone": "ext. 667",
+		"status": "suspended"
+	},
+	{
+		"id": 4,
+		"name": "Ariel Jen",
+		"role": "一般使用者",
+		"teams": ["夯特數據科技", "夯特行銷部"],
+		"email": "ariel@easyuse.com.tw",
+		"phone": "ext. 667",
+		"status": "active"
+	},
+	{
+		"id": 5,
+		"name": "Luo",
+		"role": "超級管理員",
+		"teams": ["繹宇數位", "業務客服部"],
+		"email": "luo@easyuse.com.tw",
+		"phone": "ext. 669",
+		"status": "active"
+	},
+	{
+		"id": 6,
+		"name": "Chang",
+		"role": "管理員",
+		"teams": ["業務客服部"],
+		"email": "chang@easyuse.com.tw",
+		"phone": "ext. 669",
+		"status": "active"
+	},
+	{
+		"id": 7,
+		"name": "Yang",
+		"role": "一般使用者",
+		"teams": ["業務客服部"],
+		"email": "xx.yang@easyuse.com.tw",
+		"phone": "ext. 702",
+		"status": "active"
+	},
+	{
+		"id": 8,
+		"name": "Fu",
+		"role": "超級管理員",
+		"teams": ["繹宇數位", "研發部"],
+		"email": "xx.fu@easyuse.com.tw",
+		"phone": "ext. 709",
+		"status": "active"
+	},
+	{
+		"id": 9,
+		"name": "Yen",
+		"role": "管理員",
+		"teams": ["研發部"],
+		"email": "xx.yen@easyuse.com.tw",
+		"phone": "ext. 703",
+		"status": "active"
+	},
+	{
+		"id": 10,
+		"name": "Hong",
+		"role": "一般使用者",
+		"teams": ["研發部"],
+		"email": "xx.hong@easyuse.com.tw",
+		"phone": "ext. 707",
+		"status": "active"
+	},
+	{
+		"id": 11,
+		"name": "Gao",
+		"role": "一般使用者",
+		"teams": ["研發部"],
+		"email": "xx.gao@easyuse.com.tw",
+		"phone": "ext. 713",
+		"status": "suspended"
+	},
+	{
+		"id": 12,
+		"name": "Huang",
+		"role": "超級管理員",
+		"teams": ["繹宇數位", "專案部"],
+		"email": "xx.huang@easyuse.com.tw",
+		"phone": "ext. 711",
+		"status": "active"
+	},
+	{
+		"id": 13,
+		"name": "Hsu",
+		"role": "管理員",
+		"teams": ["專案部"],
+		"email": "xx.huang@easyuse.com.tw",
+		"phone": "ext. 711",
+		"status": "active"
+	},
+	{
+		"id": 14,
+		"name": "Chen",
+		"role": "一般使用者",
+		"teams": ["專案部"],
+		"email": "xx.huang@easyuse.com.tw",
+		"phone": "ext. 711",
+		"status": "active"
+	}
+]

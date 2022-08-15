@@ -5,7 +5,6 @@ import '@vue/runtime-core'
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
-    AResult: typeof import('./src/components/AResult.vue')['default']
     Default: typeof import('./src/layouts/default.vue')['default']
     DemoFormLogin: typeof import('./src/components/DemoFormLogin.vue')['default']
     DemoFormPersonal: typeof import('./src/components/DemoFormPersonal.vue')['default']
@@ -16,13 +15,10 @@ declare module '@vue/runtime-core' {
     LoginLayout: typeof import('./src/layouts/loginLayout.vue')['default']
     MButton: typeof import('./src/components/MButton.vue')['default']
     MEmpty: typeof import('./src/components/MEmpty.vue')['default']
-    MForm: typeof import('./src/components/MForm.vue')['default']
     MInputNumber: typeof import('./src/components/MInputNumber.vue')['default']
     MProgress: typeof import('./src/components/MProgress.vue')['default']
     MResult: typeof import('./src/components/MResult.vue')['default']
     MTag: typeof import('./src/components/MTag.vue')['default']
-    ProgressBar: typeof import('./src/components/ProgressBar.vue')['default']
-    Result: typeof import('./src/components/Result.vue')['default']
     RoleDetail: typeof import('./src/components/RoleDetail.vue')['default']
     RoleDetailAdd: typeof import('./src/components/RoleDetailAdd.vue')['default']
     RoleDetailEdit: typeof import('./src/components/RoleDetailEdit.vue')['default']

@@ -1,0 +1,46 @@
+[
+	{
+		"id": 1,
+		"key": "0",
+		"name": "繹宇數位",
+		"members": ["Winfred Chen", "Luo", "Fu"],
+		"children": [
+			{
+				"id": 2,
+				"key": "01",
+				"name": "專案部",
+				"members": ["Huang", "Hsu", "Chen"],
+				"children": []
+			},
+			{
+				"id": 3,
+				"key": "02",
+				"name": "研發部",
+				"members": ["Fu", "Yen", "Hong", "Gao"],
+				"children": []
+			},
+			{
+				"id": 4,
+				"key": "03",
+				"name": "客服業務部",
+				"members": ["Luo", "Chang", "Yang"],
+				"children": []
+			},
+			{
+				"id": 5,
+				"key": "04",
+				"name": "夯特數據科技",
+				"members": ["Jackie Lin", "Winfred Chen", "Bao Tu", "Ariel Jen"],
+				"children": [
+					{
+						"id": 6,
+						"key": "041",
+						"name": "夯特行銷部",
+						"members": ["Ariel Jen"],
+						"children": []
+					}
+				]
+			}
+		]
+	}
+]
