@@ -1,4 +1,5 @@
 <script setup>
+import { Result as AResult } from 'ant-design-vue'
 import checked from '@/assets/checked.png'
 const props = defineProps({
 	message: String,
@@ -6,12 +7,12 @@ const props = defineProps({
 </script>
 
 <template>
-	<a-result :title="props.message">
+	<AResult :title="props.message">
 		<template #icon>
 			<img :src="checked" class="w-16 mx-auto" alt="" />
 		</template>
 		<template #extra>
 			<slot></slot>
 		</template>
-	</a-result>
+	</AResult>
 </template>

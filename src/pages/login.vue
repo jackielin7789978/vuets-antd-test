@@ -1,9 +1,14 @@
-<script setup>
+<script setup lang="ts">
 import { reactive } from 'vue'
 import { useRouter } from 'vue-router'
-import { Form } from 'ant-design-vue'
+import {
+	Form as AForm,
+	Input as AInput,
+	InputPassword as AInputPassword,
+} from 'ant-design-vue'
 import yapi from '@/api/yapi'
 import { useUserStore } from '@/stores/user'
+const AFormItem = AForm.Item
 
 const router = useRouter()
 const userStore = useUserStore()
@@ -15,7 +20,7 @@ const formRules = reactive({
 	username: [{ required: true, message: '請輸入使用者名稱' }],
 	password: [{ required: true, message: '請輸入密碼' }],
 })
-const { validate, validateInfos } = Form.useForm(formData, formRules)
+const { validate, validateInfos } = AForm.useForm(formData, formRules)
 const validateUser = () => {
 	yapi
 		.post('/login', {
@@ -54,38 +59,38 @@ const handleLogin = () => {
 		class="w-100 md:w-110 md:p-4 lg:w-120 absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2"
 	>
 		<h3 class="text-2xl font-semibold text-center md:mb-4 lg:mb-8">登入</h3>
-		<a-form
+		<AForm
 			@submit.prevent="handleLogin"
 			:model="formData"
 			layout="vertical"
 			:colon="false"
 		>
-			<a-form-item v-bind="validateInfos.username" class="lg:pt-4">
+			<AFormItem v-bind="validateInfos.username" class="lg:pt-4">
 				<template #label>
 					<span class="lg:text-16px">使用者名稱</span>
 				</template>
-				<a-input
+				<AInput
 					v-model:value="formData.username"
 					placeholder="superadmin"
-				></a-input>
-			</a-form-item>
-			<a-form-item v-bind="validateInfos.password" class="lg:pt-4">
+				></AInput>
+			</AFormItem>
+			<AFormItem v-bind="validateInfos.password" class="lg:pt-4">
 				<template #label>
 					<span class="lg:text-16px">密碼</span>
 				</template>
-				<a-input-password
+				<AInputPassword
 					v-model:value="formData.password"
 					placeholder="superadmin"
-				></a-input-password>
-			</a-form-item>
-			<BasicButton
+				></AInputPassword>
+			</AFormItem>
+			<MButton
 				submit
 				type="primary"
 				class="w-full mt-4 lg:text-18px lg:mt-6"
 				size="large"
-				>登入</BasicButton
+				>登入</MButton
 			>
-		</a-form>
+		</AForm>
 	</a-card>
 </template>
 <route lang="json">

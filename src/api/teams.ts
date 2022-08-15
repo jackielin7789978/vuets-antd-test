@@ -11,7 +11,7 @@ export const getAllTeams = async () => {
 	}
 }
 
-export const addNewTeam = async (body) => {
+export const addNewTeam = async (body: any) => {
 	let result
 	try {
 		result = await yapi.post('/teams', body)
@@ -22,7 +22,7 @@ export const addNewTeam = async (body) => {
 	}
 }
 
-export const editTeam = async (teamId, body) => {
+export const editTeam = async (teamId: number, body: any) => {
 	let result
 	try {
 		result = await yapi.patch(`/teams/${teamId}`, body)
@@ -33,7 +33,7 @@ export const editTeam = async (teamId, body) => {
 	}
 }
 
-export const deleteTeam = async (teamId) => {
+export const deleteTeam = async (teamId: number) => {
 	let result
 	try {
 		result = await yapi.delete(`/teams/${teamId}`)

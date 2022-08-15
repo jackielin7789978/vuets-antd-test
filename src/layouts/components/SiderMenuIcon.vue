@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import {
 	HomeOutlined,
 	DashboardOutlined,
@@ -9,11 +9,7 @@ import {
 	SettingOutlined,
 } from '@ant-design/icons-vue'
 
-defineProps({
-	iconComponent: String,
-})
-
-const icons = {
+enum MenuIcons {
 	HomeOutlined,
 	DashboardOutlined,
 	ApartmentOutlined,
@@ -22,8 +18,11 @@ const icons = {
 	TeamOutlined,
 	SettingOutlined,
 }
+defineProps<{
+	iconComponent: MenuIcons
+}>()
 </script>
 
 <template>
-	<component :is="icons[iconComponent]"></component>
+	<component :is="iconComponent"></component>
 </template>

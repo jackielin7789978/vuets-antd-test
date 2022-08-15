@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 // import yapi from '@/api/yapi'
-import * as menu from '../json/menu.json'
+import menu from '../json/menu.json'
 
 // get routes from mock API
 // let routes
@@ -17,7 +17,7 @@ import * as menu from '../json/menu.json'
 export const useMenuStore = defineStore('menu', {
 	state: () => {
 		return {
-			menuTree: menu.default,
+			menuTree: menu,
 		}
 	},
 })

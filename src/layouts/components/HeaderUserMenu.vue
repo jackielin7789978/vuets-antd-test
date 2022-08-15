@@ -1,8 +1,14 @@
-<script setup>
-import { Modal } from 'ant-design-vue'
+<script setup lang="ts">
+import {
+	Modal,
+	Menu as AMenu,
+	Avatar as AAvatar,
+	Dropdown as ADropdown,
+} from 'ant-design-vue'
 import { useRouter } from 'vue-router'
 import { UserOutlined } from '@ant-design/icons-vue'
 import { useUserStore } from '@/stores/user'
+const AMenuItem = AMenu.Item
 
 const userStore = useUserStore()
 const router = useRouter()
@@ -23,24 +29,24 @@ const handleLogin = () => {
 </script>
 
 <template>
-	<a-dropdown placement="bottom">
+	<ADropdown placement="bottom">
 		<a-space class="cursor-pointer px-2 hover:bg-light-400">
-			<a-avatar>
+			<AAvatar>
 				<template #icon>
 					<UserOutlined />
 				</template>
-			</a-avatar>
+			</AAvatar>
 			Admin 1
 		</a-space>
 		<template #overlay>
-			<a-menu>
-				<a-menu-item>
+			<AMenu>
+				<AMenuItem>
 					<li>設定</li>
-				</a-menu-item>
-				<a-menu-item>
+				</AMenuItem>
+				<AMenuItem>
 					<li @click="handleLogin">登出</li>
-				</a-menu-item>
-			</a-menu>
+				</AMenuItem>
+			</AMenu>
 		</template>
-	</a-dropdown>
+	</ADropdown>
 </template>

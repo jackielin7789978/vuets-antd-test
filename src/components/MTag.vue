@@ -1,14 +1,14 @@
-<script setup>
+<script setup lang="ts">
 import { computed } from 'vue'
 import { COLORS } from '@/style/colors'
-const props = defineProps({
-	color: {
-		type: String,
-	},
-	ghost: {
-		type: Boolean,
-		default: false,
-	},
+import { Tag } from 'ant-design-vue'
+
+interface Props {
+	color?: string
+	ghost?: boolean
+}
+const props = withDefaults(defineProps<Props>(), {
+	ghost: false,
 })
 
 const customColor = computed(() => {
@@ -30,7 +30,7 @@ const customColor = computed(() => {
 </script>
 
 <template>
-	<a-tag :color="customColor">
+	<Tag :color="customColor">
 		<slot></slot>
-	</a-tag>
+	</Tag>
 </template>

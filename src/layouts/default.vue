@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { ref } from 'vue'
 import { useFullscreen } from '@vueuse/core'
 
@@ -14,7 +14,6 @@ const { isFullscreen, toggle } = useFullscreen(fullEl)
 	>
 		<Sider />
 		<a-layout>
-			<BasicAlert />
 			<Header @toggle-fullscreen="toggle" :isFullscreen="isFullscreen" />
 			<a-layout-content
 				class="relative p-4 md:px-6 md:py-4 lg:px-8 lg:py-6 overflow-y-scroll"

@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { ref, watchEffect } from 'vue'
 import { CaretUpOutlined, CaretDownOutlined } from '@ant-design/icons-vue'
 import { OnClickOutside } from '@vueuse/components'
@@ -13,8 +13,8 @@ watchEffect(() => {
 
 const isFocused = ref(false)
 
-const onModifyValue = (increase) => {
-	if (increase) {
+const onModifyValue = (isIncrease: boolean) => {
+	if (isIncrease) {
 		localVal.value++
 	} else {
 		localVal.value--

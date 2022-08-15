@@ -1,8 +1,16 @@
-<script setup>
+<script setup lang="ts">
 import { reactive } from 'vue'
-import { Form } from 'ant-design-vue'
+import {
+	Form as AForm,
+	Input as AInput,
+	CheckboxGroup as ACheckboxGroup,
+	Checkbox as ACheckbox,
+	RadioGroup as ARadioGroup,
+	Radio as ARadio,
+} from 'ant-design-vue'
+const AFormItem = AForm.Item
 
-const useForm = Form.useForm
+const useForm = AForm.useForm
 const initialFormData = {
 	name: '',
 	email: '',
@@ -49,59 +57,59 @@ const onSubmit = () => {
 </script>
 
 <template>
-	<a-form
+	<AForm
 		@submit.prevent="onSubmit"
 		:model="formData"
 		:label-col="{ span: 8 }"
 		:wrapper-col="{ sm: 24, md: 16, xl: 12 }"
 	>
-		<a-form-item label="姓名" v-bind="validateInfos.name">
-			<a-input v-model:value="formData.name" />
-		</a-form-item>
-		<a-form-item label="電子郵件" v-bind="validateInfos.email">
-			<a-input v-model:value="formData.email" />
-		</a-form-item>
-		<a-form-item label="連絡電話" v-bind="validateInfos.phone">
-			<a-input class="w-1/2" v-model:value="formData.phone" />
-		</a-form-item>
-		<a-form-item label="年齡" v-bind="validateInfos.age">
-			<BasicInputNumber class="w-1/2" v-model="formData.age" />
-		</a-form-item>
+		<AFormItem label="姓名" v-bind="validateInfos.name">
+			<AInput v-model:value="formData.name" />
+		</AFormItem>
+		<AFormItem label="電子郵件" v-bind="validateInfos.email">
+			<AInput v-model:value="formData.email" />
+		</AFormItem>
+		<AFormItem label="連絡電話" v-bind="validateInfos.phone">
+			<AInput class="w-1/2" v-model:value="formData.phone" />
+		</AFormItem>
+		<AFormItem label="年齡" v-bind="validateInfos.age">
+			<MInputNumber class="w-1/2" v-model="formData.age" />
+		</AFormItem>
 
-		<a-form-item label="興趣" v-bind="validateInfos.interests">
-			<a-checkbox-group
+		<AFormItem label="興趣" v-bind="validateInfos.interests">
+			<ACheckboxGroup
 				v-model:value="formData.interests"
 				class="custom-checkbox-group"
 			>
-				<a-checkbox value="音樂" v-bind="validateInfos.interests"
-					>音樂</a-checkbox
+				<ACheckbox value="音樂" v-bind="validateInfos.interests"
+					>音樂</ACheckbox
 				>
-				<a-checkbox value="運動" v-bind="validateInfos.interests"
-					>運動</a-checkbox
+				<ACheckbox value="運動" v-bind="validateInfos.interests"
+					>運動</ACheckbox
 				>
-				<a-checkbox value="登山" v-bind="validateInfos.interests"
-					>登山</a-checkbox
+				<ACheckbox value="登山" v-bind="validateInfos.interests"
+					>登山</ACheckbox
 				>
-				<a-checkbox value="閱讀" v-bind="validateInfos.interests"
-					>閱讀</a-checkbox
+				<ACheckbox value="閱讀" v-bind="validateInfos.interests"
+					>閱讀</ACheckbox
 				>
-				<a-checkbox value="電玩" v-bind="validateInfos.interests"
-					>電玩</a-checkbox
+				<ACheckbox value="電玩" v-bind="validateInfos.interests"
+					>電玩</ACheckbox
 				>
-			</a-checkbox-group>
-		</a-form-item>
-		<a-form-item label="貓或狗" v-bind="validateInfos.catDog">
-			<a-radio-group v-model:value="formData.catDog">
-				<a-radio value="貓">貓</a-radio>
-				<a-radio value="狗">狗</a-radio>
-				<a-radio value="都喜歡">都喜歡</a-radio>
-			</a-radio-group>
-		</a-form-item>
-		<a-form-item :wrapper-col="{ sm: { offset: 6 } }" class="mb-0">
-			<BasicButton @click="resetFields" class="mr-4" danger>清除</BasicButton>
-			<BasicButton type="primary" html-type="submit">儲存</BasicButton>
-		</a-form-item>
-	</a-form>
+			</ACheckboxGroup>
+		</AFormItem>
+		<AFormItem label="貓或狗" v-bind="validateInfos.catDog">
+			<ARadioGroup v-model:value="formData.catDog">
+				<ARadio value="貓">貓</ARadio>
+				<ARadio value="狗">狗</ARadio>
+				<ARadio value="都喜歡">都喜歡</ARadio>
+			</ARadioGroup>
+		</AFormItem>
+		<AFormItem :wrapper-col="{ sm: { offset: 6 } }" class="mb-0">
+			<MButton @click="resetFields" class="mr-4" danger>清除</MButton>
+			<MButton type="primary" html-type="submit">儲存</MButton>
+		</AFormItem>
+	</AForm>
 </template>
 
 <style lang="scss" scoped>

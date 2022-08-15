@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { getAllTeams } from '@/api/teams'
 import { ref, computed, watch, onBeforeMount, toRaw, onUpdated } from 'vue'
 import { findNode, findAndModifyNode } from '@/utils'
@@ -7,7 +7,12 @@ import {
 	EditOutlined,
 	DeleteOutlined,
 } from '@ant-design/icons-vue'
-import { Modal, message } from 'ant-design-vue'
+import {
+	Modal as AModal,
+	message,
+	Tree as ATree,
+	Spin as ASpin,
+} from 'ant-design-vue'
 import { deleteTeam } from '@/api/teams'
 
 const allTeamsData = ref([])
@@ -100,7 +105,7 @@ const handleEditTeam = (updatedTeam) => {
 
 // 模擬刪除
 const handleDeleteTeam = () => {
-	Modal.confirm({
+	AModal.confirm({
 		title: '提醒',
 		content: '確定要刪除這個團隊嗎？這項操作將無法復原。',
 		okText: '刪除',
@@ -128,7 +133,7 @@ const handleDeleteTeam = () => {
 		<!-- 樹狀列表 -->
 		<a-col :xs="24" :md="6">
 			<div v-if="allTeamsData.length">
-				<a-tree
+				<ATree
 					v-model:selectedKeys="treeSelectedKeys"
 					v-model:expandedKeys="treeExpandedKeys"
 					:tree-data="treeData"
@@ -137,7 +142,7 @@ const handleDeleteTeam = () => {
 					<template #title="{ dataRef }">
 						{{ dataRef.title }}
 					</template>
-				</a-tree>
+				</ATree>
 			</div>
 			<a-spin v-else />
 		</a-col>
@@ -147,8 +152,8 @@ const handleDeleteTeam = () => {
 
 			<!-- CRUD 按鈕 -->
 			<div class="flex gap-x-2 mb-4">
-				<BasicButton type="primary" @click="isAddTeamModalOpen = true">
-					<PlusCircleOutlined />新增子團隊</BasicButton
+				<MButton type="primary" @click="isAddTeamModalOpen = true">
+					<PlusCircleOutlined />新增子團隊</MButton
 				>
 
 				<!-- 多加一個 v-if 判斷，讓 Modal 開啟時才 mount 元件 -->
@@ -157,13 +162,13 @@ const handleDeleteTeam = () => {
 					v-model:visible="isAddTeamModalOpen"
 					@close-modal="handleAddTeam"
 				/>
-				<BasicButton
+				<MButton
 					color="warning"
 					type="primary"
 					@click="isEditTeamModalOpen = true"
 				>
 					<EditOutlined />編輯團隊
-				</BasicButton>
+				</MButton>
 				<!-- 多加一個 v-if 判斷，讓 Modal 開啟時才 mount 元件 -->
 				<TeamsEditModal
 					v-if="isEditTeamModalOpen"
@@ -171,14 +176,14 @@ const handleDeleteTeam = () => {
 					@close-modal="handleEditTeam"
 					:detail="teamDetail"
 				/>
-				<BasicButton danger type="primary" @click="handleDeleteTeam">
+				<MButton danger type="primary" @click="handleDeleteTeam">
 					<DeleteOutlined />刪除團隊
-				</BasicButton>
+				</MButton>
 			</div>
 
 			<!-- 團隊詳情 -->
 			<TeamsDetail :detail="teamDetail" />
 		</a-col>
-		<a-spin v-else />
+		<ASpin v-else />
 	</a-row>
 </template>

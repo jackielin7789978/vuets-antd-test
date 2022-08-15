@@ -1,8 +1,14 @@
-<script setup>
+<script setup lang="ts">
 import { reactive } from 'vue'
-import { Form } from 'ant-design-vue'
+import {
+	Form as AForm,
+	Input as AInput,
+	InputPassword as AInputPassword,
+	Checkbox as ACheckbox,
+} from 'ant-design-vue'
+const AFormItem = AForm.Item
+const useForm = AForm.useForm
 
-const useForm = Form.useForm
 const initialValues = {
 	username: '',
 	password: '',
@@ -38,29 +44,28 @@ const onSubmit = () => {
 </script>
 
 <template>
-	<a-form
+	<AForm
 		@submit.prevent="onSubmit"
 		:model="formData"
-		:rules="formRules"
 		:label-col="{ span: 6 }"
 		:wrapper-col="{ sm: 24, md: 16, xl: 12 }"
 	>
-		<a-form-item label="使用者名稱" v-bind="validateInfos.username">
-			<a-input v-model:value="formData.username" />
-		</a-form-item>
-		<a-form-item label="密碼" v-bind="validateInfos.password">
-			<a-input-password v-model:value="formData.password" />
-		</a-form-item>
-		<a-form-item
+		<AFormItem label="使用者名稱" v-bind="validateInfos.username">
+			<AInput v-model:value="formData.username" />
+		</AFormItem>
+		<AFormItem label="密碼" v-bind="validateInfos.password">
+			<AInputPassword v-model:value="formData.password" />
+		</AFormItem>
+		<AFormItem
 			v-bind="validateInfos.rememberUser"
 			:wrapper-col="{ sm: { offset: 6 } }"
 		>
-			<a-checkbox v-model:checked="formData.rememberUser">記住我</a-checkbox>
-		</a-form-item>
+			<ACheckbox v-model:checked="formData.rememberUser">記住我</ACheckbox>
+		</AFormItem>
 
-		<a-form-item :wrapper-col="{ sm: { offset: 6 } }" class="mb-0">
-			<BasicButton @click="resetFields" class="mr-4" danger>清除</BasicButton>
-			<BasicButton type="primary" html-type="submit">送出</BasicButton>
-		</a-form-item>
-	</a-form>
+		<AFormItem :wrapper-col="{ sm: { offset: 6 } }" class="mb-0">
+			<MButton @click="resetFields" class="mr-4" danger>清除</MButton>
+			<MButton type="primary" html-type="submit">送出</MButton>
+		</AFormItem>
+	</AForm>
 </template>

@@ -1,4 +1,5 @@
-<script setup>
+<script setup lang="ts">
+import { Empty as AEmpty } from 'ant-design-vue'
 import emptyImg from '@/assets/bankrupt.png'
 
 const props = defineProps({
@@ -7,12 +8,12 @@ const props = defineProps({
 </script>
 
 <template>
-	<a-empty :image="emptyImg" class="empty p-4">
+	<AEmpty :image="emptyImg" class="empty p-4">
 		<template #description>
 			{{ props.description }}
 		</template>
 		<slot></slot>
-	</a-empty>
+	</AEmpty>
 </template>
 
 <style lang="scss" scoped>

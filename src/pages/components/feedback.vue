@@ -1,14 +1,18 @@
-<script setup>
-import { message, Modal } from 'ant-design-vue'
+<script setup lang="ts">
+import {
+	message,
+	Modal as AModal,
+	Statistic as AStatistic,
+	Spin as ASpin,
+} from 'ant-design-vue'
 import { ref, h } from 'vue'
-import { useAlertStore } from '@/stores/alert'
 import {
 	InfoCircleOutlined,
 	SmileOutlined,
 	FrownOutlined,
 } from '@ant-design/icons-vue'
 
-const showMsg = (type) => {
+const showMsg = (type: string) => {
 	switch (type) {
 		case 'success':
 			message.success('success')
@@ -38,12 +42,6 @@ const showStatefulMsg = () => {
 	}, 2000)
 }
 
-const showAlert = (type) => {
-	const alert = useAlertStore()
-	alert.isShown = true
-	alert.type = type
-}
-
 const isModalOpen = ref(false)
 const isCenteredModalOpen = ref(false)
 const showModal = () => (isModalOpen.value = true)
@@ -51,7 +49,7 @@ const showCenteredModal = () => (isCenteredModalOpen.value = true)
 const handleOk = () => (isModalOpen.value = false)
 const handleCenteredOk = () => (isCenteredModalOpen.value = false)
 const showConfirmModal = () => {
-	Modal.confirm({
+	AModal.confirm({
 		autoFocusButton: null,
 		title: '確定要刪除這筆資料嗎？',
 		content: '這項操作無法還原',
@@ -60,7 +58,7 @@ const showConfirmModal = () => {
 	})
 }
 const showInfoModal = () => {
-	Modal.info({
+	AModal.info({
 		autoFocusButton: null,
 		title: '顯示中性資訊',
 		content: () =>
@@ -71,7 +69,7 @@ const showInfoModal = () => {
 	})
 }
 const showErrorModal = () => {
-	Modal.error({
+	AModal.error({
 		autoFocusButton: null,
 		title: '發生錯誤',
 		content: () =>
@@ -83,7 +81,7 @@ const showErrorModal = () => {
 	})
 }
 const showSuccessModal = () => {
-	Modal.success({
+	AModal.success({
 		autoFocusButton: null,
 		title: '操作成功',
 		content: () =>
@@ -95,7 +93,7 @@ const showSuccessModal = () => {
 	})
 }
 const showWarningModal = () => {
-	Modal.warning({
+	AModal.warning({
 		autoFocusButton: null,
 		title: '注意',
 		content: () =>
@@ -126,23 +124,15 @@ const triggerLoading = () => {
 					<div class="font-semibold text-lg">基本用法</div>
 				</template>
 				<div class="flex gap-x-4 gap-y-2 flex-wrap">
-					<BasicButton type="primary" @click="showMsg"
-						>顯示普通訊息</BasicButton
+					<MButton type="primary" @click="showMsg">顯示普通訊息</MButton>
+					<MButton type="primary" color="success" @click="showMsg('success')"
+						>顯示成功訊息</MButton
 					>
-					<BasicButton
-						type="primary"
-						color="success"
-						@click="showMsg('success')"
-						>顯示成功訊息</BasicButton
+					<MButton type="primary" color="warning" @click="showMsg('warning')"
+						>顯示警示訊息</MButton
 					>
-					<BasicButton
-						type="primary"
-						color="warning"
-						@click="showMsg('warning')"
-						>顯示警示訊息</BasicButton
-					>
-					<BasicButton type="primary" danger @click="showMsg('error')"
-						>顯示錯誤訊息</BasicButton
+					<MButton type="primary" danger @click="showMsg('error')"
+						>顯示錯誤訊息</MButton
 					>
 				</div>
 			</a-card>
@@ -153,8 +143,8 @@ const triggerLoading = () => {
 					<div class="font-semibold text-lg">改變狀態</div>
 				</template>
 				<div class="flex gap-x-4 gap-y-2 flex-wrap">
-					<BasicButton @click="showSequenceMsg">顯示連續訊息</BasicButton>
-					<BasicButton @click="showStatefulMsg">改變訊息</BasicButton>
+					<MButton @click="showSequenceMsg">顯示連續訊息</MButton>
+					<MButton @click="showStatefulMsg">改變訊息</MButton>
 				</div>
 			</a-card>
 		</a-col>
@@ -163,23 +153,16 @@ const triggerLoading = () => {
 	<a-row class="mt-8" :gutter="{ sm: 12, md: 16, lg: 16, xl: 24 }">
 		<a-col :span="12">
 			<h1 class="text-2xl">Alert</h1>
+			<p>維修中...</p>
 			<a-card :bordered="false">
 				<template #title>
 					<div class="font-semibold text-lg">基本用法</div>
 				</template>
 				<div class="flex gap-x-4 gap-y-2 flex-wrap">
-					<BasicButton color="success" @click="showAlert('success')"
-						>顯示 Success Alert</BasicButton
-					>
-					<BasicButton @click="showAlert('info')" type="primary" ghost
-						>顯示 Info Alert</BasicButton
-					>
-					<BasicButton color="warning" @click="showAlert('warning')"
-						>顯示 Warning Alert</BasicButton
-					>
-					<BasicButton @click="showAlert('error')" danger
-						>顯示 Error Alert</BasicButton
-					>
+					<MButton color="success">顯示 Success Alert</MButton>
+					<MButton type="primary" ghost>顯示 Info Alert</MButton>
+					<MButton color="warning">顯示 Warning Alert</MButton>
+					<MButton danger>顯示 Error Alert</MButton>
 				</div>
 			</a-card>
 		</a-col>
@@ -190,8 +173,8 @@ const triggerLoading = () => {
 					<div class="font-semibold text-lg">基本用法</div>
 				</template>
 				<div class="flex gap-x-4 gap-y-2 flex-wrap">
-					<BasicButton @click="showModal">一般 Modal</BasicButton>
-					<a-modal
+					<MButton @click="showModal">一般 Modal</MButton>
+					<AModal
 						v-model:visible="isModalOpen"
 						@ok="handleOk"
 						:okButtonProps="{ size: 'large' }"
@@ -205,9 +188,9 @@ const triggerLoading = () => {
 						</template>
 						<p>最基本的 Modal</p>
 						<p>標題可加 icon、按鈕加大</p>
-					</a-modal>
-					<BasicButton @click="showCenteredModal">垂直置中 Modal</BasicButton>
-					<a-modal
+					</AModal>
+					<MButton @click="showCenteredModal">垂直置中 Modal</MButton>
+					<AModal
 						v-model:visible="isCenteredModalOpen"
 						@ok="handleCenteredOk"
 						centered
@@ -221,19 +204,17 @@ const triggerLoading = () => {
 						</template>
 						<p>垂直置中的 Modal</p>
 						<p>位子可再調整</p>
-					</a-modal>
-					<BasicButton @click="showConfirmModal" type="primary" danger
-						>刪除</BasicButton
+					</AModal>
+					<MButton @click="showConfirmModal" type="primary" danger
+						>刪除</MButton
 					>
-					<BasicButton @click="showInfoModal" type="primary">資訊</BasicButton>
-					<BasicButton @click="showErrorModal" type="dashed" danger
-						>錯誤</BasicButton
+					<MButton @click="showInfoModal" type="primary">資訊</MButton>
+					<MButton @click="showErrorModal" type="dashed" danger>錯誤</MButton>
+					<MButton @click="showSuccessModal" type="dashed" color="success"
+						>成功</MButton
 					>
-					<BasicButton @click="showSuccessModal" type="dashed" color="success"
-						>成功</BasicButton
-					>
-					<BasicButton @click="showWarningModal" type="dashed" color="warning"
-						>警示</BasicButton
+					<MButton @click="showWarningModal" type="dashed" color="warning"
+						>警示</MButton
 					>
 				</div>
 			</a-card>
@@ -244,25 +225,25 @@ const triggerLoading = () => {
 		<a-col :span="12">
 			<h1 class="text-2xl">Result</h1>
 			<a-card>
-				<a-result title="您已完成所有步驟！">
+				<MResult title="您已完成所有步驟！">
 					<template #icon>
 						<SmileOutlined />
 					</template>
 					<template #extra>
-						<BasicButton type="primary">回首頁</BasicButton>
+						<MButton type="primary">回首頁</MButton>
 					</template>
-				</a-result>
+				</MResult>
 			</a-card>
 			<a-card>
-				<a-result title="抱歉，有東西出錯了...">
+				<MResult title="抱歉，有東西出錯了...">
 					<template #icon>
 						<FrownOutlined :style="{ color: '#FF5B52' }" />
 					</template>
 					<template #extra>
-						<BasicButton key="console" type="primary">回首頁</BasicButton>
-						<BasicButton key="console">回報錯誤</BasicButton>
+						<MButton key="console" type="primary">回首頁</MButton>
+						<MButton key="console">回報錯誤</MButton>
 					</template>
-				</a-result>
+				</MResult>
 			</a-card>
 		</a-col>
 		<a-col :span="12">
@@ -270,51 +251,51 @@ const triggerLoading = () => {
 			<a-card>
 				<div class="flex flex-col gap-y-13">
 					<div class="flex flex-col gap-y-2">
-						<ProgressBar :percent="30" />
-						<ProgressBar :percent="90" :showInfo="false" />
+						<MProgress :percent="30" />
+						<MProgress :percent="90" :showInfo="false" />
 					</div>
 					<div class="flex flex-wrap gap-4">
-						<ProgressBar :percent="66" type="circle" :strokeWidth="4" />
-						<ProgressBar :percent="100" type="circle" :strokeWidth="5" />
-						<ProgressBar :percent="88" type="dashboard" :strokeWidth="6" />
+						<MProgress :percent="66" type="circle" :strokeWidth="4" />
+						<MProgress :percent="100" type="circle" :strokeWidth="5" />
+						<MProgress :percent="88" type="dashboard" :strokeWidth="6" />
 					</div>
 					<div>
-						<ProgressBar :percent="30" :steps="3" />
-						<ProgressBar :percent="50" :steps="5" />
-						<ProgressBar
+						<MProgress :percent="30" :steps="3" />
+						<MProgress :percent="50" :steps="5" />
+						<MProgress
 							:percent="80"
 							:steps="7"
 							stroke-color="#FF5B52"
 							status="exception"
 						/>
-						<ProgressBar :percent="100" :steps="7" stroke-color="#00CDAD" />
+						<MProgress :percent="100" :steps="7" stroke-color="#00CDAD" />
 					</div>
 					<div class="w-1/2">
-						<ProgressBar
+						<MProgress
 							:percent="40"
 							status="exception"
 							size="small"
 							stroke-color="#FF5B52"
 						/>
-						<ProgressBar :percent="100" status="success" size="small" />
+						<MProgress :percent="100" status="success" size="small" />
 					</div>
 					<div class="flex flex-wrap gap-4">
-						<ProgressBar
+						<MProgress
 							:percent="66"
 							type="circle"
 							status="exception"
 							stroke-color="#FF5B52"
 						/>
-						<ProgressBar :percent="100" type="circle" status="normal" />
-						<ProgressBar :percent="100" type="circle" />
+						<MProgress :percent="100" type="circle" status="normal" />
+						<MProgress :percent="100" type="circle" />
 					</div>
 				</div>
 			</a-card>
 		</a-col>
 	</a-row>
 	<h1 class="text-2xl mt-8">Spin & Card Skeleton</h1>
-	<BasicButton @click="triggerLoading" type="primary" class="mt-4 mb-2"
-		>開始載入</BasicButton
+	<MButton @click="triggerLoading" type="primary" class="mt-4 mb-2"
+		>開始載入</MButton
 	>
 	<a-row :gutter="{ sm: 12, md: 16, lg: 16, xl: 24 }">
 		<a-col :span="12">
@@ -324,9 +305,9 @@ const triggerLoading = () => {
 				:bodyStyle="{ position: 'relative', height: '9rem' }"
 			>
 				<template #extra>
-					<a-tag color="#00CDAD">週</a-tag>
+					<MTag color="#00CDAD">週</MTag>
 				</template>
-				<a-statistic
+				<AStatistic
 					:value="52893"
 					:valueStyle="{ margin: '1.5rem 0', fontSize: '2rem' }"
 					suffix="人"
@@ -334,21 +315,21 @@ const triggerLoading = () => {
 			</a-card>
 		</a-col>
 		<a-col :span="12">
-			<a-spin
+			<ASpin
 				v-if="isCardLoading"
 				size="large"
 				tip="載入中..."
 				class="absolute left-[40%] top-[40%]"
-			></a-spin>
+			></ASpin>
 			<a-card
 				v-else
 				title="活躍使用者"
 				:bodyStyle="{ position: 'relative', height: '9rem' }"
 			>
 				<template #extra>
-					<a-tag color="#00CDAD">週</a-tag>
+					<MTag color="#00CDAD">週</MTag>
 				</template>
-				<a-statistic
+				<AStatistic
 					:value="52893"
 					:valueStyle="{ margin: '1.5rem 0', fontSize: '2rem' }"
 					suffix="人"

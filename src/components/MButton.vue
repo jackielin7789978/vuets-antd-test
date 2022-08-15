@@ -1,38 +1,39 @@
-<script setup>
-import { computed } from 'vue'
+<script lang="ts">
+// export in seperate script tag for later refernce in the <script setup> tag below
+export enum ButtonTypes {
+	default = 'default',
+	primary = 'primary',
+	link = 'link',
+	ghost = 'ghost',
+	dashed = 'dashed',
+	text = 'text',
+}
+</script>
 
-const props = defineProps({
-	color: {
-		type: String,
-		default: '',
-	},
-	danger: {
-		type: Boolean,
-		default: false,
-	},
-	disabled: {
-		type: Boolean,
-		default: false,
-	},
-	loading: {
-		type: Boolean,
-		default: false,
-	},
-	ghost: {
-		type: Boolean,
-		default: false,
-	},
-	type: {
-		type: String,
-		default: 'default',
-	},
-	submit: {
-		type: Boolean,
-		default: false,
-	},
+<script setup lang="ts">
+import { computed } from 'vue'
+import { Button as AButton } from 'ant-design-vue'
+
+interface Props {
+	color?: string
+	danger?: boolean
+	disabled?: boolean
+	loading?: boolean
+	ghost?: boolean
+	type?: ButtonTypes
+	submit?: boolean
+}
+const props = withDefaults(defineProps<Props>(), {
+	color: '',
+	danger: false,
+	disabled: false,
+	loading: false,
+	ghost: false,
+	type: ButtonTypes.default,
+	submit: false,
 })
 
-const customClass = computed(() => {
+const customClass = computed((): string => {
 	if (!props.color || props.disabled) return ''
 	switch (props.color) {
 		case 'success':
@@ -46,7 +47,7 @@ const customClass = computed(() => {
 </script>
 
 <template>
-	<a-button
+	<AButton
 		:class="customClass"
 		:type="type"
 		:danger="danger"
@@ -56,7 +57,7 @@ const customClass = computed(() => {
 		:htmlType="submit ? 'submit' : 'button'"
 	>
 		<slot></slot>
-	</a-button>
+	</AButton>
 </template>
 
 <style lang="scss">
