@@ -5,6 +5,10 @@ import '@vue/runtime-core'
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
+    ACard: typeof import('ant-design-vue/es')['Card']
+    ACol: typeof import('ant-design-vue/es')['Col']
+    ARow: typeof import('ant-design-vue/es')['Row']
+    ASpace: typeof import('ant-design-vue/es')['Space']
     Default: typeof import('./src/layouts/default.vue')['default']
     DemoFormLogin: typeof import('./src/components/DemoFormLogin.vue')['default']
     DemoFormPersonal: typeof import('./src/components/DemoFormPersonal.vue')['default']

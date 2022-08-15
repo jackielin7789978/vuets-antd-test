@@ -127,17 +127,17 @@ const handleDeleteTeam = () => {
 	<a-row :gutter="24">
 		<!-- 樹狀列表 -->
 		<a-col :xs="24" :md="6">
-			<div v-if="allTeamsData.length">
-				<Tree
-					v-model:selectedKeys="treeSelectedKeys"
-					v-model:expandedKeys="treeExpandedKeys"
-					:tree-data="treeData"
-				>
-					<template #title="{ dataRef }">
-						{{ dataRef.title }}
-					</template>
-				</Tree>
-			</div>
+			<Tree
+				v-if="allTeamsData.length"
+				v-model:selectedKeys="treeSelectedKeys"
+				v-model:expandedKeys="treeExpandedKeys"
+				:tree-data="treeData"
+				class="px-2 py-4"
+			>
+				<template #title="{ dataRef }">
+					{{ dataRef.title }}
+				</template>
+			</Tree>
 			<Spin v-else />
 		</a-col>
 
