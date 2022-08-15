@@ -1,11 +1,23 @@
-<script setup>
-import { ref } from 'vue'
+<script setup lang="ts">
+import { ref, reactive } from 'vue'
 import { UserOutlined } from '@ant-design/icons-vue'
 import yapi from '@/api/yapi'
 
+interface DashboardData {
+	totalMember: number
+	monthlyNewMember: number
+	monthlyOrders: number
+	monthlyRevenue: number
+}
+
 const showGreetModal = ref(false)
 const isLoadingDashboardData = ref(true)
-const dashboardData = ref({})
+const dashboardData: DashboardData = reactive({
+	totalMember: 0,
+	monthlyNewMember: 0,
+	monthlyOrders: 0,
+	monthlyRevenue: 0,
+})
 
 yapi
 	.get('/dashboard')
@@ -15,7 +27,7 @@ yapi
 		}
 	})
 	.then((data) => {
-		dashboardData.value = data
+		Object.assign(dashboardData, data)
 		isLoadingDashboardData.value = false
 	})
 </script>

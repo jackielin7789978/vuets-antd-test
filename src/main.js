@@ -27,8 +27,9 @@ router.beforeEach((to, from, next) => {
 	next()
 })
 
-import Antd from 'ant-design-vue' // dev 使用全域註冊增加開發速度，build 時移除
-import 'ant-design-vue/dist/antd.less' // build 時移除
+// dev 使用全域註冊增加開發速度，build 時移除
+import Antd from 'ant-design-vue'
+import 'ant-design-vue/dist/antd.less'
 import 'virtual:windi.css'
 
 const app = createApp(App)

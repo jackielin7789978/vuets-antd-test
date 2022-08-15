@@ -1,14 +1,11 @@
-<script setup>
-import { onBeforeMount, ref } from 'vue'
+<script setup lang="ts">
+import { onBeforeMount, ref, withDefaults } from 'vue'
 import { OnClickOutside } from '@vueuse/components'
 import { getRole } from '@/api/roles'
 
 defineEmits(['close'])
-const props = defineProps({
-	roleId: {
-		type: Number,
-		default: 0,
-	},
+const props = withDefaults(defineProps<{ roleId: number }>(), {
+	roleId: 0,
 })
 
 const roleData = ref({})
