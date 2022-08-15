@@ -2,18 +2,11 @@ import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import App from './App.vue'
 
-// dev 使用全域註冊增加開發速度，build 時移除
 import 'virtual:windi.css'
 import 'ant-design-vue/dist/antd.less'
-import { Layout, Breadcrumb, Space, Row, Col, Card } from 'ant-design-vue'
-const GloballyRegisteredAntdComponents = [
-	Layout,
-	Breadcrumb,
-	Space,
-	Row,
-	Col,
-	Card,
-]
+// 全域註冊部分元件，其餘元件仍須手動引入(勿更動)
+import { Space, Row, Col, Card } from 'ant-design-vue'
+const GloballyRegisteredAntdComponents = [Space, Row, Col, Card]
 
 // File Base Routing + Layout system
 import { createRouter, createWebHistory } from 'vue-router'

@@ -2,7 +2,7 @@
 import { ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import { useMenuStore } from '@/stores/menu'
-import { Menu as AMenu } from 'ant-design-vue'
+import { Menu } from 'ant-design-vue'
 
 const menu = useMenuStore()
 const route = useRoute()
@@ -15,9 +15,9 @@ watch(route, () => {
 </script>
 
 <template>
-	<AMenu v-model:selectedKeys="selectedKeys">
+	<Menu v-model:selectedKeys="selectedKeys">
 		<template v-for="item in menu.menuTree" :key="item.name">
 			<SiderSubMenuItem :item="item" />
 		</template>
-	</AMenu>
+	</Menu>
 </template>

@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup>
 import { getAllTeams } from '@/api/teams'
 import { ref, computed, watch, onBeforeMount, toRaw, onUpdated } from 'vue'
 import { findNode, findAndModifyNode } from '@/utils'
@@ -7,12 +7,7 @@ import {
 	EditOutlined,
 	DeleteOutlined,
 } from '@ant-design/icons-vue'
-import {
-	Modal as AModal,
-	message,
-	Tree as ATree,
-	Spin as ASpin,
-} from 'ant-design-vue'
+import { Modal, message, Tree, Spin } from 'ant-design-vue'
 import { deleteTeam } from '@/api/teams'
 
 const allTeamsData = ref([])
@@ -105,7 +100,7 @@ const handleEditTeam = (updatedTeam) => {
 
 // 模擬刪除
 const handleDeleteTeam = () => {
-	AModal.confirm({
+	Modal.confirm({
 		title: '提醒',
 		content: '確定要刪除這個團隊嗎？這項操作將無法復原。',
 		okText: '刪除',
@@ -133,18 +128,17 @@ const handleDeleteTeam = () => {
 		<!-- 樹狀列表 -->
 		<a-col :xs="24" :md="6">
 			<div v-if="allTeamsData.length">
-				<ATree
+				<Tree
 					v-model:selectedKeys="treeSelectedKeys"
 					v-model:expandedKeys="treeExpandedKeys"
 					:tree-data="treeData"
-					class="px-2 py-4"
 				>
 					<template #title="{ dataRef }">
 						{{ dataRef.title }}
 					</template>
-				</ATree>
+				</Tree>
 			</div>
-			<a-spin v-else />
+			<Spin v-else />
 		</a-col>
 
 		<a-col v-if="teamDetail" :xs="24" :md="18" class="mt-4 md:mt-0">
@@ -184,6 +178,6 @@ const handleDeleteTeam = () => {
 			<!-- 團隊詳情 -->
 			<TeamsDetail :detail="teamDetail" />
 		</a-col>
-		<ASpin v-else />
+		<Spin v-else />
 	</a-row>
 </template>

@@ -1,12 +1,13 @@
 <script setup>
 import { ref } from 'vue'
+import { LayoutSider } from 'ant-design-vue'
 import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons-vue'
 const siderCollapsed = ref(false)
 const toggleSider = () => (siderCollapsed.value = !siderCollapsed.value)
 </script>
 
 <template>
-	<a-layout-sider
+	<LayoutSider
 		breakpoint="lg"
 		v-model:collapsed="siderCollapsed"
 		:trigger="null"
@@ -26,7 +27,7 @@ const toggleSider = () => (siderCollapsed.value = !siderCollapsed.value)
 
 		<!-- menu -->
 		<SiderMenu mode="inline" theme="dark" class="customSiderMenu" />
-	</a-layout-sider>
+	</LayoutSider>
 </template>
 
 <style lang="scss" scoped>

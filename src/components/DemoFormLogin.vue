@@ -1,13 +1,6 @@
 <script setup lang="ts">
 import { reactive } from 'vue'
-import {
-	Form as AForm,
-	Input as AInput,
-	InputPassword as AInputPassword,
-	Checkbox as ACheckbox,
-} from 'ant-design-vue'
-const AFormItem = AForm.Item
-const useForm = AForm.useForm
+import { Form, FormItem, Input, InputPassword, Checkbox } from 'ant-design-vue'
 
 const initialValues = {
 	username: '',
@@ -30,7 +23,10 @@ const formRules = reactive({
 	],
 })
 
-const { resetFields, validate, validateInfos } = useForm(formData, formRules)
+const { resetFields, validate, validateInfos } = Form.useForm(
+	formData,
+	formRules
+)
 
 const onSubmit = () => {
 	validate()
@@ -44,28 +40,28 @@ const onSubmit = () => {
 </script>
 
 <template>
-	<AForm
+	<Form
 		@submit.prevent="onSubmit"
 		:model="formData"
 		:label-col="{ span: 6 }"
 		:wrapper-col="{ sm: 24, md: 16, xl: 12 }"
 	>
-		<AFormItem label="使用者名稱" v-bind="validateInfos.username">
-			<AInput v-model:value="formData.username" />
-		</AFormItem>
-		<AFormItem label="密碼" v-bind="validateInfos.password">
-			<AInputPassword v-model:value="formData.password" />
-		</AFormItem>
-		<AFormItem
+		<FormItem label="使用者名稱" v-bind="validateInfos.username">
+			<Input v-model:value="formData.username" />
+		</FormItem>
+		<FormItem label="密碼" v-bind="validateInfos.password">
+			<InputPassword v-model:value="formData.password" />
+		</FormItem>
+		<FormItem
 			v-bind="validateInfos.rememberUser"
 			:wrapper-col="{ sm: { offset: 6 } }"
 		>
-			<ACheckbox v-model:checked="formData.rememberUser">記住我</ACheckbox>
-		</AFormItem>
+			<Checkbox v-model:checked="formData.rememberUser">記住我</Checkbox>
+		</FormItem>
 
-		<AFormItem :wrapper-col="{ sm: { offset: 6 } }" class="mb-0">
+		<FormItem :wrapper-col="{ sm: { offset: 6 } }" class="mb-0">
 			<MButton @click="resetFields" class="mr-4" danger>清除</MButton>
 			<MButton type="primary" html-type="submit">送出</MButton>
-		</AFormItem>
-	</AForm>
+		</FormItem>
+	</Form>
 </template>

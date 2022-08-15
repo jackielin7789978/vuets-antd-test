@@ -1,7 +1,12 @@
 <script setup>
 import { ref, reactive } from 'vue'
-import { Form, DatePicker as ADatePicker } from 'ant-design-vue'
-import { FormEl } from '@/ant/FormComponents'
+import {
+	Form,
+	FormItem,
+	Select,
+	SelectOption,
+	DatePicker,
+} from 'ant-design-vue'
 import yapi from '@/api/yapi'
 
 const emit = defineEmits(['go-to-step-1', 'go-to-step-3'])
@@ -40,27 +45,27 @@ const submit = () => {
 </script>
 
 <template>
-	<FormEl.AForm
+	<Form
 		:model="formData"
 		:label-col="{ sm: { span: 4 }, xl: { span: 6 } }"
 		:colon="false"
 	>
-		<FormEl.AFormItem label="審核者" v-bind="validateInfos.auditor">
-			<FormEl.ASelect v-model:value="formData.auditor" show-search>
-				<FormEl.ASelectOption
+		<FormItem label="審核者" v-bind="validateInfos.auditor">
+			<Select v-model:value="formData.auditor" show-search>
+				<SelectOption
 					v-for="user in creatorOptions"
 					:key="user"
 					:value="user.name"
-					>{{ user.name }}</FormEl.ASelectOption
+					>{{ user.name }}</SelectOption
 				>
-			</FormEl.ASelect>
-		</FormEl.AFormItem>
-		<FormEl.AFormItem label="審核期限">
-			<ADatePicker v-model:value="formData.dueDate"></ADatePicker>
-		</FormEl.AFormItem>
+			</Select>
+		</FormItem>
+		<FormItem label="審核期限">
+			<DatePicker v-model:value="formData.dueDate"></DatePicker>
+		</FormItem>
 		<div class="flex gap-x-2 justify-end">
 			<MButton @click="emit('go-to-step-1')">上一步</MButton>
 			<MButton @click="submit" type="primary">完成</MButton>
 		</div>
-	</FormEl.AForm>
+	</Form>
 </template>

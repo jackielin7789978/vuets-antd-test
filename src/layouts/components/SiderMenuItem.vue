@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { MenuItem as AMenuItem } from 'ant-design-vue'
+import { MenuItem } from 'ant-design-vue'
 interface Props {
 	item: {
 		path: string
@@ -11,10 +11,10 @@ defineProps<Props>()
 </script>
 
 <template>
-	<AMenuItem :key="item.path">
+	<MenuItem :key="item.path">
 		<template #icon>
 			<SiderMenuIcon :iconComponent="item.icon" />
 		</template>
 		<router-link :to="item.path">{{ item.name }}</router-link>
-	</AMenuItem>
+	</MenuItem>
 </template>
